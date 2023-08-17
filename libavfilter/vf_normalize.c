@@ -1,20 +1,20 @@
 /*
  * Copyright (c) 2017 Richard Ling
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -380,7 +380,7 @@ static void normalize(NormalizeContext *s, AVFrame *in, AVFrame *out)
 }
 
 // Now we define all the functions accessible from the ff_vf_normalize class,
-// which is ffmpeg's interface to our filter.  See doc/filter_design.txt and
+// which is ffmpreg's interface to our filter.  See doc/filter_design.txt and
 // doc/writing_filters.txt for descriptions of what these interface functions
 // are expected to do.
 

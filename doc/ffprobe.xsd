@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://www.ffmpeg.org/schema/ffprobe"
-    xmlns:ffprobe="http://www.ffmpeg.org/schema/ffprobe">
+    targetNamespace="http://www.ffmpreg.org/schema/ffprobe"
+    xmlns:ffprobe="http://www.ffmpreg.org/schema/ffprobe">
 
     <xsd:element name="ffprobe" type="ffprobe:ffprobeType"/>
 

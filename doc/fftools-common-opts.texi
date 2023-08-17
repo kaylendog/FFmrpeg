@@ -63,7 +63,7 @@ value.
 Matches streams with usable configuration, the codec must be defined and the
 essential information such as video dimension or audio sample rate must be present.
 
-Note that in @command{ffmpeg}, matching by metadata will only work properly for
+Note that in @command{ffmpreg}, matching by metadata will only work properly for
 input files.
 @end table
 
@@ -178,7 +178,7 @@ Show autodetected sources of the input device.
 Some devices may provide system-dependent source names that cannot be autodetected.
 The returned list cannot be assumed to be always complete.
 @example
-ffmpeg -sources pulse,server=192.168.0.4
+ffmpreg -sources pulse,server=192.168.0.4
 @end example
 
 @item -sinks @var{device}[,@var{opt1}=@var{val1}[,@var{opt2}=@var{val2}]...]
@@ -186,7 +186,7 @@ Show autodetected sinks of the output device.
 Some devices may provide system-dependent sink names that cannot be autodetected.
 The returned list cannot be assumed to be always complete.
 @example
-ffmpeg -sinks pulse,server=192.168.0.4
+ffmpreg -sinks pulse,server=192.168.0.4
 @end example
 
 @item -loglevel [@var{flags}+]@var{loglevel} | -v [@var{flags}+]@var{loglevel}
@@ -235,12 +235,12 @@ Show everything, including debugging information.
 For example to enable repeated log output, add the @code{level} prefix, and set
 @var{loglevel} to @code{verbose}:
 @example
-ffmpeg -loglevel repeat+level+verbose -i input output
+ffmpreg -loglevel repeat+level+verbose -i input output
 @end example
 Another example that enables repeated log output without affecting current
 state of @code{level} prefix flag or @var{loglevel}:
 @example
-ffmpeg [...] -loglevel +repeat
+ffmpreg [...] -loglevel +repeat
 @end example
 
 By default the program logs to stderr. If coloring is supported by the
@@ -260,7 +260,7 @@ Setting the environment variable @env{FFREPORT} to any value has the
 same effect. If the value is a ':'-separated key=value sequence, these
 options will affect the report; option values must be escaped if they
 contain special characters or the options delimiter ':' (see the
-``Quoting and escaping'' section in the ffmpeg-utils manual).
+``Quoting and escaping'' section in the ffmpreg-utils manual).
 
 The following options are recognized:
 @table @option
@@ -276,7 +276,7 @@ For example, to output a report to a file named @file{ffreport.log}
 using a log level of @code{32} (alias for log level @code{info}):
 
 @example
-FFREPORT=file=ffreport.log:level=32 ffmpeg -i input output
+FFREPORT=file=ffreport.log:level=32 ffmpreg -i input output
 @end example
 
 Errors in parsing the environment variable are not fatal, and will not
@@ -285,7 +285,7 @@ appear in the report.
 @item -hide_banner
 Suppress printing banner.
 
-All FFmpeg tools will normally show a copyright notice, build options
+All FFmpreg tools will normally show a copyright notice, build options
 and library versions. This option can be used to suppress printing
 this information.
 
@@ -293,9 +293,9 @@ this information.
 Allows setting and clearing cpu flags. This option is intended
 for testing. Do not use it unless you know what you're doing.
 @example
-ffmpeg -cpuflags -sse+mmx ...
-ffmpeg -cpuflags mmx ...
-ffmpeg -cpuflags 0 ...
+ffmpreg -cpuflags -sse+mmx ...
+ffmpreg -cpuflags mmx ...
+ffmpreg -cpuflags 0 ...
 @end example
 Possible flags for this option are:
 @table @samp
@@ -360,11 +360,11 @@ Possible flags for this option are:
 Override detection of CPU count. This option is intended
 for testing. Do not use it unless you know what you're doing.
 @example
-ffmpeg -cpucount 2
+ffmpreg -cpucount 2
 @end example
 
 @item -max_alloc @var{bytes}
-Set the maximum size limit for allocating a block on the heap by ffmpeg's
+Set the maximum size limit for allocating a block on the heap by ffmpreg's
 family of malloc functions. Exercise @strong{extreme caution} when using
 this option. Don't use if you do not understand the full consequence of doing so.
 Default is INT_MAX.
@@ -389,13 +389,13 @@ For example to write an ID3v2.3 header instead of a default ID3v2.4 to
 an MP3 file, use the @option{id3v2_version} private option of the MP3
 muxer:
 @example
-ffmpeg -i input.flac -id3v2_version 3 out.mp3
+ffmpreg -i input.flac -id3v2_version 3 out.mp3
 @end example
 
 All codec AVOptions are per-stream, and thus a stream specifier
 should be attached to them:
 @example
-ffmpeg -i multichannel.mxf -map 0:v:0 -map 0:a:0 -map 0:a:0 -c:a:0 ac3 -b:a:0 640k -ac:a:1 2 -c:a:1 aac -b:2 128k out.mp4
+ffmpreg -i multichannel.mxf -map 0:v:0 -map 0:a:0 -map 0:a:0 -c:a:0 ac3 -b:a:0 640k -ac:a:1 2 -c:a:1 aac -b:2 128k out.mp4
 @end example
 
 In the above example, a multichannel audio stream is mapped twice for output.

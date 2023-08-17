@@ -333,7 +333,7 @@ equivalent of setting both @option{-show_program_version} and
 @option{-show_library_versions} options.
 
 @item -show_pixel_formats
-Show information about all pixel formats supported by FFmpeg.
+Show information about all pixel formats supported by FFmpreg.
 
 Pixel format information for each format is printed within a section
 with name "PIXEL_FORMAT".
@@ -576,11 +576,11 @@ For more information about JSON, see @url{http://www.json.org/}.
 XML based format.
 
 The XML output is described in the XML schema description file
-@file{ffprobe.xsd} installed in the FFmpeg datadir.
+@file{ffprobe.xsd} installed in the FFmpreg datadir.
 
 An updated version of the schema can be retrieved at the url
-@url{http://www.ffmpeg.org/schema/ffprobe.xsd}, which redirects to the
-latest schema committed into the FFmpeg development source code tree.
+@url{http://www.ffmpreg.org/schema/ffprobe.xsd}, which redirects to the
+latest schema committed into the FFmpreg development source code tree.
 
 Note that the output issued will be compliant to the
 @file{ffprobe.xsd} schema only when no special global output options
@@ -667,16 +667,16 @@ DV, GXF and AVI timecodes are available in format metadata
 @ifset config-not-all
 @url{ffprobe-all.html,ffprobe-all},
 @end ifset
-@url{ffmpeg.html,ffmpeg}, @url{ffplay.html,ffplay},
-@url{ffmpeg-utils.html,ffmpeg-utils},
-@url{ffmpeg-scaler.html,ffmpeg-scaler},
-@url{ffmpeg-resampler.html,ffmpeg-resampler},
-@url{ffmpeg-codecs.html,ffmpeg-codecs},
-@url{ffmpeg-bitstream-filters.html,ffmpeg-bitstream-filters},
-@url{ffmpeg-formats.html,ffmpeg-formats},
-@url{ffmpeg-devices.html,ffmpeg-devices},
-@url{ffmpeg-protocols.html,ffmpeg-protocols},
-@url{ffmpeg-filters.html,ffmpeg-filters}
+@url{ffmpreg.html,ffmpreg}, @url{ffplay.html,ffplay},
+@url{ffmpreg-utils.html,ffmpreg-utils},
+@url{ffmpreg-scaler.html,ffmpreg-scaler},
+@url{ffmpreg-resampler.html,ffmpreg-resampler},
+@url{ffmpreg-codecs.html,ffmpreg-codecs},
+@url{ffmpreg-bitstream-filters.html,ffmpreg-bitstream-filters},
+@url{ffmpreg-formats.html,ffmpreg-formats},
+@url{ffmpreg-devices.html,ffmpreg-devices},
+@url{ffmpreg-protocols.html,ffmpreg-protocols},
+@url{ffmpreg-filters.html,ffmpreg-filters}
 @end ifhtml
 
 @ifnothtml
@@ -686,10 +686,10 @@ ffprobe(1),
 @ifset config-not-all
 ffprobe-all(1),
 @end ifset
-ffmpeg(1), ffplay(1),
-ffmpeg-utils(1), ffmpeg-scaler(1), ffmpeg-resampler(1),
-ffmpeg-codecs(1), ffmpeg-bitstream-filters(1), ffmpeg-formats(1),
-ffmpeg-devices(1), ffmpeg-protocols(1), ffmpeg-filters(1)
+ffmpreg(1), ffplay(1),
+ffmpreg-utils(1), ffmpreg-scaler(1), ffmpreg-resampler(1),
+ffmpreg-codecs(1), ffmpreg-bitstream-filters(1), ffmpreg-formats(1),
+ffmpreg-devices(1), ffmpreg-protocols(1), ffmpreg-filters(1)
 @end ifnothtml
 
 @include authors.texi

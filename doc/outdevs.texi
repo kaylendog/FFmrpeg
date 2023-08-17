@@ -1,10 +1,10 @@
 @chapter Output Devices
 @c man begin OUTPUT DEVICES
 
-Output devices are configured elements in FFmpeg that can write
+Output devices are configured elements in FFmpreg that can write
 multimedia data to an output device attached to your system.
 
-When you configure your FFmpeg build, all the supported output devices
+When you configure your FFmpreg build, all the supported output devices
 are enabled by default. You can list all available ones using the
 configure option "--list-outdevs".
 
@@ -28,13 +28,13 @@ ALSA (Advanced Linux Sound Architecture) output device.
 @item
 Play a file on default ALSA device:
 @example
-ffmpeg -i INPUT -f alsa default
+ffmpreg -i INPUT -f alsa default
 @end example
 
 @item
 Play a file on soundcard 1, audio device 7:
 @example
-ffmpeg -i INPUT -f alsa hw:1,7
+ffmpreg -i INPUT -f alsa hw:1,7
 @end example
 @end itemize
 
@@ -73,13 +73,13 @@ Specify the audio device by its index. Overrides anything given in the output fi
 @item
 Print the list of supported devices and output a sine wave to the default device:
 @example
-$ ffmpeg -f lavfi -i sine=r=44100 -f audiotoolbox -list_devices true -
+$ ffmpreg -f lavfi -i sine=r=44100 -f audiotoolbox -list_devices true -
 @end example
 
 @item
 Output a sine wave to the device with the index 2, overriding any output filename:
 @example
-$ ffmpeg -f lavfi -i sine=r=44100 -f audiotoolbox -audio_device_index 2 -
+$ ffmpreg -f lavfi -i sine=r=44100 -f audiotoolbox -audio_device_index 2 -
 @end example
 
 @end itemize
@@ -92,7 +92,7 @@ This output device allows one to show a video stream in CACA window.
 Only one CACA window is allowed per application, so you can
 have only one instance of this output device in an application.
 
-To enable this output device you need to configure FFmpeg with
+To enable this output device you need to configure FFmpreg with
 @code{--enable-libcaca}.
 libcaca is a graphics library that outputs text instead of pixels.
 
@@ -147,22 +147,22 @@ The argument must be one of @code{algorithms}, @code{antialiases},
 
 @itemize
 @item
-The following command shows the @command{ffmpeg} output is an
+The following command shows the @command{ffmpreg} output is an
 CACA window, forcing its size to 80x25:
 @example
-ffmpeg -i INPUT -c:v rawvideo -pix_fmt rgb24 -window_size 80x25 -f caca -
+ffmpreg -i INPUT -c:v rawvideo -pix_fmt rgb24 -window_size 80x25 -f caca -
 @end example
 
 @item
 Show the list of available drivers and exit:
 @example
-ffmpeg -i INPUT -pix_fmt rgb24 -f caca -list_drivers true -
+ffmpreg -i INPUT -pix_fmt rgb24 -f caca -list_drivers true -
 @end example
 
 @item
 Show the list of available dither colors and exit:
 @example
-ffmpeg -i INPUT -pix_fmt rgb24 -f caca -list_dither colors -
+ffmpreg -i INPUT -pix_fmt rgb24 -f caca -list_dither colors -
 @end example
 @end itemize
 
@@ -187,7 +187,7 @@ device with @command{-list_formats 1}. Audio sample rate is always 48 kHz.
 @item list_devices
 If set to @option{true}, print a list of devices and exit.
 Defaults to @option{false}. This option is deprecated, please use the
-@code{-sinks} option of ffmpeg to list the available output devices.
+@code{-sinks} option of ffmpreg to list the available output devices.
 
 @item list_formats
 If set to @option{true}, print a list of supported formats and exit.
@@ -249,25 +249,25 @@ Defaults to @samp{1048576}.
 @item
 List output devices:
 @example
-ffmpeg -sinks decklink
+ffmpreg -sinks decklink
 @end example
 
 @item
 List supported formats:
 @example
-ffmpeg -i test.avi -f decklink -list_formats 1 'DeckLink Mini Monitor'
+ffmpreg -i test.avi -f decklink -list_formats 1 'DeckLink Mini Monitor'
 @end example
 
 @item
 Play video clip:
 @example
-ffmpeg -i test.avi -f decklink -pix_fmt uyvy422 'DeckLink Mini Monitor'
+ffmpreg -i test.avi -f decklink -pix_fmt uyvy422 'DeckLink Mini Monitor'
 @end example
 
 @item
 Play video clip with non-standard framerate or video size:
 @example
-ffmpeg -i test.avi -f decklink -pix_fmt uyvy422 -s 720x486 -r 24000/1001 'DeckLink Mini Monitor'
+ffmpreg -i test.avi -f decklink -pix_fmt uyvy422 -s 720x486 -r 24000/1001 'DeckLink Mini Monitor'
 @end example
 
 @end itemize
@@ -296,7 +296,7 @@ Set x/y coordinate of top left corner. Default is 0.
 Play a file on framebuffer device @file{/dev/fb0}.
 Required pixel format depends on current framebuffer settings.
 @example
-ffmpeg -re -i INPUT -c:v rawvideo -pix_fmt bgra -f fbdev /dev/fb0
+ffmpreg -re -i INPUT -c:v rawvideo -pix_fmt bgra -f fbdev /dev/fb0
 @end example
 
 See also @url{http://linux-fbdev.sourceforge.net/}, and fbset(1).
@@ -304,7 +304,7 @@ See also @url{http://linux-fbdev.sourceforge.net/}, and fbset(1).
 @section opengl
 OpenGL output device.
 
-To enable this output device you need to configure FFmpeg with @code{--enable-opengl}.
+To enable this output device you need to configure FFmpreg with @code{--enable-opengl}.
 
 This output device allows one to render to OpenGL context.
 Context may be provided by application or default SDL window is created.
@@ -337,7 +337,7 @@ Mostly usable when @option{no_window} is not set.
 @subsection Examples
 Play a file on SDL window using OpenGL rendering:
 @example
-ffmpeg  -i INPUT -f opengl "window title"
+ffmpreg  -i INPUT -f opengl "window title"
 @end example
 
 @section oss
@@ -348,7 +348,7 @@ OSS (Open Sound System) output device.
 
 PulseAudio output device.
 
-To enable this output device you need to configure FFmpeg with @code{--enable-libpulse}.
+To enable this output device you need to configure FFmpreg with @code{--enable-libpulse}.
 
 More information about PulseAudio can be found on @url{http://www.pulseaudio.org}
 
@@ -403,7 +403,7 @@ by the server.
 @subsection Examples
 Play a file on default device on default server:
 @example
-ffmpeg  -i INPUT -f pulse "stream name"
+ffmpreg  -i INPUT -f pulse "stream name"
 @end example
 
 @section sdl
@@ -466,10 +466,10 @@ Quit the device immediately.
 
 @subsection Examples
 
-The following command shows the @command{ffmpeg} output is an
+The following command shows the @command{ffmpreg} output is an
 SDL window, forcing its size to the qcif format:
 @example
-ffmpeg -i INPUT -c:v rawvideo -pix_fmt yuv420p -window_size qcif -f sdl "SDL output"
+ffmpreg -i INPUT -c:v rawvideo -pix_fmt yuv420p -window_size qcif -f sdl "SDL output"
 @end example
 
 @section sndio
@@ -539,16 +539,16 @@ For more information about XVideo see @url{http://www.x.org/}.
 
 @itemize
 @item
-Decode, display and encode video input with @command{ffmpeg} at the
+Decode, display and encode video input with @command{ffmpreg} at the
 same time:
 @example
-ffmpeg -i INPUT OUTPUT -f xv display
+ffmpreg -i INPUT OUTPUT -f xv display
 @end example
 
 @item
 Decode and display the input video to multiple X11 windows:
 @example
-ffmpeg -i INPUT -f xv normal -vf negate -f xv negated
+ffmpreg -i INPUT -f xv normal -vf negate -f xv negated
 @end example
 @end itemize
 

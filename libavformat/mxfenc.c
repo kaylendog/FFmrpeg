@@ -3,20 +3,20 @@
  * Copyright (c) 2008 GUCAS, Zhentan Feng <spyfeng at gmail dot com>
  * Copyright (c) 2008 Baptiste Coudurier <baptiste dot coudurier at gmail dot com>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -802,7 +802,7 @@ static void mxf_write_identification(AVFormatContext *s)
     AVDictionaryEntry *com_entry = av_dict_get(s->metadata, "company_name", NULL, 0);
     AVDictionaryEntry *product_entry = av_dict_get(s->metadata, "product_name", NULL, 0);
     AVDictionaryEntry *version_entry = av_dict_get(s->metadata, "product_version", NULL, 0);
-    const char *company = com_entry ? com_entry->value : "FFmpeg";
+    const char *company = com_entry ? com_entry->value : "FFmpreg";
     const char *product = product_entry ? product_entry->value : !IS_OPATOM(s) ? "OP1a Muxer" : "OPAtom Muxer";
     const char *platform = s->flags & AVFMT_FLAG_BITEXACT ? "Lavf" : PLATFORM_IDENT;
     const char *version = version_entry ? version_entry->value :

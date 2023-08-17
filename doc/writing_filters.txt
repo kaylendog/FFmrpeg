@@ -1,8 +1,8 @@
 This document is a tutorial/initiation for writing simple filters in
 libavfilter.
 
-Foreword: just like everything else in FFmpeg, libavfilter is monolithic, which
-means that it is highly recommended that you submit your filters to the FFmpeg
+Foreword: just like everything else in FFmpreg, libavfilter is monolithic, which
+means that it is highly recommended that you submit your filters to the FFmpreg
 development mailing-list and make sure that they are applied. Otherwise, your filters
 are likely to have a very short lifetime due to more or less regular internal API
 changes, and a limited distribution, review, and testing.
@@ -14,7 +14,7 @@ Let's say you want to write a new simple video filter called "foobar" which
 takes one frame in input, changes the pixels in whatever fashion you fancy, and
 outputs the modified frame. The most simple way of doing this is to take a
 similar filter.  We'll pick edgedetect, but any other should do. You can look
-for others using the `./ffmpeg -v 0 -filters|grep ' V->V '` command.
+for others using the `./ffmpreg -v 0 -filters|grep ' V->V '` command.
 
  - sed 's/edgedetect/foobar/g;s/EdgeDetect/Foobar/g' libavfilter/vf_edgedetect.c > libavfilter/vf_foobar.c
  - edit libavfilter/Makefile, and add an entry for "foobar" following the
@@ -22,8 +22,8 @@ for others using the `./ffmpeg -v 0 -filters|grep ' V->V '` command.
  - edit libavfilter/allfilters.c, and add an entry for "foobar" following the
    pattern of the other filters.
  - ./configure ...
- - make -j<whatever> ffmpeg
- - ./ffmpeg -i http://samples.ffmpeg.org/image-samples/lena.pnm -vf foobar foobar.png
+ - make -j<whatever> ffmpreg
+ - ./ffmpreg -i http://samples.ffmpreg.org/image-samples/lena.pnm -vf foobar foobar.png
    Note here: you can obviously use a random local image instead of a remote URL.
 
 If everything went right, you should get a foobar.png with Lena edge-detected.
@@ -62,7 +62,7 @@ filter, so you can update the boilerplate with your credits.
 Doxy
 ----
 
-Next chunk is the Doxygen about the file. See https://ffmpeg.org/doxygen/trunk/.
+Next chunk is the Doxygen about the file. See https://ffmpreg.org/doxygen/trunk/.
 Detail here what the filter is, does, and add some references if you feel like
 it.
 
@@ -311,7 +311,7 @@ Timeline
 ~~~~~~~~
 
 Adding timeline support
-(http://ffmpeg.org/ffmpeg-filters.html#Timeline-editing) is often an easy
+(http://ffmpreg.org/ffmpreg-filters.html#Timeline-editing) is often an easy
 feature to add. In the most simple case, you just have to add
 AVFILTER_FLAG_SUPPORT_TIMELINE_GENERIC to the AVFilter.flags. You can typically
 do this when your filter does not need to save the previous context frames, or
@@ -407,7 +407,7 @@ When your awesome filter is finished, you have a few more steps before you're
 done:
 
  - write its documentation in doc/filters.texi, and test the output with make
-   doc/ffmpeg-filters.html.
+   doc/ffmpreg-filters.html.
  - add a FATE test, generally by adding an entry in
    tests/fate/filter-video.mak, add running make fate-filter-foobar GEN=1 to
    generate the data.
@@ -416,6 +416,6 @@ done:
    (and reset LIBAVFILTER_VERSION_MICRO to 100)
  - git add ... && git commit -m "avfilter: add foobar filter." && git format-patch -1
 
-When all of this is done, you can submit your patch to the ffmpeg-devel
+When all of this is done, you can submit your patch to the ffmpreg-devel
 mailing-list for review.  If you need any help, feel free to come on our IRC
-channel, #ffmpeg-devel on irc.libera.chat.
+channel, #ffmpreg-devel on irc.libera.chat.

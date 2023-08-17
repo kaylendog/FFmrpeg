@@ -1,5 +1,5 @@
 /*
- * Teletext decoding for ffmpeg
+ * Teletext decoding for ffmpreg
  * Copyright (c) 2005-2010, 2012 Wolfram Gloger
  * Copyright (c) 2013 Marton Balint
  *

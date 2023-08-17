@@ -3,20 +3,20 @@
  *
  * AltiVec optimizations (C) 2004 Romain Dolbeau <romain@dolbeau.org>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or modify
+ * FFmpreg is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with FFmpeg; if not, write to the Free Software
+ * along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -126,7 +126,7 @@ static const struct PPFilter filters[]=
     {"li", "linipoldeint",          1, 1, 4, LINEAR_IPOL_DEINT_FILTER},
     {"ci", "cubicipoldeint",        1, 1, 4, CUBIC_IPOL_DEINT_FILTER},
     {"md", "mediandeint",           1, 1, 4, MEDIAN_DEINT_FILTER},
-    {"fd", "ffmpegdeint",           1, 1, 4, FFMPEG_DEINT_FILTER},
+    {"fd", "ffmpregdeint",           1, 1, 4, FFMPEG_DEINT_FILTER},
     {"l5", "lowpass5",              1, 1, 4, LOWPASS5_DEINT_FILTER},
     {"tn", "tmpnoise",              1, 7, 8, TEMP_NOISE_FILTER},
     {"fq", "forcequant",            1, 0, 0, FORCE_QUANT},
@@ -574,7 +574,7 @@ const char pp_help[] =
 "li     linipoldeint                            linear interpolating deinterlace\n"
 "ci     cubicipoldeint                          cubic interpolating deinterlacer\n"
 "md     mediandeint                             median deinterlacer\n"
-"fd     ffmpegdeint                             ffmpeg deinterlacer\n"
+"fd     ffmpregdeint                             ffmpreg deinterlacer\n"
 "l5     lowpass5                                FIR lowpass deinterlacer\n"
 "de     default                                 hb:a,vb:a,dr:a\n"
 "fa     fast                                    h1:a,v1:a,dr:a\n"

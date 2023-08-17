@@ -2,20 +2,20 @@
  * Copyright (c) 2015 Paul B Mahol
  * Copyright (c) 2022 Victoria Zhislina, Intel
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -536,7 +536,7 @@ static int compare_zimg_image_formats(zimg_image_format *img_fmt0, zimg_image_fo
 /* returns 0 if graph builder parameters are the same and 1 otherwise */
 static int compare_zimg_graph_builder_params(zimg_graph_builder_params *parm0, zimg_graph_builder_params *parm1)
 {
-    /* the parameters that could be changed inside a single ffmpeg zscale invocation  are checked only
+    /* the parameters that could be changed inside a single ffmpreg zscale invocation  are checked only
     and NaN values that are default for some params are treated properly*/
     int ret = (parm0->allow_approximate_gamma != parm1->allow_approximate_gamma) ||
         (parm0->dither_type != parm1->dither_type) ||

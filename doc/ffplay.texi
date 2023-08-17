@@ -17,9 +17,9 @@ ffplay [@var{options}] [@file{input_url}]
 @chapter Description
 @c man begin DESCRIPTION
 
-FFplay is a very simple and portable media player using the FFmpeg
+FFplay is a very simple and portable media player using the FFmpreg
 libraries and the SDL library. It is mostly used as a testbed for the
-various FFmpeg APIs.
+various FFmpreg APIs.
 @c man end
 
 @chapter Options
@@ -48,12 +48,12 @@ exactly, so @command{ffplay} will seek to the nearest seek point to
 @var{pos}.
 
 @var{pos} must be a time duration specification,
-see @ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}.
+see @ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}.
 @item -t @var{duration}
 Play @var{duration} seconds of audio/video.
 
 @var{duration} must be a time duration specification,
-see @ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}.
+see @ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}.
 @item -bytes
 Seek by bytes.
 @item -seek_interval
@@ -104,7 +104,7 @@ filter the video stream.
 the stream, and must have a single video input and a single video
 output. In the filtergraph, the input is associated to the label
 @code{in}, and the output to the label @code{out}. See the
-ffmpeg-filters manual for more information about the filtergraph
+ffmpreg-filters manual for more information about the filtergraph
 syntax.
 
 You can specify this parameter multiple times and cycle through the specified
@@ -295,18 +295,18 @@ Toggle full screen.
 @url{ffplay.html,ffplay},
 @end ifset
 @ifset config-not-all
-@url{ffplay-all.html,ffmpeg-all},
+@url{ffplay-all.html,ffmpreg-all},
 @end ifset
-@url{ffmpeg.html,ffmpeg}, @url{ffprobe.html,ffprobe},
-@url{ffmpeg-utils.html,ffmpeg-utils},
-@url{ffmpeg-scaler.html,ffmpeg-scaler},
-@url{ffmpeg-resampler.html,ffmpeg-resampler},
-@url{ffmpeg-codecs.html,ffmpeg-codecs},
-@url{ffmpeg-bitstream-filters.html,ffmpeg-bitstream-filters},
-@url{ffmpeg-formats.html,ffmpeg-formats},
-@url{ffmpeg-devices.html,ffmpeg-devices},
-@url{ffmpeg-protocols.html,ffmpeg-protocols},
-@url{ffmpeg-filters.html,ffmpeg-filters}
+@url{ffmpreg.html,ffmpreg}, @url{ffprobe.html,ffprobe},
+@url{ffmpreg-utils.html,ffmpreg-utils},
+@url{ffmpreg-scaler.html,ffmpreg-scaler},
+@url{ffmpreg-resampler.html,ffmpreg-resampler},
+@url{ffmpreg-codecs.html,ffmpreg-codecs},
+@url{ffmpreg-bitstream-filters.html,ffmpreg-bitstream-filters},
+@url{ffmpreg-formats.html,ffmpreg-formats},
+@url{ffmpreg-devices.html,ffmpreg-devices},
+@url{ffmpreg-protocols.html,ffmpreg-protocols},
+@url{ffmpreg-filters.html,ffmpreg-filters}
 @end ifhtml
 
 @ifnothtml
@@ -316,10 +316,10 @@ ffplay(1),
 @ifset config-not-all
 ffplay-all(1),
 @end ifset
-ffmpeg(1), ffprobe(1),
-ffmpeg-utils(1), ffmpeg-scaler(1), ffmpeg-resampler(1),
-ffmpeg-codecs(1), ffmpeg-bitstream-filters(1), ffmpeg-formats(1),
-ffmpeg-devices(1), ffmpeg-protocols(1), ffmpeg-filters(1)
+ffmpreg(1), ffprobe(1),
+ffmpreg-utils(1), ffmpreg-scaler(1), ffmpreg-resampler(1),
+ffmpreg-codecs(1), ffmpreg-bitstream-filters(1), ffmpreg-formats(1),
+ffmpreg-devices(1), ffmpreg-protocols(1), ffmpreg-filters(1)
 @end ifnothtml
 
 @include authors.texi

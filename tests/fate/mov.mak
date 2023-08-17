@@ -96,7 +96,7 @@ fate-mov-bbi-elst-starts-b: CMD = framemd5 -flags +bitexact -acodec aac_fixed -i
 fate-mov-neg-firstpts-discard: CMD = run ffprobe$(PROGSSUF)$(EXESUF) -show_entries stream=start_time -bitexact $(TARGET_SAMPLES)/mov/mov_neg_first_pts_discard.mov
 
 # Makes sure that the VORBIS audio stream start_time is not negative when the first few packets are DISCARD packets
-# with negative timestamps (skip_samples is not set for Vorbis, so ffmpeg computes start_time as negative if not specified by demuxer).
+# with negative timestamps (skip_samples is not set for Vorbis, so ffmpreg computes start_time as negative if not specified by demuxer).
 fate-mov-neg-firstpts-discard-vorbis: CMD = run ffprobe$(PROGSSUF)$(EXESUF) -show_entries stream=start_time -bitexact $(TARGET_SAMPLES)/mov/mov_neg_first_pts_discard_vorbis.mp4
 
 # Makes sure that expected frames are generated for mov_neg_first_pts_discard.mov with -vsync cfr

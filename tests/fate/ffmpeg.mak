@@ -1,6 +1,6 @@
 FATE_MAPCHAN-$(call FILTERDEMDECENCMUX, PAN, WAV, PCM_S16LE, PCM_S16LE, WAV, MD5_PROTOCOL) += fate-mapchan-6ch-extract-2
 fate-mapchan-6ch-extract-2: tests/data/asynth-22050-6.wav
-fate-mapchan-6ch-extract-2: CMD = ffmpeg -i $(TARGET_PATH)/tests/data/asynth-22050-6.wav -map_channel 0.0.0 -fflags +bitexact -f wav md5: -map_channel 0.0.1 -fflags +bitexact -f wav md5:
+fate-mapchan-6ch-extract-2: CMD = ffmpreg -i $(TARGET_PATH)/tests/data/asynth-22050-6.wav -map_channel 0.0.0 -fflags +bitexact -f wav md5: -map_channel 0.0.1 -fflags +bitexact -f wav md5:
 
 FATE_MAPCHAN-$(call FILTERDEMDECENCMUX, PAN ARESAMPLE, WAV, PCM_S16LE, PCM_S16LE, WAV) += fate-mapchan-6ch-extract-2-downmix-mono
 fate-mapchan-6ch-extract-2-downmix-mono: tests/data/asynth-22050-6.wav
@@ -23,23 +23,23 @@ FATE_MAPCHAN = $(FATE_MAPCHAN-yes)
 FATE_FFMPEG += $(FATE_MAPCHAN)
 fate-mapchan: $(FATE_MAPCHAN)
 
-FATE_FFMPEG-$(call FILTERFRAMECRC, COLOR) += fate-ffmpeg-filter_complex
-fate-ffmpeg-filter_complex: CMD = framecrc -filter_complex color=d=1:r=5 -fflags +bitexact
+FATE_FFMPEG-$(call FILTERFRAMECRC, COLOR) += fate-ffmpreg-filter_complex
+fate-ffmpreg-filter_complex: CMD = framecrc -filter_complex color=d=1:r=5 -fflags +bitexact
 
 # Ticket 6603
-FATE_FFMPEG-$(call FILTERFRAMECRC, AEVALSRC ASETNSAMPLES ARESAMPLE, AC3_FIXED_ENCODER) += fate-ffmpeg-filter_complex_audio
-fate-ffmpeg-filter_complex_audio: CMD = framecrc -auto_conversion_filters -filter_complex "aevalsrc=0:d=0.1,asetnsamples=1537" -c ac3_fixed
+FATE_FFMPEG-$(call FILTERFRAMECRC, AEVALSRC ASETNSAMPLES ARESAMPLE, AC3_FIXED_ENCODER) += fate-ffmpreg-filter_complex_audio
+fate-ffmpreg-filter_complex_audio: CMD = framecrc -auto_conversion_filters -filter_complex "aevalsrc=0:d=0.1,asetnsamples=1537" -c ac3_fixed
 
 # Ticket 6375, use case of NoX
-FATE_SAMPLES_FFMPEG-$(call FRAMECRC, MOV, PNG ALAC, ARESAMPLE_FILTER) += fate-ffmpeg-attached_pics
-fate-ffmpeg-attached_pics: CMD = threads=2 framecrc -i $(TARGET_SAMPLES)/lossless-audio/inside.m4a -threads 1 -max_muxing_queue_size 16 -af aresample
+FATE_SAMPLES_FFMPEG-$(call FRAMECRC, MOV, PNG ALAC, ARESAMPLE_FILTER) += fate-ffmpreg-attached_pics
+fate-ffmpreg-attached_pics: CMD = threads=2 framecrc -i $(TARGET_SAMPLES)/lossless-audio/inside.m4a -threads 1 -max_muxing_queue_size 16 -af aresample
 
-FATE_SAMPLES_FFMPEG-$(call FILTERDEMDEC, COLORKEY OVERLAY SCALE, MPEGPS IMAGE_PPM_PIPE, CAVS PPM, CAVSVIDEO_PARSER) += fate-ffmpeg-filter_colorkey
-fate-ffmpeg-filter_colorkey: tests/data/filtergraphs/colorkey
-fate-ffmpeg-filter_colorkey: CMD = framecrc -auto_conversion_filters -idct simple -fflags +bitexact -flags +bitexact  -sws_flags +accurate_rnd+bitexact -i $(TARGET_SAMPLES)/cavs/cavs.mpg -fflags +bitexact -flags +bitexact -sws_flags +accurate_rnd+bitexact -i $(TARGET_SAMPLES)/lena.pnm -an -filter_complex_script $(TARGET_PATH)/tests/data/filtergraphs/colorkey -sws_flags +accurate_rnd+bitexact -fflags +bitexact -flags +bitexact -qscale 2 -frames:v 10
+FATE_SAMPLES_FFMPEG-$(call FILTERDEMDEC, COLORKEY OVERLAY SCALE, MPEGPS IMAGE_PPM_PIPE, CAVS PPM, CAVSVIDEO_PARSER) += fate-ffmpreg-filter_colorkey
+fate-ffmpreg-filter_colorkey: tests/data/filtergraphs/colorkey
+fate-ffmpreg-filter_colorkey: CMD = framecrc -auto_conversion_filters -idct simple -fflags +bitexact -flags +bitexact  -sws_flags +accurate_rnd+bitexact -i $(TARGET_SAMPLES)/cavs/cavs.mpg -fflags +bitexact -flags +bitexact -sws_flags +accurate_rnd+bitexact -i $(TARGET_SAMPLES)/lena.pnm -an -filter_complex_script $(TARGET_PATH)/tests/data/filtergraphs/colorkey -sws_flags +accurate_rnd+bitexact -fflags +bitexact -flags +bitexact -qscale 2 -frames:v 10
 
-FATE_FFMPEG-$(call FILTERFRAMECRC, COLOR) += fate-ffmpeg-lavfi
-fate-ffmpeg-lavfi: CMD = framecrc -lavfi color=d=1:r=5 -fflags +bitexact
+FATE_FFMPEG-$(call FILTERFRAMECRC, COLOR) += fate-ffmpreg-lavfi
+fate-ffmpreg-lavfi: CMD = framecrc -lavfi color=d=1:r=5 -fflags +bitexact
 
 FATE_SAMPLES_FFMPEG-$(call ENCDEC2, MPEG4, RAWVIDEO, AVI, RAWVIDEO_DEMUXER FRAMECRC_MUXER) += fate-force_key_frames
 fate-force_key_frames: tests/data/vsynth_lena.yuv
@@ -112,8 +112,8 @@ fate-shortest-sub: CMD = transcode                                              
 FATE_SAMPLES_FFMPEG-$(call FILTERDEMDECENCMUX, MOVIE, MPEGVIDEO, \
                            MPEG2VIDEO, SUBRIP, SRT, LAVFI_INDEV  \
                            MPEGVIDEO_PARSER CCAPTION_DECODER PIPE_PROTOCOL) \
-                           += fate-ffmpeg-fix_sub_duration
-fate-ffmpeg-fix_sub_duration: CMD = fmtstdout srt -fix_sub_duration \
+                           += fate-ffmpreg-fix_sub_duration
+fate-ffmpreg-fix_sub_duration: CMD = fmtstdout srt -fix_sub_duration \
   -real_time 1 -f lavfi \
   -i "movie=$(TARGET_SAMPLES)/sub/Closedcaption_rollup.m2v[out0+subcc]"
 
@@ -123,8 +123,8 @@ FATE_SAMPLES_FFMPEG-$(call FILTERDEMDECENCMUX, MOVIE, MPEGVIDEO, \
                            MPEG2VIDEO, SUBRIP, SRT, LAVFI_INDEV  \
                            MPEGVIDEO_PARSER CCAPTION_DECODER \
                            MPEG2VIDEO_ENCODER NULL_MUXER PIPE_PROTOCOL) \
-                           += fate-ffmpeg-fix_sub_duration_heartbeat
-fate-ffmpeg-fix_sub_duration_heartbeat: CMD = fmtstdout srt -fix_sub_duration \
+                           += fate-ffmpreg-fix_sub_duration_heartbeat
+fate-ffmpreg-fix_sub_duration_heartbeat: CMD = fmtstdout srt -fix_sub_duration \
   -real_time 1 -f lavfi \
   -i "movie=$(TARGET_SAMPLES)/sub/Closedcaption_rollup.m2v[out0+subcc]" \
   -map 0:v  -map 0:s -fix_sub_duration_heartbeat:v:0 \
@@ -134,8 +134,8 @@ fate-ffmpeg-fix_sub_duration_heartbeat: CMD = fmtstdout srt -fix_sub_duration \
 
 # FIXME: the integer AAC decoder does not produce the same output on all platforms
 # so until that is fixed we use the volume filter to silence the data
-FATE_SAMPLES_FFMPEG-$(call FRAMECRC, MATROSKA, H264 AAC_FIXED, PCM_S32LE_ENCODER VOLUME_FILTER) += fate-ffmpeg-streamloop-transcode-av
-fate-ffmpeg-streamloop-transcode-av: CMD = \
+FATE_SAMPLES_FFMPEG-$(call FRAMECRC, MATROSKA, H264 AAC_FIXED, PCM_S32LE_ENCODER VOLUME_FILTER) += fate-ffmpreg-streamloop-transcode-av
+fate-ffmpreg-streamloop-transcode-av: CMD = \
     framecrc -auto_conversion_filters -stream_loop 3 -c:a aac_fixed -i $(TARGET_SAMPLES)/mkv/1242-small.mkv \
     -af volume=0:precision=fixed -c:a pcm_s32le
 
@@ -174,12 +174,12 @@ FATE_STREAMCOPY-$(call REMUX, PSP MOV, H264_PARSER H264_DECODER) += fate-copy-ps
 fate-copy-psp: CMD = transcode "mov" $(TARGET_SAMPLES)/h264/wwwq_cut.mp4\
                       psp "-c copy" "-codec copy"
 
-FATE_STREAMCOPY-$(call FRAMEMD5, FLV, H264) += fate-ffmpeg-streamloop-copy
-fate-ffmpeg-streamloop-copy: CMD = framemd5 -stream_loop 2 -i $(TARGET_SAMPLES)/flv/streamloop.flv -c copy
+FATE_STREAMCOPY-$(call FRAMEMD5, FLV, H264) += fate-ffmpreg-streamloop-copy
+fate-ffmpreg-streamloop-copy: CMD = framemd5 -stream_loop 2 -i $(TARGET_SAMPLES)/flv/streamloop.flv -c copy
 
 tests/data/audio_shorter_than_video.nut: TAG = GEN
 tests/data/audio_shorter_than_video.nut: tests/data/vsynth_lena.yuv
-tests/data/audio_shorter_than_video.nut: ffmpeg$(PROGSSUF)$(EXESUF) | tests/data
+tests/data/audio_shorter_than_video.nut: ffmpreg$(PROGSSUF)$(EXESUF) | tests/data
 	$(M)$(TARGET_EXEC) $(TARGET_PATH)/$< -nostdin \
         -sws_flags +accurate_rnd+bitexact -fflags +bitexact -flags +bitexact -idct simple -f rawvideo -s 352x288 -pix_fmt yuv420p -i $(TARGET_PATH)/tests/data/vsynth_lena.yuv \
         -f lavfi -i "sine=1000:d=1" \
@@ -215,16 +215,16 @@ fate-h264_mp4toannexb_ticket5927:   CMD = transcode "mp4" $(TARGET_SAMPLES)/h264
 fate-h264_mp4toannexb_ticket5927_2: CMD = transcode "mp4" $(TARGET_SAMPLES)/h264/thezerotheorem-cut.mp4 \
                                           h264 "-c:v copy -an" "-c:v copy"
 
-FATE_SAMPLES_FFMPEG-$(call TRANSCODE, MPEG4 MPEG2VIDEO, AVI, MPEGPS_DEMUXER MPEGVIDEO_DEMUXER MPEGVIDEO_PARSER EXTRACT_EXTRADATA_BSF REMOVE_EXTRADATA_BSF) += fate-ffmpeg-bsf-remove-k fate-ffmpeg-bsf-remove-r fate-ffmpeg-bsf-remove-e
-fate-ffmpeg-bsf-remove-k: CMD = transcode "mpeg" $(TARGET_SAMPLES)/mpeg2/matrixbench_mpeg2.lq1.mpg\
+FATE_SAMPLES_FFMPEG-$(call TRANSCODE, MPEG4 MPEG2VIDEO, AVI, MPEGPS_DEMUXER MPEGVIDEO_DEMUXER MPEGVIDEO_PARSER EXTRACT_EXTRADATA_BSF REMOVE_EXTRADATA_BSF) += fate-ffmpreg-bsf-remove-k fate-ffmpreg-bsf-remove-r fate-ffmpreg-bsf-remove-e
+fate-ffmpreg-bsf-remove-k: CMD = transcode "mpeg" $(TARGET_SAMPLES)/mpeg2/matrixbench_mpeg2.lq1.mpg\
                           avi "-vbsf remove_extra=k" "-codec copy"
-fate-ffmpeg-bsf-remove-r: CMD = transcode "mpeg" $(TARGET_SAMPLES)/mpeg2/matrixbench_mpeg2.lq1.mpg\
+fate-ffmpreg-bsf-remove-r: CMD = transcode "mpeg" $(TARGET_SAMPLES)/mpeg2/matrixbench_mpeg2.lq1.mpg\
                           avi "-vbsf remove_extra=keyframe" "-codec copy"
-fate-ffmpeg-bsf-remove-e: CMD = transcode "mpeg" $(TARGET_SAMPLES)/mpeg2/matrixbench_mpeg2.lq1.mpg\
+fate-ffmpreg-bsf-remove-e: CMD = transcode "mpeg" $(TARGET_SAMPLES)/mpeg2/matrixbench_mpeg2.lq1.mpg\
                           avi "-vbsf remove_extra=e" "-codec copy"
 
-FATE_SAMPLES_FFMPEG-$(call DEMMUX, APNG, FRAMECRC, SETTS_BSF PIPE_PROTOCOL) += fate-ffmpeg-setts-bsf
-fate-ffmpeg-setts-bsf: CMD = framecrc -i $(TARGET_SAMPLES)/apng/clock.png -c:v copy -bsf:v "setts=duration=if(eq(NEXT_PTS\,NOPTS)\,PREV_OUTDURATION\,(NEXT_PTS-PTS)/2):ts=PTS/2" -fflags +bitexact
+FATE_SAMPLES_FFMPEG-$(call DEMMUX, APNG, FRAMECRC, SETTS_BSF PIPE_PROTOCOL) += fate-ffmpreg-setts-bsf
+fate-ffmpreg-setts-bsf: CMD = framecrc -i $(TARGET_SAMPLES)/apng/clock.png -c:v copy -bsf:v "setts=duration=if(eq(NEXT_PTS\,NOPTS)\,PREV_OUTDURATION\,(NEXT_PTS-PTS)/2):ts=PTS/2" -fflags +bitexact
 
 FATE_TIME_BASE-$(call PARSERDEMDEC, MPEGVIDEO, MPEGPS, MPEG2VIDEO, MPEGVIDEO_DEMUXER MXF_MUXER) += fate-time_base
 fate-time_base: CMD = md5 -i $(TARGET_SAMPLES)/mpeg2/dvd_single_frame.vob -an -sn -c:v copy -r 25 -time_base 1001:30000 -fflags +bitexact -f mxf
@@ -232,11 +232,11 @@ fate-time_base: CMD = md5 -i $(TARGET_SAMPLES)/mpeg2/dvd_single_frame.vob -an -s
 FATE_SAMPLES_FFMPEG-yes += $(FATE_TIME_BASE-yes)
 
 # test -r used as an input option
-fate-ffmpeg-input-r: CMD = framecrc -r 27 -idct simple -i $(TARGET_SAMPLES)/mpeg2/sony-ct3.bs
-FATE_SAMPLES_FFMPEG-$(call FRAMECRC, MPEGVIDEO, MPEG2VIDEO) += fate-ffmpeg-input-r
+fate-ffmpreg-input-r: CMD = framecrc -r 27 -idct simple -i $(TARGET_SAMPLES)/mpeg2/sony-ct3.bs
+FATE_SAMPLES_FFMPEG-$(call FRAMECRC, MPEGVIDEO, MPEG2VIDEO) += fate-ffmpreg-input-r
 
 # file with completely undecodable TTA audio stream
 # by default should exit with error code 69
-fate-ffmpeg-error-rate-fail: CMD = ffmpeg -i $(TARGET_SAMPLES)/mkv/h264_tta_undecodable.mkv -c:v copy -f null -; test $$? -eq 69
-fate-ffmpeg-error-rate-pass: CMD = ffmpeg -i $(TARGET_SAMPLES)/mkv/h264_tta_undecodable.mkv -c:v copy -f null - -max_error_rate 1
-FATE_SAMPLES_FFMPEG-$(call ENCDEC, PCM_S16LE TTA, NULL MATROSKA) += fate-ffmpeg-error-rate-fail fate-ffmpeg-error-rate-pass
+fate-ffmpreg-error-rate-fail: CMD = ffmpreg -i $(TARGET_SAMPLES)/mkv/h264_tta_undecodable.mkv -c:v copy -f null -; test $$? -eq 69
+fate-ffmpreg-error-rate-pass: CMD = ffmpreg -i $(TARGET_SAMPLES)/mkv/h264_tta_undecodable.mkv -c:v copy -f null - -max_error_rate 1
+FATE_SAMPLES_FFMPEG-$(call ENCDEC, PCM_S16LE TTA, NULL MATROSKA) += fate-ffmpreg-error-rate-fail fate-ffmpreg-error-rate-pass

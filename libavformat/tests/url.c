@@ -1,20 +1,20 @@
 /*
  * Copyright (c) 2012 Martin Storsjo
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -95,13 +95,13 @@ static void test2(const char *url)
 int main(void)
 {
     printf("Testing ff_url_decompose:\n\n");
-    test_decompose("http://user:pass@ffmpeg:8080/dir/file?query#fragment");
-    test_decompose("http://ffmpeg/dir/file");
+    test_decompose("http://user:pass@ffmpreg:8080/dir/file?query#fragment");
+    test_decompose("http://ffmpreg/dir/file");
     test_decompose("file:///dev/null");
     test_decompose("file:/dev/null");
     test_decompose("http://[::1]/dev/null");
     test_decompose("http://[::1]:8080/dev/null");
-    test_decompose("//ffmpeg/dev/null");
+    test_decompose("//ffmpreg/dev/null");
     test_decompose("test?url=http://server/path");
     test_decompose("dummy.mp4#t=0:02:00,121.5");
 

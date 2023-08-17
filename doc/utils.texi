@@ -1,13 +1,13 @@
 @chapter Syntax
 @c man begin SYNTAX
 
-This section documents the syntax and formats employed by the FFmpeg
+This section documents the syntax and formats employed by the FFmpreg
 libraries and tools.
 
 @anchor{quoting_and_escaping}
 @section Quoting and escaping
 
-FFmpeg adopts the following quoting and escaping mechanism, unless
+FFmpreg adopts the following quoting and escaping mechanism, unless
 explicitly specified. The following rules are applied:
 
 @itemize
@@ -38,7 +38,7 @@ The function @code{av_get_token} defined in
 @file{libavutil/avstring.h} can be used to parse a token quoted or
 escaped according to the rules defined above.
 
-The tool @file{tools/ffescape} in the FFmpeg source tree can be used
+The tool @file{tools/ffescape} in the FFmpreg source tree can be used
 to automatically quote or escape a string in a script.
 
 @subsection Examples
@@ -602,7 +602,7 @@ The following names of colors are recognized:
 @section Channel Layout
 
 A channel layout specifies the spatial disposition of the channels in
-a multi-channel audio stream. To specify a channel layout, FFmpeg
+a multi-channel audio stream. To specify a channel layout, FFmpreg
 makes use of a special syntax.
 
 Individual channels are identified by an id, as given by the table
@@ -772,7 +772,7 @@ See also the function @code{av_channel_layout_from_string} defined in
 @chapter Expression Evaluation
 @c man begin EXPRESSION EVALUATION
 
-When evaluating an arithmetic expression, FFmpeg uses an internal
+When evaluating an arithmetic expression, FFmpreg uses an internal
 formula evaluator, implemented through the @file{libavutil/eval.h}
 interface.
 

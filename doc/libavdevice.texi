@@ -23,14 +23,14 @@ VfW, DShow, and ALSA.
 @chapter See Also
 
 @ifhtml
-@url{ffmpeg.html,ffmpeg}, @url{ffplay.html,ffplay}, @url{ffprobe.html,ffprobe},
-@url{ffmpeg-devices.html,ffmpeg-devices},
+@url{ffmpreg.html,ffmpreg}, @url{ffplay.html,ffplay}, @url{ffprobe.html,ffprobe},
+@url{ffmpreg-devices.html,ffmpreg-devices},
 @url{libavutil.html,libavutil}, @url{libavcodec.html,libavcodec}, @url{libavformat.html,libavformat}
 @end ifhtml
 
 @ifnothtml
-ffmpeg(1), ffplay(1), ffprobe(1),
-ffmpeg-devices(1),
+ffmpreg(1), ffplay(1), ffprobe(1),
+ffmpreg-devices(1),
 libavutil(3), libavcodec(3), libavformat(3)
 @end ifnothtml
 

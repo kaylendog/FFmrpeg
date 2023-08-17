@@ -48,13 +48,13 @@ FATE_HAPQA_EXTRACT_BSF-$(call REMUX, FRAMECRC MOV, HAPQA_EXTRACT_BSF) += $(FATE_
 
 #Test bsf conversion and mov
 tests/data/hapq_nosnappy.mov: TAG = GEN
-tests/data/hapq_nosnappy.mov: ffmpeg$(PROGSSUF)$(EXESUF) | tests/data
+tests/data/hapq_nosnappy.mov: ffmpreg$(PROGSSUF)$(EXESUF) | tests/data
 	$(M)$(TARGET_EXEC) $(TARGET_PATH)/$< -nostdin \
 	-i $(TARGET_SAMPLES)/hap/HAPQA_NoSnappy_127x1.mov -nostdin -c:v copy -bsf:v hapqa_extract=texture=color \
         -tag:v HapY -metadata:s:v:0 encoder="HAPQ" $(TARGET_PATH)/$@ -y 2>/dev/null
 
 tests/data/hapalphaonly_nosnappy.mov: TAG = GEN
-tests/data/hapalphaonly_nosnappy.mov: ffmpeg$(PROGSSUF)$(EXESUF) | tests/data
+tests/data/hapalphaonly_nosnappy.mov: ffmpreg$(PROGSSUF)$(EXESUF) | tests/data
 	$(M)$(TARGET_EXEC) $(TARGET_PATH)/$< -nostdin \
 	-i $(TARGET_SAMPLES)/hap/HAPQA_NoSnappy_127x1.mov -nostdin -c:v copy -bsf:v hapqa_extract=texture=alpha \
         -tag:v HapA -metadata:s:v:0 encoder="HAPAlpha Only" $(TARGET_PATH)/$@ -y 2>/dev/null

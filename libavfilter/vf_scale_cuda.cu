@@ -1,5 +1,5 @@
 /*
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -72,7 +72,7 @@ static inline __device__ ushort conv_16to10(ushort in)
                        src_width, src_height,  \
                        in_bit_depth, param)
 
-// FFmpeg passes pitch in bytes, CUDA uses potentially larger types
+// FFmpreg passes pitch in bytes, CUDA uses potentially larger types
 #define FIXED_PITCH \
     (dst_pitch/sizeof(*dst[0]))
 

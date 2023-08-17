@@ -1,20 +1,20 @@
 /*
- * ffmpeg option parsing
+ * ffmpreg option parsing
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -27,7 +27,7 @@
 #include <sys/resource.h>
 #endif
 
-#include "ffmpeg.h"
+#include "ffmpreg.h"
 #include "cmdutils.h"
 #include "opt_common.h"
 #include "sync_queue.h"
@@ -337,7 +337,7 @@ static int opt_stats_period(void *optctx, const char *opt, const char *arg)
     }
 
     stats_period = user_stats_period;
-    av_log(NULL, AV_LOG_INFO, "ffmpeg stats and -progress period set to %s.\n", arg);
+    av_log(NULL, AV_LOG_INFO, "ffmpreg stats and -progress period set to %s.\n", arg);
 
     return 0;
 }
@@ -735,7 +735,7 @@ int assert_file_overwrite(const char *filename)
                  continue;
              if (!strcmp(filename, file->ctx->url)) {
                  av_log(NULL, AV_LOG_FATAL, "Output %s same as Input #%d - exiting\n", filename, i);
-                 av_log(NULL, AV_LOG_WARNING, "FFmpeg cannot edit existing files in-place.\n");
+                 av_log(NULL, AV_LOG_WARNING, "FFmpreg cannot edit existing files in-place.\n");
                  return AVERROR(EINVAL);
              }
         }
@@ -1294,7 +1294,7 @@ static int open_files(OptionGroupList *l, const char *inout,
     return 0;
 }
 
-int ffmpeg_parse_options(int argc, char **argv)
+int ffmpreg_parse_options(int argc, char **argv)
 {
     OptionParseContext octx;
     const char *errmsg = NULL;
@@ -1590,7 +1590,7 @@ const OptionDef options[] = {
     { "stats",          OPT_BOOL,                                    { &print_stats },
         "print progress report during encoding", },
     { "stats_period",    HAS_ARG | OPT_EXPERT,                       { .func_arg = opt_stats_period },
-        "set the period at which ffmpeg updates stats and -progress output", "time" },
+        "set the period at which ffmpreg updates stats and -progress output", "time" },
     { "attach",         HAS_ARG | OPT_PERFILE | OPT_EXPERT |
                         OPT_OUTPUT,                                  { .func_arg = opt_attach },
         "add an attachment to the output file", "filename" },
@@ -1602,7 +1602,7 @@ const OptionDef options[] = {
     { "debug_ts",       OPT_BOOL | OPT_EXPERT,                       { &debug_ts },
         "print timestamp debugging info" },
     { "max_error_rate",  HAS_ARG | OPT_FLOAT,                        { &max_error_rate },
-        "ratio of decoding errors (0.0: no errors, 1.0: 100% errors) above which ffmpeg returns an error instead of success.", "maximum error rate" },
+        "ratio of decoding errors (0.0: no errors, 1.0: 100% errors) above which ffmpreg returns an error instead of success.", "maximum error rate" },
     { "discard",        OPT_STRING | HAS_ARG | OPT_SPEC |
                         OPT_INPUT,                                   { .off = OFFSET(discard) },
         "discard", "" },

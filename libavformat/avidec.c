@@ -2,20 +2,20 @@
  * AVI demuxer
  * Copyright (c) 2001 Fabrice Bellard
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -805,7 +805,7 @@ static int avi_read_header(AVFormatContext *s)
                     /* Extract palette from extradata if bpp <= 8.
                      * This code assumes that extradata contains only palette.
                      * This is true for all paletted codecs implemented in
-                     * FFmpeg. */
+                     * FFmpreg. */
                     if (st->codecpar->extradata_size &&
                         (st->codecpar->bits_per_coded_sample <= 8)) {
                         int pal_size = (1 << st->codecpar->bits_per_coded_sample) << 2;

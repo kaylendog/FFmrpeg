@@ -12,20 +12,20 @@
  * Copyright (c) 2013
  *      MIPS Technologies, Inc., California.
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -118,7 +118,7 @@ static int count_channels(uint8_t (*layout)[3], int tags)
 /**
  * Check for the channel element in the current channel position configuration.
  * If it exists, make sure the appropriate element is allocated and map the
- * channel order to match the internal FFmpeg channel layout.
+ * channel order to match the internal FFmpreg channel layout.
  *
  * @param   che_pos current channel position configuration
  * @param   type channel element type

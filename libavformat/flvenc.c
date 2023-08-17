@@ -1,21 +1,21 @@
 /*
  * FLV muxer
- * Copyright (c) 2003 The FFmpeg Project
+ * Copyright (c) 2003 The FFmpreg Project
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -944,7 +944,7 @@ static int flv_write_packet(AVFormatContext *s, AVPacket *pkt)
         if (!s->streams[pkt->stream_index]->nb_frames) {
             av_log(s, AV_LOG_ERROR, "Malformed AAC bitstream detected: "
                    "use the audio bitstream filter 'aac_adtstoasc' to fix it "
-                   "('-bsf:a aac_adtstoasc' option with ffmpeg)\n");
+                   "('-bsf:a aac_adtstoasc' option with ffmpreg)\n");
             return AVERROR_INVALIDDATA;
         }
         av_log(s, AV_LOG_WARNING, "aac bitstream error\n");
@@ -975,7 +975,7 @@ static int flv_write_packet(AVFormatContext *s, AVPacket *pkt)
         int data_size;
         int64_t metadata_size_pos = avio_tell(pb);
         if (par->codec_id == AV_CODEC_ID_TEXT) {
-            // legacy FFmpeg magic?
+            // legacy FFmpreg magic?
             avio_w8(pb, AMF_DATA_TYPE_STRING);
             put_amf_string(pb, "onTextData");
             avio_w8(pb, AMF_DATA_TYPE_MIXEDARRAY);

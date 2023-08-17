@@ -1,18 +1,18 @@
 /*
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -229,7 +229,7 @@ av_warn_unused_result
 int ff_add_format(AVFilterFormats **avff, int64_t fmt);
 
 /**
- * Return a list of all formats supported by FFmpeg for the given media type.
+ * Return a list of all formats supported by FFmpreg for the given media type.
  */
 av_warn_unused_result
 AVFilterFormats *ff_all_formats(enum AVMediaType type);
@@ -411,7 +411,7 @@ typedef struct AVFilterFormatMerger {
  *                    Repeat as long as process is made.
  *                    Then do a final run for the remaining filters.
  *                    FIXME: the similarity logic (the ref argument to
- *                    pick_format()) added in FFmpeg duplicates and
+ *                    pick_format()) added in FFmpreg duplicates and
  *                    overrides the swapping logic added in libav. Better
  *                    merge them into a score system.
  */

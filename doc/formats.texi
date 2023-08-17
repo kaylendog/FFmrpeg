@@ -7,7 +7,7 @@ demuxer may support so-called private options, which are specific for
 that component.
 
 Options may be set by specifying -@var{option} @var{value} in the
-FFmpeg tools, or by setting the value explicitly in the
+FFmpreg tools, or by setting the value explicitly in the
 @code{AVFormatContext} options or using the @file{libavutil/opt.h} API
 for programmatic use.
 
@@ -118,7 +118,7 @@ Set size in bytes for each chunk.
 
 @item err_detect, f_err_detect @var{flags} (@emph{input})
 Set error detection flags. @code{f_err_detect} is deprecated and
-should be used only via the @command{ffmpeg} tool.
+should be used only via the @command{ffmpreg} tool.
 
 Possible values:
 @table @samp
@@ -199,7 +199,7 @@ some cases.
 Set the output time offset.
 
 @var{offset} must be a time duration specification,
-see @ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}.
+see @ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}.
 
 The offset is added by the muxer to the output timestamps.
 
@@ -229,7 +229,7 @@ At present, applicable for MPEG-PS and MPEG-TS.
 
 @item strict, f_strict @var{integer} (@emph{input/output})
 Specify how strictly to follow the standards. @code{f_strict} is deprecated and
-should be used only via the @command{ffmpeg} tool.
+should be used only via the @command{ffmpreg} tool.
 
 Possible values:
 @table @samp
@@ -261,7 +261,7 @@ match specific properties.
 The exact semantics of stream specifiers is defined by the
 @code{avformat_match_stream_specifier()} function declared in the
 @file{libavformat/avformat.h} header and documented in the
-@ref{Stream specifiers,,Stream specifiers section in the ffmpeg(1) manual,ffmpeg}.
+@ref{Stream specifiers,,Stream specifiers section in the ffmpreg(1) manual,ffmpreg}.
 
 @ifclear config-writeonly
 @include demuxers.texi

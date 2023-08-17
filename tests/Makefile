@@ -18,7 +18,7 @@ AREF = tests/data/asynth1.sw
 FATEW = 34
 FATEH = 34
 
-FFMPEG=ffmpeg$(PROGSSUF)$(EXESUF)
+FFMPEG=ffmpreg$(PROGSSUF)$(EXESUF)
 
 $(AREF): CMP=
 
@@ -51,7 +51,7 @@ tests/test_copy.ffmeta: TAG = COPY
 tests/test_copy.ffmeta: tests/data
 	$(M)cp -f $(SRC_PATH)/tests/test.ffmeta tests/test_copy.ffmeta
 
-tests/data/ffprobe-test.nut: ffmpeg$(PROGSSUF)$(EXESUF) tests/test_copy.ffmeta
+tests/data/ffprobe-test.nut: ffmpreg$(PROGSSUF)$(EXESUF) tests/test_copy.ffmeta
 	$(M)$(TARGET_EXEC) $(TARGET_PATH)/$< -nostdin \
         -f lavfi -i "aevalsrc=sin(400*PI*2*t):d=0.125[out0]; testsrc=d=0.125[out1]; testsrc=s=100x100:d=0.125[out2]" \
         -f ffmetadata -i $(TARGET_PATH)/tests/test_copy.ffmeta \
@@ -179,7 +179,7 @@ include $(SRC_PATH)/tests/fate/ea.mak
 include $(SRC_PATH)/tests/fate/exif.mak
 include $(SRC_PATH)/tests/fate/enc_external.mak
 # Must be included after lavf-video.mak
-include $(SRC_PATH)/tests/fate/ffmpeg.mak
+include $(SRC_PATH)/tests/fate/ffmpreg.mak
 include $(SRC_PATH)/tests/fate/ffprobe.mak
 include $(SRC_PATH)/tests/fate/fft.mak
 include $(SRC_PATH)/tests/fate/fifo-muxer.mak
@@ -267,7 +267,7 @@ FATE += $(FATE-yes)
 RSYNC_OPTIONS-$(HAVE_RSYNC_CONTIMEOUT) += --contimeout=60
 RSYNC_OPTIONS = -vrltLW --timeout=60 $(RSYNC_OPTIONS-yes)
 
-$(FATE_FFMPEG) $(FATE_FFMPEG_FFPROBE) $(FATE_SAMPLES_AVCONV) $(FATE_SAMPLES_FFMPEG) $(FATE_SAMPLES_FFMPEG_FFPROBE): ffmpeg$(PROGSSUF)$(EXESUF)
+$(FATE_FFMPEG) $(FATE_FFMPEG_FFPROBE) $(FATE_SAMPLES_AVCONV) $(FATE_SAMPLES_FFMPEG) $(FATE_SAMPLES_FFMPEG_FFPROBE): ffmpreg$(PROGSSUF)$(EXESUF)
 
 $(FATE_FFPROBE) $(FATE_FFMPEG_FFPROBE) $(FATE_SAMPLES_FFPROBE) $(FATE_SAMPLES_FFMPEG_FFPROBE): ffprobe$(PROGSSUF)$(EXESUF)
 
@@ -278,7 +278,7 @@ $(FATE_SAMPLES_SCALE_SLICE): tools/scale_slice_test$(EXESUF)
 ifdef SAMPLES
 FATE += $(FATE_EXTERN)
 fate-rsync:
-	rsync $(RSYNC_OPTIONS) rsync://fate-suite.ffmpeg.org/fate-suite/ $(SAMPLES)
+	rsync $(RSYNC_OPTIONS) rsync://fate-suite.ffmpreg.org/fate-suite/ $(SAMPLES)
 else
 fate::
 	@echo "warning: only a subset of the fate tests will be run because SAMPLES is not specified"
@@ -290,7 +290,7 @@ endif
 
 FATE_UTILS = base64 tiny_psnr tiny_ssim audiomatch
 
-TOOL = ffmpeg
+TOOL = ffmpreg
 
 $(addprefix fate-, $(IGNORE_TESTS)): REPORT=ignore
 

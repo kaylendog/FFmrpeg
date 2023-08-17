@@ -6,13 +6,13 @@ LIBRARIES-$(CONFIG_AVFORMAT)   += libavformat
 LIBRARIES-$(CONFIG_AVDEVICE)   += libavdevice
 LIBRARIES-$(CONFIG_AVFILTER)   += libavfilter
 
-COMPONENTS-$(CONFIG_AVUTIL)     += ffmpeg-utils
-COMPONENTS-$(CONFIG_SWSCALE)    += ffmpeg-scaler
-COMPONENTS-$(CONFIG_SWRESAMPLE) += ffmpeg-resampler
-COMPONENTS-$(CONFIG_AVCODEC)    += ffmpeg-codecs ffmpeg-bitstream-filters
-COMPONENTS-$(CONFIG_AVFORMAT)   += ffmpeg-formats ffmpeg-protocols
-COMPONENTS-$(CONFIG_AVDEVICE)   += ffmpeg-devices
-COMPONENTS-$(CONFIG_AVFILTER)   += ffmpeg-filters
+COMPONENTS-$(CONFIG_AVUTIL)     += ffmpreg-utils
+COMPONENTS-$(CONFIG_SWSCALE)    += ffmpreg-scaler
+COMPONENTS-$(CONFIG_SWRESAMPLE) += ffmpreg-resampler
+COMPONENTS-$(CONFIG_AVCODEC)    += ffmpreg-codecs ffmpreg-bitstream-filters
+COMPONENTS-$(CONFIG_AVFORMAT)   += ffmpreg-formats ffmpreg-protocols
+COMPONENTS-$(CONFIG_AVDEVICE)   += ffmpreg-devices
+COMPONENTS-$(CONFIG_AVFILTER)   += ffmpreg-filters
 
 MANPAGES1   = $(AVPROGS-yes:%=doc/%.1)    $(AVPROGS-yes:%=doc/%-all.1)    $(COMPONENTS-yes:%=doc/%.1)
 MANPAGES3   = $(LIBRARIES-yes:%=doc/%.3)

@@ -1,28 +1,28 @@
 /*
  * Muxer/output file setup.
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
 #include <string.h>
 
 #include "cmdutils.h"
-#include "ffmpeg.h"
-#include "ffmpeg_mux.h"
+#include "ffmpreg.h"
+#include "ffmpreg_mux.h"
 #include "fopen_utf8.h"
 
 #include "libavformat/avformat.h"
@@ -46,7 +46,7 @@
 #include "libavutil/parseutils.h"
 #include "libavutil/pixdesc.h"
 
-#define DEFAULT_PASS_LOGFILENAME_PREFIX "ffmpeg2pass"
+#define DEFAULT_PASS_LOGFILENAME_PREFIX "ffmpreg2pass"
 
 static const char *const opt_name_apad[]                      = {"apad", NULL};
 static const char *const opt_name_autoscale[]                 = {"autoscale", NULL};

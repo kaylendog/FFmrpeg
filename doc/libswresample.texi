@@ -48,14 +48,14 @@ enabled through dedicated options.
 @chapter See Also
 
 @ifhtml
-@url{ffmpeg.html,ffmpeg}, @url{ffplay.html,ffplay}, @url{ffprobe.html,ffprobe},
-@url{ffmpeg-resampler.html,ffmpeg-resampler},
+@url{ffmpreg.html,ffmpreg}, @url{ffplay.html,ffplay}, @url{ffprobe.html,ffprobe},
+@url{ffmpreg-resampler.html,ffmpreg-resampler},
 @url{libavutil.html,libavutil}
 @end ifhtml
 
 @ifnothtml
-ffmpeg(1), ffplay(1), ffprobe(1),
-ffmpeg-resampler(1),
+ffmpreg(1), ffplay(1), ffprobe(1),
+ffmpreg-resampler(1),
 libavutil(3)
 @end ifnothtml
 

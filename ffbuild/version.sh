@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Usage: version.sh <ffmpeg-root-dir> <output-version.h> <extra-version>
+# Usage: version.sh <ffmpreg-root-dir> <output-version.h> <extra-version>
 
 # check for git short hash
 if ! test "$revision"; then
@@ -16,14 +16,14 @@ fi
 test "$revision" || revision=$(cd "$1" &&
   git log -1 --pretty=format:"git-%cd-%h" --date=short 2> /dev/null)
 
-# Snapshots from gitweb are in a directory called ffmpeg-hhhhhhh or
-# ffmpeg-HEAD-hhhhhhh.
+# Snapshots from gitweb are in a directory called ffmpreg-hhhhhhh or
+# ffmpreg-HEAD-hhhhhhh.
 if [ -z "$revision" ]; then
   srcdir=$(cd "$1" && pwd)
   case "$srcdir" in
-    */ffmpeg-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f])
+    */ffmpreg-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f])
       git_hash="${srcdir##*-}";;
-    */ffmpeg-HEAD-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f])
+    */ffmpreg-HEAD-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f])
       git_hash="${srcdir##*-}";;
   esac
 fi

@@ -30,7 +30,7 @@
 .\#*
 /.config
 /.version
-/ffmpeg
+/ffmpreg
 /ffplay
 /ffprobe
 /config.asm

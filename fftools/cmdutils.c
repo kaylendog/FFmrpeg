@@ -2,20 +2,20 @@
  * Various utilities for command line tools
  * Copyright (c) 2000-2003 Fabrice Bellard
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -852,9 +852,9 @@ FILE *get_preset_file(char *filename, size_t filename_size,
     char *datadir = NULL;
 #endif
     char *env_home = getenv_utf8("HOME");
-    char *env_ffmpeg_datadir = getenv_utf8("FFMPEG_DATADIR");
-    const char *base[3] = { env_ffmpeg_datadir,
-                            env_home,   /* index=1(HOME) is special: search in a .ffmpeg subfolder */
+    char *env_ffmpreg_datadir = getenv_utf8("FFMPEG_DATADIR");
+    const char *base[3] = { env_ffmpreg_datadir,
+                            env_home,   /* index=1(HOME) is special: search in a .ffmpreg subfolder */
                             FFMPEG_DATADIR, };
 
     if (is_path) {
@@ -894,12 +894,12 @@ FILE *get_preset_file(char *filename, size_t filename_size,
             if (!base[i])
                 continue;
             snprintf(filename, filename_size, "%s%s/%s.ffpreset", base[i],
-                     i != 1 ? "" : "/.ffmpeg", preset_name);
+                     i != 1 ? "" : "/.ffmpreg", preset_name);
             f = fopen_utf8(filename, "r");
             if (!f && codec_name) {
                 snprintf(filename, filename_size,
                          "%s%s/%s-%s.ffpreset",
-                         base[i], i != 1 ? "" : "/.ffmpeg", codec_name,
+                         base[i], i != 1 ? "" : "/.ffmpreg", codec_name,
                          preset_name);
                 f = fopen_utf8(filename, "r");
             }
@@ -909,7 +909,7 @@ FILE *get_preset_file(char *filename, size_t filename_size,
 #if HAVE_GETMODULEHANDLE && defined(_WIN32)
     av_free(datadir);
 #endif
-    freeenv_utf8(env_ffmpeg_datadir);
+    freeenv_utf8(env_ffmpreg_datadir);
     freeenv_utf8(env_home);
     return f;
 }
@@ -1058,7 +1058,7 @@ double get_rotation(const int32_t *displaymatrix)
         av_log(NULL, AV_LOG_WARNING, "Odd rotation angle.\n"
                "If you want to help, upload a sample "
                "of this file to https://streams.videolan.org/upload/ "
-               "and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)");
+               "and contact the ffmpreg-devel mailing list. (ffmpreg-devel@ffmpreg.org)");
 
     return theta;
 }

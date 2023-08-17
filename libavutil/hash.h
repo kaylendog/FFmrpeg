@@ -1,20 +1,20 @@
 /*
  * Copyright (C) 2013 Reimar Döffinger <Reimar.Doeffinger@gmx.de>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -38,7 +38,7 @@
  * Hash functions are widely used in multimedia, from error checking and
  * concealment to internal regression testing. libavutil has efficient
  * implementations of a variety of hash functions that may be useful for
- * FFmpeg and other multimedia applications.
+ * FFmpreg and other multimedia applications.
  *
  * @{
  *
@@ -151,7 +151,7 @@ const char *av_hash_get_name(const struct AVHashContext *ctx);
  * so, will not be considered an ABI change. To prevent your code from
  * overflowing a buffer, either dynamically allocate the output buffer with
  * av_hash_get_size(), or limit your use of the Hashing API to hashes that are
- * already in FFmpeg during the time of compilation.
+ * already in FFmpreg during the time of compilation.
  */
 #define AV_HASH_MAX_SIZE 64
 

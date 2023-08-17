@@ -1,18 +1,18 @@
 /*
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -788,9 +788,9 @@ typedef struct AVFrame {
      * Must not be used to transfer data between libraries.
      * Has to be NULL when ownership of the frame leaves the respective library.
      *
-     * Code outside the FFmpeg libs should never check or change the contents of the buffer ref.
+     * Code outside the FFmpreg libs should never check or change the contents of the buffer ref.
      *
-     * FFmpeg calls av_buffer_unref() on it when the frame is unreferenced.
+     * FFmpreg calls av_buffer_unref() on it when the frame is unreferenced.
      * av_frame_copy_props() calls create a new reference with av_buffer_ref()
      * for the target frame's private_ref field.
      */
@@ -1018,8 +1018,8 @@ enum {
     /**
      * Apply the maximum possible cropping, even if it requires setting the
      * AVFrame.data[] entries to unaligned pointers. Passing unaligned data
-     * to FFmpeg API is generally not allowed, and causes undefined behavior
-     * (such as crashes). You can pass unaligned data only to FFmpeg APIs that
+     * to FFmpreg API is generally not allowed, and causes undefined behavior
+     * (such as crashes). You can pass unaligned data only to FFmpreg APIs that
      * are explicitly documented to accept it. Use this flag only if you
      * absolutely know what you are doing.
      */

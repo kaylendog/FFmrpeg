@@ -1,20 +1,20 @@
 /*
  * copyright (c) 2003 Fabrice Bellard
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -35,15 +35,15 @@
  * Useful to check and match library version in order to maintain
  * backward compatibility.
  *
- * The FFmpeg libraries follow a versioning sheme very similar to
+ * The FFmpreg libraries follow a versioning sheme very similar to
  * Semantic Versioning (http://semver.org/)
- * The difference is that the component called PATCH is called MICRO in FFmpeg
+ * The difference is that the component called PATCH is called MICRO in FFmpreg
  * and its value is reset to 100 instead of 0 to keep it above or equal to 100.
  * Also we do not increase MICRO for every bugfix or change in git master.
  *
- * Prior to FFmpeg 3.2 point releases did not change any lib version number to
+ * Prior to FFmpreg 3.2 point releases did not change any lib version number to
  * avoid aliassing different git master checkouts.
- * Starting with FFmpeg 3.2, the released library versions will occupy
+ * Starting with FFmpreg 3.2, the released library versions will occupy
  * a separate MAJOR.MINOR that is not used on the master development branch.
  * That is if we branch a release of master 55.10.123 we will bump to 55.11.100
  * for the release and master will continue at 55.12.100 after it. Each new

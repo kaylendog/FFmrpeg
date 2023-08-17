@@ -4,20 +4,20 @@
  * Copyright (C) 2017 Alexis Ballier <aballier@gentoo.org>
  * Copyright (C) 2017 Jorge Ramirez <jorge.ramirez-ortiz@linaro.org>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -100,7 +100,7 @@ static inline int v4l2_get_ext_ctrl(V4L2m2mContext *s, unsigned int id, signed i
 static inline unsigned int v4l2_h264_profile_from_ff(int p)
 {
     static const struct h264_profile  {
-        unsigned int ffmpeg_val;
+        unsigned int ffmpreg_val;
         unsigned int v4l2_val;
     } profile[] = {
         { FF_PROFILE_H264_CONSTRAINED_BASELINE, MPEG_VIDEO(H264_PROFILE_CONSTRAINED_BASELINE) },
@@ -118,7 +118,7 @@ static inline unsigned int v4l2_h264_profile_from_ff(int p)
     int i;
 
     for (i = 0; i < FF_ARRAY_ELEMS(profile); i++) {
-        if (profile[i].ffmpeg_val == p)
+        if (profile[i].ffmpreg_val == p)
             return profile[i].v4l2_val;
     }
     return AVERROR(ENOENT);
@@ -127,7 +127,7 @@ static inline unsigned int v4l2_h264_profile_from_ff(int p)
 static inline int v4l2_mpeg4_profile_from_ff(int p)
 {
     static const struct mpeg4_profile {
-        unsigned int ffmpeg_val;
+        unsigned int ffmpreg_val;
         unsigned int v4l2_val;
     } profile[] = {
         { FF_PROFILE_MPEG4_ADVANCED_CODING, MPEG_VIDEO(MPEG4_PROFILE_ADVANCED_CODING_EFFICIENCY) },
@@ -139,7 +139,7 @@ static inline int v4l2_mpeg4_profile_from_ff(int p)
     int i;
 
     for (i = 0; i < FF_ARRAY_ELEMS(profile); i++) {
-        if (profile[i].ffmpeg_val == p)
+        if (profile[i].ffmpreg_val == p)
             return profile[i].v4l2_val;
     }
     return AVERROR(ENOENT);

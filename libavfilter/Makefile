@@ -1,5 +1,5 @@
 NAME = avfilter
-DESC = FFmpeg audio/video filtering library
+DESC = FFmpreg audio/video filtering library
 
 HEADERS = avfilter.h                                                    \
           buffersink.h                                                  \

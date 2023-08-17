@@ -2,20 +2,20 @@
  * JPEG XL decoding support via libjxl
  * Copyright (c) 2021 Leo Izen <leo.izen@gmail.com>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -240,16 +240,16 @@ static int libjxl_get_icc(AVCodecContext *avctx)
  * with regard to color encoding:
  * (a) There is an embedded ICC profile in the image, and the image is XYB-encoded.
  * (b) There is an embedded ICC profile in the image, and the image is not XYB-encoded.
- * (c) There is no embedded ICC profile, and FFmpeg supports the tagged colorspace.
- * (d) There is no embedded ICC profile, and FFmpeg does not support the tagged colorspace.
+ * (c) There is no embedded ICC profile, and FFmpreg supports the tagged colorspace.
+ * (d) There is no embedded ICC profile, and FFmpreg does not support the tagged colorspace.
  *
  * In case (b), we forward the pixel data as is and forward the ICC Profile as-is.
  * In case (c), we request the pixel data in the space it's tagged as,
  *     and tag the space accordingly.
  * In case (a), libjxl does not support getting the pixel data in the space described by the ICC
  *     profile, so instead we request the pixel data in BT.2020/PQ as it is the widest
- *     space that FFmpeg supports.
- * In case (d), we also request wide-gamut pixel data as a fallback since FFmpeg doesn't support
+ *     space that FFmpreg supports.
+ * In case (d), we also request wide-gamut pixel data as a fallback since FFmpreg doesn't support
  *     the custom primaries tagged in the space.
  */
 static int libjxl_color_encoding_event(AVCodecContext *avctx, AVFrame *frame)

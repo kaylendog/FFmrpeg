@@ -2,20 +2,20 @@
  * Interface to xvidcore for MPEG-4 encoding
  * Copyright (c) 2004 Adam Thayer <krevnik@comcast.net>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -130,7 +130,7 @@ static int xvid_ff_2pass_create(xvid_plg_create_t *param, void **handle)
     /* This is because we can safely prevent a buffer overflow */
     log[0] = 0;
     snprintf(log, BUFFER_REMAINING(log),
-             "# ffmpeg 2-pass log file, using xvid codec\n");
+             "# ffmpreg 2-pass log file, using xvid codec\n");
     snprintf(BUFFER_CAT(log), BUFFER_REMAINING(log),
              "# Do not modify. libxvidcore version: %d.%d.%d\n\n",
              XVID_VERSION_MAJOR(XVID_VERSION),
@@ -390,7 +390,7 @@ static av_cold int xvid_encode_init(AVCodecContext *avctx)
 
     x->twopassfd = -1;
 
-    /* Bring in VOP flags from ffmpeg command-line */
+    /* Bring in VOP flags from ffmpreg command-line */
     x->vop_flags = XVID_VOP_HALFPEL;              /* Bare minimum quality */
     if (xvid_flags & AV_CODEC_FLAG_4MV)
         x->vop_flags    |= XVID_VOP_INTER4V;      /* Level 3 */
@@ -437,7 +437,7 @@ static av_cold int xvid_encode_init(AVCodecContext *avctx)
         break;
     }
 
-    /* Bring in VOL flags from ffmpeg command-line */
+    /* Bring in VOL flags from ffmpreg command-line */
     x->vol_flags = 0;
     if (x->gmc) {
         x->vol_flags |= XVID_VOL_GMC;

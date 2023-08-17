@@ -3,20 +3,20 @@
  * Copyright (c) 2000, 2001 Fabrice Bellard
  * Copyright (c) 2002-2013 Michael Niedermayer <michaelni@gmx.at>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -1194,7 +1194,7 @@ static int mpeg_decode_postinit(AVCodecContext *avctx)
                          (AVRational) { s->width, s->height });
 
             /* We ignore the spec here and guess a bit as reality does not
-             * match the spec, see for example res_change_ffmpeg_aspect.ts
+             * match the spec, see for example res_change_ffmpreg_aspect.ts
              * and sequence-display-aspect.mpg.
              * issue1613, 621, 562 */
             if ((s1->pan_scan.width == 0) || (s1->pan_scan.height == 0) ||
@@ -1208,7 +1208,7 @@ static int mpeg_decode_postinit(AVCodecContext *avctx)
                     av_div_q(ff_mpeg2_aspect[s1->aspect_ratio_info],
                              (AVRational) { s1->pan_scan.width, s1->pan_scan.height });
 // issue1613 4/3 16/9 -> 16/9
-// res_change_ffmpeg_aspect.ts 4/3 225/44 ->4/3
+// res_change_ffmpreg_aspect.ts 4/3 225/44 ->4/3
 // widescreen-issue562.mpg 4/3 16/9 -> 16/9
 //                s->avctx->sample_aspect_ratio = av_mul_q(s->avctx->sample_aspect_ratio, (AVRational) {s->width, s->height});
                 ff_dlog(avctx, "aspect A %d/%d\n",

@@ -1,26 +1,26 @@
 /*
  * Copyright (c) 2000-2003 Fabrice Bellard
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
 /**
  * @file
- * multimedia converter based on the FFmpeg libraries
+ * multimedia converter based on the FFmpreg libraries
  */
 
 #include "config.h"
@@ -102,10 +102,10 @@
 #include "libavfilter/buffersink.h"
 
 #include "cmdutils.h"
-#include "ffmpeg.h"
+#include "ffmpreg.h"
 #include "sync_queue.h"
 
-const char program_name[] = "ffmpeg";
+const char program_name[] = "ffmpreg";
 const int program_birth_year = 2000;
 
 FILE *vstats_file;
@@ -181,7 +181,7 @@ void term_exit(void)
 static volatile int received_sigterm = 0;
 static volatile int received_nb_signals = 0;
 static atomic_int transcode_init_done = ATOMIC_VAR_INIT(0);
-static volatile int ffmpeg_exited = 0;
+static volatile int ffmpreg_exited = 0;
 static int64_t copy_ts_first_pts = AV_NOPTS_VALUE;
 
 static void
@@ -219,7 +219,7 @@ static BOOL WINAPI CtrlHandler(DWORD fdwCtrlType)
            process is hard terminated, so stall as long as we need to
            to try and let the main thread(s) clean up and gracefully terminate
            (we have at most 5 seconds, but should be done far before that). */
-        while (!ffmpeg_exited) {
+        while (!ffmpreg_exited) {
             Sleep(0);
         }
         return TRUE;
@@ -324,7 +324,7 @@ static int read_key(void)
     if (is_pipe) {
         /* When running under a GUI, you will end here. */
         if (!PeekNamedPipe(input_handle, NULL, 0, NULL, &nchars, NULL)) {
-            // input pipe may have been closed by the program that ran ffmpeg
+            // input pipe may have been closed by the program that ran ffmpreg
             return -1;
         }
         //Read it
@@ -349,7 +349,7 @@ static int decode_interrupt_cb(void *ctx)
 
 const AVIOInterruptCB int_cb = { decode_interrupt_cb, NULL };
 
-static void ffmpeg_cleanup(int ret)
+static void ffmpreg_cleanup(int ret)
 {
     int i;
 
@@ -396,7 +396,7 @@ static void ffmpeg_cleanup(int ret)
         av_log(NULL, AV_LOG_INFO, "Conversion failed!\n");
     }
     term_exit();
-    ffmpeg_exited = 1;
+    ffmpreg_exited = 1;
 }
 
 OutputStream *ost_iter(OutputStream *prev)
@@ -1337,7 +1337,7 @@ int main(int argc, char **argv)
     show_banner(argc, argv, options);
 
     /* parse options and open all input/output files */
-    ret = ffmpeg_parse_options(argc, argv);
+    ret = ffmpreg_parse_options(argc, argv);
     if (ret < 0)
         goto finish;
 
@@ -1374,6 +1374,6 @@ finish:
     if (ret == AVERROR_EXIT)
         ret = 0;
 
-    ffmpeg_cleanup(ret);
+    ffmpreg_cleanup(ret);
     return ret;
 }

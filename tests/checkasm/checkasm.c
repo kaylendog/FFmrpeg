@@ -3,20 +3,20 @@
  * Copyright (c) 2015 Henrik Gramner
  * Copyright (c) 2008 Loren Merritt
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or modify
+ * FFmpreg is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along
- * with FFmpeg; if not, write to the Free Software Foundation, Inc.,
+ * with FFmpreg; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
@@ -679,10 +679,10 @@ static int bench_init_kperf(void)
     return 0;
 }
 #else
-static int bench_init_ffmpeg(void)
+static int bench_init_ffmpreg(void)
 {
 #ifdef AV_READ_TIME
-    printf("benchmarking with native FFmpeg timers\n");
+    printf("benchmarking with native FFmpreg timers\n");
     return 0;
 #else
     fprintf(stderr, "checkasm: --bench is not supported on your system\n");
@@ -698,7 +698,7 @@ static int bench_init(void)
 #elif CONFIG_MACOS_KPERF
     int ret = bench_init_kperf();
 #else
-    int ret = bench_init_ffmpeg();
+    int ret = bench_init_ffmpreg();
 #endif
     if (ret < 0)
         return ret;

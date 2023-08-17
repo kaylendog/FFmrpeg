@@ -1,5 +1,5 @@
 NAME = avutil
-DESC = FFmpeg utility library
+DESC = FFmpreg utility library
 
 HEADERS = adler32.h                                                     \
           aes.h                                                         \

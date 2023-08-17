@@ -1,5 +1,5 @@
 NAME    = avdevice
-DESC    = FFmpeg device handling library
+DESC    = FFmpreg device handling library
 
 HEADERS = avdevice.h                                                    \
           version.h                                                     \

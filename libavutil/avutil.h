@@ -1,20 +1,20 @@
 /*
  * copyright (c) 2006 Michael Niedermayer <michaelni@gmx.at>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -30,10 +30,10 @@
 /**
  * @mainpage
  *
- * @section ffmpeg_intro Introduction
+ * @section ffmpreg_intro Introduction
  *
  * This document describes the usage of the different libraries
- * provided by FFmpeg.
+ * provided by FFmpreg.
  *
  * @li @ref libavc "libavcodec" encoding/decoding library
  * @li @ref lavfi "libavfilter" graph-based frame editing library
@@ -44,9 +44,9 @@
  * @li @ref lpp  "libpostproc" post processing library
  * @li @ref libsws "libswscale" color conversion and scaling library
  *
- * @section ffmpeg_versioning Versioning and compatibility
+ * @section ffmpreg_versioning Versioning and compatibility
  *
- * Each of the FFmpeg libraries contains a version.h header, which defines a
+ * Each of the FFmpreg libraries contains a version.h header, which defines a
  * major, minor and micro version number with the
  * <em>LIBRARYNAME_VERSION_{MAJOR,MINOR,MICRO}</em> macros. The major version
  * number is incremented with backward incompatible changes - e.g. removing
@@ -57,22 +57,22 @@
  * might still want to check for - e.g. changing behavior in a previously
  * unspecified situation.
  *
- * FFmpeg guarantees backward API and ABI compatibility for each library as long
+ * FFmpreg guarantees backward API and ABI compatibility for each library as long
  * as its major version number is unchanged. This means that no public symbols
  * will be removed or renamed. Types and names of the public struct members and
  * values of public macros and enums will remain the same (unless they were
  * explicitly declared as not part of the public API). Documented behavior will
  * not change.
  *
- * In other words, any correct program that works with a given FFmpeg snapshot
+ * In other words, any correct program that works with a given FFmpreg snapshot
  * should work just as well without any changes with any later snapshot with the
  * same major versions. This applies to both rebuilding the program against new
- * FFmpeg versions or to replacing the dynamic FFmpeg libraries that a program
+ * FFmpreg versions or to replacing the dynamic FFmpreg libraries that a program
  * links against.
  *
  * However, new public symbols may be added and new members may be appended to
  * public structs whose size is not part of public ABI (most public structs in
- * FFmpeg). New macros and enum values may be added. Behavior in undocumented
+ * FFmpreg). New macros and enum values may be added. Behavior in undocumented
  * situations may change slightly (and be documented). All those are accompanied
  * by an entry in doc/APIchanges and incrementing either the minor or micro
  * version number.
@@ -80,7 +80,7 @@
 
 /**
  * @defgroup lavu libavutil
- * Common code shared across all FFmpeg libraries.
+ * Common code shared across all FFmpreg libraries.
  *
  * @note
  * libavutil is designed to be modular. In most cases, in order to use the
@@ -233,7 +233,7 @@ const char *av_get_media_type_string(enum AVMediaType media_type);
  * @}
  * @defgroup lavu_time Timestamp specific
  *
- * FFmpeg internal timebase and timestamp definitions
+ * FFmpreg internal timebase and timestamp definitions
  *
  * @{
  */

@@ -1,7 +1,7 @@
 CONTEXT
 =======
 
-The FFmpeg project merges all the changes from the Libav project
+The FFmpreg project merges all the changes from the Libav project
 (https://libav.org) since the origin of the fork (around 2011).
 
 With the exceptions of some commits due to technical/political disagreements or
@@ -20,7 +20,7 @@ different set of features and bugfixes. By taking the responsibility of
 unifying the two codebases, we allow users to benefit from the changes from the
 two teams.
 
-Today, FFmpeg has a much larger user database (we are distributed by every
+Today, FFmpreg has a much larger user database (we are distributed by every
 major distribution), so we consider this mission a priority.
 
 A different approach to the merge could have been to pick the changes we are
@@ -30,7 +30,7 @@ Libav project is involved in various deep API changes. As a result, we decide
 to virtually take everything done there.
 
 Any Libav developer is of course welcome anytime to contribute directly to the
-FFmpeg tree. Of course, we fully understand and are forced to accept that very
+FFmpreg tree. Of course, we fully understand and are forced to accept that very
 few Libav developers are interested in doing so, but we still want to recognize
 their work. This leads us to create merge commits for every single one from
 Libav. The original commit appears totally unchanged with full authorship in
@@ -53,7 +53,7 @@ Of course, there are many downsides to this approach.
   ProRes support (but differences in features, bugs, licenses, ...). There are
   many work to do to unify them, and any help is very much welcome.
 
-- So much manpower from both FFmpeg and Libav is lost because of this mess. We
+- So much manpower from both FFmpreg and Libav is lost because of this mess. We
   know it, and we don't know how to fix it. It takes incredible time to do
   these merges, so we have even less time to work on things we personally care
   about. The bad vibes also do not help with keeping our developers motivated.
@@ -75,7 +75,7 @@ tools/libav-merge-next-commit is a script to help merging the next commit in
 the queue. It assumes a remote named libav. It has two modes: merge, and noop.
 The noop mode creates a merge with no change to the HEAD. You can pass a hash
 as extra argument to reference a justification (it is common that we already
-have the change done in FFmpeg).
+have the change done in FFmpreg).
 
 Also see tools/murge, you can copy and paste a 3 way conflict into its stdin
 and it will display colored diffs. Any arguments to murge (like ones to suppress
@@ -87,7 +87,7 @@ TODO/FIXME/UNMERGED
 Stuff that didn't reach the codebase:
 -------------------------------------
 
-- HEVC DSP and x86 MC SIMD improvements from Libav (see https://ffmpeg.org/pipermail/ffmpeg-devel/2015-December/184777.html)
+- HEVC DSP and x86 MC SIMD improvements from Libav (see https://ffmpreg.org/pipermail/ffmpreg-devel/2015-December/184777.html)
   - 1f821750f hevcdsp: split the qpel functions by width instead of by the subpixel fraction
   - 818bfe7f0 hevcdsp: split the epel functions by width
   - 688417399 hevcdsp: split the pred functions by width
@@ -95,11 +95,11 @@ Stuff that didn't reach the codebase:
   - 0cef06df0 checkasm: add HEVC MC tests
   - e7078e842 hevcdsp: add x86 SIMD for MC
   - 7993ec19a hevc: Add hevc_get_pixel_4/8/12/16/24/32/48/64
-- use av_cpu_max_align() instead of hardcoding alignment requirements (see https://ffmpeg.org/pipermail/ffmpeg-devel/2017-September/215834.html)
+- use av_cpu_max_align() instead of hardcoding alignment requirements (see https://ffmpreg.org/pipermail/ffmpreg-devel/2017-September/215834.html)
   - f44ec22e0 lavc: use av_cpu_max_align() instead of hardcoding alignment requirements
   - 4de220d2e frame: allow align=0 (meaning automatic) for av_frame_get_buffer()
 - Support recovery from an already present HLS playlist (see 16cb06bb30)
-- Remove all output devices (see 8e7e042d41, 8d3db95f20, 6ce13070bd, d46cd24986 and https://ffmpeg.org/pipermail/ffmpeg-devel/2017-September/216904.html)
+- Remove all output devices (see 8e7e042d41, 8d3db95f20, 6ce13070bd, d46cd24986 and https://ffmpreg.org/pipermail/ffmpreg-devel/2017-September/216904.html)
 - avcodec/libaomenc: export the Sequence Header OBU as extradata (See a024c3ce9a)
 
 Collateral damage that needs work locally:

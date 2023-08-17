@@ -1,7 +1,7 @@
-FFmpeg README
+FFmpreg README
 =============
 
-FFmpeg is a collection of libraries and tools to process multimedia content
+FFmpreg is a collection of libraries and tools to process multimedia content
 such as audio, video, subtitles and related metadata.
 
 ## Libraries
@@ -16,10 +16,10 @@ such as audio, video, subtitles and related metadata.
 
 ## Tools
 
-* [ffmpeg](https://ffmpeg.org/ffmpeg.html) is a command line toolbox to
+* [ffmpreg](https://ffmpreg.org/ffmpreg.html) is a command line toolbox to
   manipulate, convert and stream multimedia content.
-* [ffplay](https://ffmpeg.org/ffplay.html) is a minimalistic multimedia player.
-* [ffprobe](https://ffmpeg.org/ffprobe.html) is a simple analysis tool to inspect
+* [ffplay](https://ffmpreg.org/ffplay.html) is a minimalistic multimedia player.
+* [ffprobe](https://ffmpreg.org/ffprobe.html) is a simple analysis tool to inspect
   multimedia content.
 * Additional small tools such as `aviocat`, `ismindex` and `qt-faststart`.
 
@@ -27,8 +27,8 @@ such as audio, video, subtitles and related metadata.
 
 The offline documentation is available in the **doc/** directory.
 
-The online documentation is available in the main [website](https://ffmpeg.org)
-and in the [wiki](https://trac.ffmpeg.org).
+The online documentation is available in the main [website](https://ffmpreg.org)
+and in the [wiki](https://trac.ffmpreg.org).
 
 ### Examples
 
@@ -36,11 +36,11 @@ Coding examples are available in the **doc/examples** directory.
 
 ## License
 
-FFmpeg codebase is mainly LGPL-licensed with optional components licensed under
+FFmpreg codebase is mainly LGPL-licensed with optional components licensed under
 GPL. Please refer to the LICENSE file for detailed information.
 
 ## Contributing
 
-Patches should be submitted to the ffmpeg-devel mailing list using
+Patches should be submitted to the ffmpreg-devel mailing list using
 `git format-patch` or `git send-email`. Github pull requests should be
 avoided because they are not part of our review process and will be ignored.

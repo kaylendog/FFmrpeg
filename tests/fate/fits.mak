@@ -1,5 +1,5 @@
 tests/data/fits-multi.fits: TAG = GEN
-tests/data/fits-multi.fits: ffmpeg$(PROGSSUF)$(EXESUF) | tests/data
+tests/data/fits-multi.fits: ffmpreg$(PROGSSUF)$(EXESUF) | tests/data
 	$(M)$(TARGET_EXEC) $(TARGET_PATH)/$< -nostdin \
         -i $(TARGET_SAMPLES)/gif/m4nb.gif \
         -y $(TARGET_PATH)/$(@) 2>/dev/null

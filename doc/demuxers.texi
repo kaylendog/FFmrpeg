@@ -1,10 +1,10 @@
 @chapter Demuxers
 @c man begin DEMUXERS
 
-Demuxers are configured elements in FFmpeg that can read the
+Demuxers are configured elements in FFmpreg that can read the
 multimedia streams from a particular type of file.
 
-When you configure your FFmpeg build, all the supported demuxers
+When you configure your FFmpreg build, all the supported demuxers
 are enabled by default. You can list all available ones using the
 configure option @code{--list-demuxers}.
 
@@ -105,7 +105,7 @@ All subsequent file-related directives apply to that file.
 @item @code{ffconcat version 1.0}
 Identify the script type and version.
 
-To make FFmpeg recognize the format automatically, this directive must
+To make FFmpreg recognize the format automatically, this directive must
 appear exactly as is (no extra space or byte-order-mark) on the very first
 line of the script.
 
@@ -311,7 +311,7 @@ This demuxer presents audio and video streams found in an IMF Composition, as
 specified in @url{https://doi.org/10.5594/SMPTE.ST2067-2.2020, SMPTE ST 2067-2}.
 
 @example
-ffmpeg [-assetmaps <path of ASSETMAP1>,<path of ASSETMAP2>,...] -i <path of CPL> ...
+ffmpreg [-assetmaps <path of ASSETMAP1>,<path of ASSETMAP2>,...] -i <path of CPL> ...
 @end example
 
 If @code{-assetmaps} is not specified, the demuxer looks for a file called
@@ -325,8 +325,8 @@ This demuxer is used to demux FLV files and RTMP network streams. In case of liv
 KUX is a flv variant used on the Youku platform.
 
 @example
-ffmpeg -f flv -i myfile.flv ...
-ffmpeg -f live_flv -i rtmp://<any.server>/anything/key ....
+ffmpreg -f flv -i myfile.flv ...
+ffmpreg -f live_flv -i rtmp://<any.server>/anything/key ....
 @end example
 
 
@@ -372,7 +372,7 @@ the GIF. Default value is 1.
 For example, with the overlay filter, place an infinitely looping GIF
 over another video:
 @example
-ffmpeg -i input.mp4 -ignore_loop 0 -i input.gif -filter_complex overlay=shortest=1 out.mkv
+ffmpreg -i input.mp4 -ignore_loop 0 -i input.gif -filter_complex overlay=shortest=1 out.mkv
 @end example
 
 Note that in the above example the shortest option for overlay filter is
@@ -490,7 +490,7 @@ Note that the pattern must not necessarily contain "%d" or
 "%0@var{N}d", for example to convert a single image file
 @file{img.jpeg} you can employ the command:
 @example
-ffmpeg -i img.jpeg img.png
+ffmpreg -i img.jpeg img.png
 @end example
 
 @item glob
@@ -558,24 +558,24 @@ Corresponds to the name of the file being read.
 
 @itemize
 @item
-Use @command{ffmpeg} for creating a video from the images in the file
+Use @command{ffmpreg} for creating a video from the images in the file
 sequence @file{img-001.jpeg}, @file{img-002.jpeg}, ..., assuming an
 input frame rate of 10 frames per second:
 @example
-ffmpeg -framerate 10 -i 'img-%03d.jpeg' out.mkv
+ffmpreg -framerate 10 -i 'img-%03d.jpeg' out.mkv
 @end example
 
 @item
 As above, but start by reading from a file with index 100 in the sequence:
 @example
-ffmpeg -framerate 10 -start_number 100 -i 'img-%03d.jpeg' out.mkv
+ffmpreg -framerate 10 -start_number 100 -i 'img-%03d.jpeg' out.mkv
 @end example
 
 @item
 Read images matching the "*.png" glob pattern , that is all the files
 terminating with the ".png" suffix:
 @example
-ffmpeg -framerate 10 -pattern_type glob -i "*.png" out.mkv
+ffmpreg -framerate 10 -pattern_type glob -i "*.png" out.mkv
 @end example
 @end itemize
 
@@ -785,7 +785,7 @@ a 10 second dts correction for 48 kHz audio streams while accommodating 99.9% of
 
 Audible AAX files are encrypted M4B files, and they can be decrypted by specifying a 4 byte activation secret.
 @example
-ffmpeg -activation_bytes 1CEB00DA -i test.aax -vn -c:a copy output.mp4
+ffmpreg -activation_bytes 1CEB00DA -i test.aax -vn -c:a copy output.mp4
 @end example
 
 @section mpegts
@@ -904,7 +904,7 @@ somehow pauses the playback or seeks, all times will be shifted accordingly.
 JSON captions used for @url{http://www.ted.com/, TED Talks}.
 
 TED does not provide links to the captions, but they can be guessed from the
-page. The file @file{tools/bookmarklets.html} from the FFmpeg source tree
+page. The file @file{tools/bookmarklets.html} from the FFmpreg source tree
 contains a bookmarklet to expose them.
 
 This demuxer accepts the following option:
@@ -917,7 +917,7 @@ they include a 15s intro.
 
 Example: convert the captions to a format most players understand:
 @example
-ffmpeg -i http://www.ted.com/talks/subtitles/id/1/lang/en talk1-en.srt
+ffmpreg -i http://www.ted.com/talks/subtitles/id/1/lang/en talk1-en.srt
 @end example
 
 @section vapoursynth

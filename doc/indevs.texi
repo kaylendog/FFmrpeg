@@ -1,10 +1,10 @@
 @chapter Input Devices
 @c man begin INPUT DEVICES
 
-Input devices are configured elements in FFmpeg which enable accessing
+Input devices are configured elements in FFmpreg which enable accessing
 the data coming from a multimedia device attached to your system.
 
-When you configure your FFmpeg build, all the supported input devices
+When you configure your FFmpreg build, all the supported input devices
 are enabled by default. You can list all available ones using the
 configure option "--list-indevs".
 
@@ -42,10 +42,10 @@ specify card number or identifier, device number and subdevice number
 To see the list of cards currently recognized by your system check the
 files @file{/proc/asound/cards} and @file{/proc/asound/devices}.
 
-For example to capture with @command{ffmpeg} from an ALSA device with
+For example to capture with @command{ffmpreg} from an ALSA device with
 card id 0, you may run the command:
 @example
-ffmpeg -f alsa -i hw:0 alsaout.wav
+ffmpreg -f alsa -i hw:0 alsaout.wav
 @end example
 
 For more information see:
@@ -190,31 +190,31 @@ Using this option may result in receiving the underlying data delivered to the A
 @item
 Print the list of AVFoundation supported devices and exit:
 @example
-$ ffmpeg -f avfoundation -list_devices true -i ""
+$ ffmpreg -f avfoundation -list_devices true -i ""
 @end example
 
 @item
 Record video from video device 0 and audio from audio device 0 into out.avi:
 @example
-$ ffmpeg -f avfoundation -i "0:0" out.avi
+$ ffmpreg -f avfoundation -i "0:0" out.avi
 @end example
 
 @item
 Record video from video device 2 and audio from audio device 1 into out.avi:
 @example
-$ ffmpeg -f avfoundation -video_device_index 2 -i ":1" out.avi
+$ ffmpreg -f avfoundation -video_device_index 2 -i ":1" out.avi
 @end example
 
 @item
 Record video from the system default video device using the pixel format bgr0 and do not record any audio into out.avi:
 @example
-$ ffmpeg -f avfoundation -pixel_format bgr0 -i "default:none" out.avi
+$ ffmpreg -f avfoundation -pixel_format bgr0 -i "default:none" out.avi
 @end example
 
 @item
 Record raw DV data from a suitable input device and write the output into out.dv:
 @example
-$ ffmpeg -f avfoundation -capture_raw_data true -i "zr100:none" out.dv
+$ ffmpreg -f avfoundation -capture_raw_data true -i "zr100:none" out.dv
 @end example
 
 
@@ -278,7 +278,7 @@ audio track.
 @item list_devices
 If set to @option{true}, print a list of devices and exit.
 Defaults to @option{false}. This option is deprecated, please use the
-@code{-sources} option of ffmpeg to list the available input devices.
+@code{-sources} option of ffmpreg to list the available input devices.
 
 @item list_formats
 If set to @option{true}, print a list of supported formats and exit.
@@ -335,7 +335,7 @@ special @option{all} constant to select all possible lines, or
 @option{standard} to skip lines 6, 318 and 319, which are not compatible with
 all receivers.
 
-For SD sources, ffmpeg needs to be compiled with @code{--enable-libzvbi}. For
+For SD sources, ffmpreg needs to be compiled with @code{--enable-libzvbi}. For
 HD sources, on older (pre-4K) DeckLink card models you have to capture in 10
 bit mode.
 
@@ -447,31 +447,31 @@ Defaults to @option{false}.
 @item
 List input devices:
 @example
-ffmpeg -sources decklink
+ffmpreg -sources decklink
 @end example
 
 @item
 List supported formats:
 @example
-ffmpeg -f decklink -list_formats 1 -i 'Intensity Pro'
+ffmpreg -f decklink -list_formats 1 -i 'Intensity Pro'
 @end example
 
 @item
 Capture video clip at 1080i50:
 @example
-ffmpeg -format_code Hi50 -f decklink -i 'Intensity Pro' -c:a copy -c:v copy output.avi
+ffmpreg -format_code Hi50 -f decklink -i 'Intensity Pro' -c:a copy -c:v copy output.avi
 @end example
 
 @item
 Capture video clip at 1080i50 10 bit:
 @example
-ffmpeg -raw_format yuv422p10 -format_code Hi50 -f decklink -i 'UltraStudio Mini Recorder' -c:a copy -c:v copy output.avi
+ffmpreg -raw_format yuv422p10 -format_code Hi50 -f decklink -i 'UltraStudio Mini Recorder' -c:a copy -c:v copy output.avi
 @end example
 
 @item
 Capture video clip at 1080i50 with 16 audio channels:
 @example
-ffmpeg -channels 16 -format_code Hi50 -f decklink -i 'UltraStudio Mini Recorder' -c:a copy -c:v copy output.avi
+ffmpreg -channels 16 -format_code Hi50 -f decklink -i 'UltraStudio Mini Recorder' -c:a copy -c:v copy output.avi
 @end example
 
 @end itemize
@@ -480,7 +480,7 @@ ffmpeg -channels 16 -format_code Hi50 -f decklink -i 'UltraStudio Mini Recorder'
 
 Windows DirectShow input device.
 
-DirectShow support is enabled when FFmpeg is built with the mingw-w64 project.
+DirectShow support is enabled when FFmpreg is built with the mingw-w64 project.
 Currently only audio and video devices are supported.
 
 Multiple devices may be opened as separate inputs, but they may also be
@@ -640,43 +640,43 @@ provide unreliable timestamps.
 @item
 Print the list of DirectShow supported devices and exit:
 @example
-$ ffmpeg -list_devices true -f dshow -i dummy
+$ ffmpreg -list_devices true -f dshow -i dummy
 @end example
 
 @item
 Open video device @var{Camera}:
 @example
-$ ffmpeg -f dshow -i video="Camera"
+$ ffmpreg -f dshow -i video="Camera"
 @end example
 
 @item
 Open second video device with name @var{Camera}:
 @example
-$ ffmpeg -f dshow -video_device_number 1 -i video="Camera"
+$ ffmpreg -f dshow -video_device_number 1 -i video="Camera"
 @end example
 
 @item
 Open video device @var{Camera} and audio device @var{Microphone}:
 @example
-$ ffmpeg -f dshow -i video="Camera":audio="Microphone"
+$ ffmpreg -f dshow -i video="Camera":audio="Microphone"
 @end example
 
 @item
 Print the list of supported options in selected device and exit:
 @example
-$ ffmpeg -list_options true -f dshow -i video="Camera"
+$ ffmpreg -list_options true -f dshow -i video="Camera"
 @end example
 
 @item
 Specify pin names to capture by name or alternative name, specify alternative device name:
 @example
-$ ffmpeg -f dshow -audio_pin_name "Audio Out" -video_pin_name 2 -i video=video="@@device_pnp_\\?\pci#ven_1a0a&dev_6200&subsys_62021461&rev_01#4&e2c7dd6&0&00e1#@{65e8773d-8f56-11d0-a3b9-00a0c9223196@}\@{ca465100-deb0-4d59-818f-8c477184adf6@}":audio="Microphone"
+$ ffmpreg -f dshow -audio_pin_name "Audio Out" -video_pin_name 2 -i video=video="@@device_pnp_\\?\pci#ven_1a0a&dev_6200&subsys_62021461&rev_01#4&e2c7dd6&0&00e1#@{65e8773d-8f56-11d0-a3b9-00a0c9223196@}\@{ca465100-deb0-4d59-818f-8c477184adf6@}":audio="Microphone"
 @end example
 
 @item
 Configure a crossbar device, specifying crossbar pins, allow user to adjust video capture properties at startup:
 @example
-$ ffmpeg -f dshow -show_video_device_dialog true -crossbar_video_input_pin_number 0
+$ ffmpreg -f dshow -show_video_device_dialog true -crossbar_video_input_pin_number 0
      -crossbar_audio_input_pin_number 3 -i video="AVerMedia BDA Analog Capture":audio="AVerMedia BDA Analog Capture"
 @end example
 
@@ -697,14 +697,14 @@ Documentation/fb/framebuffer.txt included in the Linux source tree.
 See also @url{http://linux-fbdev.sourceforge.net/}, and fbset(1).
 
 To record from the framebuffer device @file{/dev/fb0} with
-@command{ffmpeg}:
+@command{ffmpreg}:
 @example
-ffmpeg -f fbdev -framerate 10 -i /dev/fb0 out.avi
+ffmpreg -f fbdev -framerate 10 -i /dev/fb0 out.avi
 @end example
 
 You can take a single screenshot image with the command:
 @example
-ffmpeg -f fbdev -framerate 1 -i /dev/fb0 -frames:v 1 screenshot.jpeg
+ffmpreg -f fbdev -framerate 1 -i /dev/fb0 -frames:v 1 screenshot.jpeg
 @end example
 
 @subsection Options
@@ -735,19 +735,19 @@ The first option will capture the entire desktop, or a fixed region of the
 desktop. The second option will instead capture the contents of a single
 window, regardless of its position on the screen.
 
-For example, to grab the entire desktop using @command{ffmpeg}:
+For example, to grab the entire desktop using @command{ffmpreg}:
 @example
-ffmpeg -f gdigrab -framerate 6 -i desktop out.mpg
+ffmpreg -f gdigrab -framerate 6 -i desktop out.mpg
 @end example
 
 Grab a 640x480 region at position @code{10,20}:
 @example
-ffmpeg -f gdigrab -framerate 6 -offset_x 10 -offset_y 20 -video_size vga -i desktop out.mpg
+ffmpreg -f gdigrab -framerate 6 -offset_x 10 -offset_y 20 -video_size vga -i desktop out.mpg
 @end example
 
 Grab the contents of the window named "Calculator"
 @example
-ffmpeg -f gdigrab -framerate 6 -i title=Calculator out.mpg
+ffmpreg -f gdigrab -framerate 6 -i title=Calculator out.mpg
 @end example
 
 @subsection Options
@@ -773,7 +773,7 @@ of a single window.
 
 For example:
 @example
-ffmpeg -f gdigrab -show_region 1 -framerate 6 -video_size cif -offset_x 10 -offset_y 20 -i desktop out.mpg
+ffmpreg -f gdigrab -show_region 1 -framerate 6 -video_size cif -offset_x 10 -offset_y 20 -i desktop out.mpg
 @end example
 
 @item video_size
@@ -846,7 +846,7 @@ ffplay -f iec61883 -i auto
 Grab and record the input of a FireWire DV/HDV device,
 using a packet buffer of 100000 packets if the source is HDV.
 @example
-ffmpeg -f iec61883 -i auto -dvbuffer 100000 out.mpg
+ffmpreg -f iec61883 -i auto -dvbuffer 100000 out.mpg
 @end example
 
 @end itemize
@@ -862,7 +862,7 @@ A JACK input device creates one or more JACK writable clients, one for
 each audio channel, with name @var{client_name}:input_@var{N}, where
 @var{client_name} is the name provided by the application, and @var{N}
 is a number which identifies the channel.
-Each writable client will send the acquired data to the FFmpeg input
+Each writable client will send the acquired data to the FFmpreg input
 device.
 
 Once you have created one or more JACK readable clients, you need to
@@ -876,10 +876,10 @@ To list the JACK clients and their properties you can invoke the command
 @command{jack_lsp}.
 
 Follows an example which shows how to capture a JACK readable client
-with @command{ffmpeg}.
+with @command{ffmpreg}.
 @example
-# Create a JACK writable client with name "ffmpeg".
-$ ffmpeg -f jack -i ffmpeg -y out.wav
+# Create a JACK writable client with name "ffmpreg".
+$ ffmpreg -f jack -i ffmpreg -y out.wav
 
 # Start the sample jack_metro readable client.
 $ jack_metro -b 120 -d 0.2 -f 4000
@@ -890,11 +890,11 @@ system:capture_1
 system:capture_2
 system:playback_1
 system:playback_2
-ffmpeg:input_1
+ffmpreg:input_1
 metro:120_bpm
 
-# Connect metro to the ffmpeg writable client.
-$ jack_connect metro:120_bpm ffmpeg:input_1
+# Connect metro to the ffmpreg writable client.
+$ jack_connect metro:120_bpm ffmpreg:input_1
 @end example
 
 For more information read:
@@ -964,13 +964,13 @@ Capture from the first active plane, download the result to normal frames and en
 This will only work if the framebuffer is both linear and mappable - if not, the result
 may be scrambled or fail to download.
 @example
-ffmpeg -f kmsgrab -i - -vf 'hwdownload,format=bgr0' output.mp4
+ffmpreg -f kmsgrab -i - -vf 'hwdownload,format=bgr0' output.mp4
 @end example
 
 @item
 Capture from CRTC ID 42 at 60fps, map the result to VAAPI, convert to NV12 and encode as H.264.
 @example
-ffmpeg -crtc_id 42 -framerate 60 -f kmsgrab -i - -vf 'hwmap=derive_device=vaapi,scale_vaapi=w=1920:h=1080:format=nv12' -c:v h264_vaapi output.mp4
+ffmpreg -crtc_id 42 -framerate 60 -f kmsgrab -i - -vf 'hwmap=derive_device=vaapi,scale_vaapi=w=1920:h=1080:format=nv12' -c:v h264_vaapi output.mp4
 @end example
 
 @item
@@ -978,7 +978,7 @@ To capture only part of a plane the output can be cropped - this can be used to 
 a single window, as long as it has a known absolute position and size.  For example, to
 capture and encode the middle quarter of a 1920x1080 plane:
 @example
-ffmpeg -f kmsgrab -i - -vf 'hwmap=derive_device=vaapi,crop=960:540:480:270,scale_vaapi=960:540:nv12' -c:v h264_vaapi output.mp4
+ffmpreg -f kmsgrab -i - -vf 'hwmap=derive_device=vaapi,crop=960:540:480:270,scale_vaapi=960:540:nv12' -c:v h264_vaapi output.mp4
 @end example
 
 @end itemize
@@ -1066,7 +1066,7 @@ ffplay -f lavfi "movie=test.avi[out0];amovie=test.wav[out1]"
 @item
 Dump decoded frames to images and closed captions to a file (experimental):
 @example
-ffmpeg -f lavfi -i "movie=test.ts[out0+subcc]" -map v frame%08d.png -map s -c copy -f rawvideo subcc.bin
+ffmpreg -f lavfi -i "movie=test.ts[out0+subcc]" -map v frame%08d.png -map s -c copy -f rawvideo subcc.bin
 @end example
 
 @end itemize
@@ -1081,10 +1081,10 @@ installed on your system. It requires the configure option
 
 This device allows playing and grabbing from an Audio-CD.
 
-For example to copy with @command{ffmpeg} the entire Audio-CD in @file{/dev/sr0},
+For example to copy with @command{ffmpreg} the entire Audio-CD in @file{/dev/sr0},
 you may run the command:
 @example
-ffmpeg -f libcdio -i /dev/sr0 cd.wav
+ffmpreg -f libcdio -i /dev/sr0 cd.wav
 @end example
 
 @subsection Options
@@ -1142,7 +1142,7 @@ working OpenAL 1.1 implementation.
 
 To enable this input device during configuration, you need OpenAL
 headers and libraries installed on your system, and need to configure
-FFmpeg with @code{--enable-openal}.
+FFmpreg with @code{--enable-openal}.
 
 OpenAL headers and libraries should be provided as part of your OpenAL
 implementation, or as an additional download (an SDK). Depending on your
@@ -1203,23 +1203,23 @@ Defaults to @option{false}.
 
 Print the list of OpenAL supported devices and exit:
 @example
-$ ffmpeg -list_devices true -f openal -i dummy out.ogg
+$ ffmpreg -list_devices true -f openal -i dummy out.ogg
 @end example
 
 Capture from the OpenAL device @file{DR-BT101 via PulseAudio}:
 @example
-$ ffmpeg -f openal -i 'DR-BT101 via PulseAudio' out.ogg
+$ ffmpreg -f openal -i 'DR-BT101 via PulseAudio' out.ogg
 @end example
 
 Capture from the default device (note the empty string '' as filename):
 @example
-$ ffmpeg -f openal -i '' out.ogg
+$ ffmpreg -f openal -i '' out.ogg
 @end example
 
 Capture from two devices simultaneously, writing to two different files,
-within the same @command{ffmpeg} command:
+within the same @command{ffmpreg} command:
 @example
-$ ffmpeg -f openal -i 'DR-BT101 via PulseAudio' out1.ogg -f openal -i 'ALSA Default' out2.ogg
+$ ffmpreg -f openal -i 'DR-BT101 via PulseAudio' out1.ogg -f openal -i 'ALSA Default' out2.ogg
 @end example
 Note: not all OpenAL implementations support multiple simultaneous capture -
 try the latest OpenAL Soft if the above does not work.
@@ -1232,10 +1232,10 @@ The filename to provide to the input device is the device node
 representing the OSS input device, and is usually set to
 @file{/dev/dsp}.
 
-For example to grab from @file{/dev/dsp} using @command{ffmpeg} use the
+For example to grab from @file{/dev/dsp} using @command{ffmpreg} use the
 command:
 @example
-ffmpeg -f oss -i /dev/dsp /tmp/oss.wav
+ffmpreg -f oss -i /dev/dsp /tmp/oss.wav
 @end example
 
 For more information about OSS see:
@@ -1257,7 +1257,7 @@ Set the number of channels. Default is 2.
 
 PulseAudio input device.
 
-To enable this output device you need to configure FFmpeg with @code{--enable-libpulse}.
+To enable this output device you need to configure FFmpreg with @code{--enable-libpulse}.
 
 The filename to provide to the input device is a source device or the
 string "default"
@@ -1302,7 +1302,7 @@ Set the initial PTS using the current time. Default is 1.
 @subsection Examples
 Record a stream from default device:
 @example
-ffmpeg -f pulse -i default /tmp/pulse.wav
+ffmpreg -f pulse -i default /tmp/pulse.wav
 @end example
 
 @section sndio
@@ -1316,10 +1316,10 @@ The filename to provide to the input device is the device node
 representing the sndio input device, and is usually set to
 @file{/dev/audio0}.
 
-For example to grab from @file{/dev/audio0} using @command{ffmpeg} use the
+For example to grab from @file{/dev/audio0} using @command{ffmpreg} use the
 command:
 @example
-ffmpeg -f sndio -i /dev/audio0 /tmp/oss.wav
+ffmpreg -f sndio -i /dev/audio0 /tmp/oss.wav
 @end example
 
 @subsection Options
@@ -1340,7 +1340,7 @@ Video4Linux2 input video device.
 
 "v4l2" can be used as alias for "video4linux2".
 
-If FFmpeg is built with v4l-utils support (by using the
+If FFmpreg is built with v4l-utils support (by using the
 @code{--enable-libv4l2} configure option), it is possible to use it with the
 @code{-use_libv4l2} input device option.
 
@@ -1363,7 +1363,7 @@ boot time, unaffected by NTP or manual changes to the clock). The
 @option{-timestamps abs} or @option{-ts abs} option can be used to force
 conversion into the real time clock.
 
-Some usage examples of the video4linux2 device with @command{ffmpeg}
+Some usage examples of the video4linux2 device with @command{ffmpreg}
 and @command{ffplay}:
 @itemize
 @item
@@ -1382,7 +1382,7 @@ ffplay -f video4linux2 -framerate 30 -video_size hd720 /dev/video0
 Grab and record the input of a video4linux2 device, leave the
 frame rate and size as previously set:
 @example
-ffmpeg -f video4linux2 -input_format mjpeg -i /dev/video0 out.mpeg
+ffmpreg -f video4linux2 -input_format mjpeg -i /dev/video0 out.mpeg
 @end example
 @end itemize
 
@@ -1514,14 +1514,14 @@ Use the @command{xdpyinfo} program for getting basic information about
 the properties of your X11 display (e.g. grep for "name" or
 "dimensions").
 
-For example to grab from @file{:0.0} using @command{ffmpeg}:
+For example to grab from @file{:0.0} using @command{ffmpreg}:
 @example
-ffmpeg -f x11grab -framerate 25 -video_size cif -i :0.0 out.mpg
+ffmpreg -f x11grab -framerate 25 -video_size cif -i :0.0 out.mpg
 @end example
 
 Grab at position @code{10,20}:
 @example
-ffmpeg -f x11grab -framerate 25 -video_size cif -i :0.0+10,20 out.mpg
+ffmpreg -f x11grab -framerate 25 -video_size cif -i :0.0+10,20 out.mpg
 @end example
 
 @subsection Options
@@ -1550,12 +1550,12 @@ zero) to the edge of region.
 
 For example:
 @example
-ffmpeg -f x11grab -follow_mouse centered -framerate 25 -video_size cif -i :0.0 out.mpg
+ffmpreg -f x11grab -follow_mouse centered -framerate 25 -video_size cif -i :0.0 out.mpg
 @end example
 
 To follow only when the mouse pointer reaches within 100 pixels to edge:
 @example
-ffmpeg -f x11grab -follow_mouse 100 -framerate 25 -video_size cif -i :0.0 out.mpg
+ffmpreg -f x11grab -follow_mouse 100 -framerate 25 -video_size cif -i :0.0 out.mpg
 @end example
 
 @item framerate
@@ -1575,12 +1575,12 @@ Range is 1 to 128 and default is 3 (XCB-based x11grab only).
 
 For example:
 @example
-ffmpeg -f x11grab -show_region 1 -framerate 25 -video_size cif -i :0.0+10,20 out.mpg
+ffmpreg -f x11grab -show_region 1 -framerate 25 -video_size cif -i :0.0+10,20 out.mpg
 @end example
 
 With @var{follow_mouse}:
 @example
-ffmpeg -f x11grab -follow_mouse centered -show_region 1 -framerate 25 -video_size cif -i :0.0 out.mpg
+ffmpreg -f x11grab -follow_mouse centered -show_region 1 -framerate 25 -video_size cif -i :0.0 out.mpg
 @end example
 
 @item window_id

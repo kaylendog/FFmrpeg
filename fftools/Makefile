@@ -1,23 +1,23 @@
-AVPROGS-$(CONFIG_FFMPEG)   += ffmpeg
+AVPROGS-$(CONFIG_FFMPEG)   += ffmpreg
 AVPROGS-$(CONFIG_FFPLAY)   += ffplay
 AVPROGS-$(CONFIG_FFPROBE)  += ffprobe
 
 AVPROGS     := $(AVPROGS-yes:%=%$(PROGSSUF)$(EXESUF))
 PROGS       += $(AVPROGS)
 
-AVBASENAMES  = ffmpeg ffplay ffprobe
+AVBASENAMES  = ffmpreg ffplay ffprobe
 ALLAVPROGS   = $(AVBASENAMES:%=%$(PROGSSUF)$(EXESUF))
 ALLAVPROGS_G = $(AVBASENAMES:%=%$(PROGSSUF)_g$(EXESUF))
 
-OBJS-ffmpeg +=                  \
-    fftools/ffmpeg_dec.o        \
-    fftools/ffmpeg_demux.o      \
-    fftools/ffmpeg_enc.o        \
-    fftools/ffmpeg_filter.o     \
-    fftools/ffmpeg_hw.o         \
-    fftools/ffmpeg_mux.o        \
-    fftools/ffmpeg_mux_init.o   \
-    fftools/ffmpeg_opt.o        \
+OBJS-ffmpreg +=                  \
+    fftools/ffmpreg_dec.o        \
+    fftools/ffmpreg_demux.o      \
+    fftools/ffmpreg_enc.o        \
+    fftools/ffmpreg_filter.o     \
+    fftools/ffmpreg_hw.o         \
+    fftools/ffmpreg_mux.o        \
+    fftools/ffmpreg_mux_init.o   \
+    fftools/ffmpreg_opt.o        \
     fftools/objpool.o           \
     fftools/sync_queue.o        \
     fftools/thread_queue.o      \

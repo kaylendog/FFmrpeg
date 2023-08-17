@@ -1,21 +1,21 @@
 /* Electronic Arts Multimedia File Demuxer
- * Copyright (c) 2004  The FFmpeg project
+ * Copyright (c) 2004  The FFmpreg project
  * Copyright (c) 2006-2008 Peter Ross
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -509,7 +509,7 @@ static int init_video_stream(AVFormatContext *s, VideoProperties *video)
     video->stream_index = st->index;
     st->codecpar->codec_type  = AVMEDIA_TYPE_VIDEO;
     st->codecpar->codec_id    = video->codec;
-    // parsing is necessary to make FFmpeg generate correct timestamps
+    // parsing is necessary to make FFmpreg generate correct timestamps
     if (st->codecpar->codec_id == AV_CODEC_ID_MPEG2VIDEO)
         ffstream(st)->need_parsing = AVSTREAM_PARSE_HEADERS;
     st->codecpar->codec_tag   = 0; /* no fourcc */

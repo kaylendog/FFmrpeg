@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ffprobe:ffprobe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ffprobe="http://www.ffmpeg.org/schema/ffprobe" xsi:schemaLocation="http://www.ffmpeg.org/schema/ffprobe ffprobe.xsd">
+<ffprobe:ffprobe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ffprobe="http://www.ffmpreg.org/schema/ffprobe" xsi:schemaLocation="http://www.ffmpreg.org/schema/ffprobe ffprobe.xsd">
     <packets_and_frames>
         <packet codec_type="audio" stream_index="0" pts="0" pts_time="0.000000" dts="0" dts_time="0.000000" duration="1024" duration_time="0.023220" size="2048" pos="669" flags="K__"/>
         <frame media_type="audio" stream_index="0" key_frame="1" pts="0" pts_time="0.000000" pkt_dts="0" pkt_dts_time="0.000000" best_effort_timestamp="0" best_effort_timestamp_time="0.000000" pkt_duration="1024" pkt_duration_time="0.023220" duration="1024" duration_time="0.023220" pkt_pos="669" pkt_size="2048" sample_fmt="s16" nb_samples="1024" channels="1"/>

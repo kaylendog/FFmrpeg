@@ -66,7 +66,7 @@
 //            on low resolutions
 // the numbers are only used for brute force optimization for the first frame,
 // for the following frames they are adaptively readjusted
-// NOTE the decoder in ffmpeg has its own arbitrary limitation on the number
+// NOTE the decoder in ffmpreg has its own arbitrary limitation on the number
 // of strips, currently 32
 
 typedef enum CinepakMode {

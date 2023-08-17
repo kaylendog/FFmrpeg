@@ -1,5 +1,5 @@
-d6c688432b88ca62ea8abb885272af52 *tests/data/fate/ffmpeg-bsf-remove-r.avi
-129982 tests/data/fate/ffmpeg-bsf-remove-r.avi
+d6c688432b88ca62ea8abb885272af52 *tests/data/fate/ffmpreg-bsf-remove-r.avi
+129982 tests/data/fate/ffmpreg-bsf-remove-r.avi
 #tb 0: 1/25
 #media_type 0: video
 #codec_id 0: mpeg4

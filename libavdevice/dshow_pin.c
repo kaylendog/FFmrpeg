@@ -2,20 +2,20 @@
  * DirectShow capture interface
  * Copyright (c) 2010 Ramiro Polla
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -330,7 +330,7 @@ long WINAPI ff_dshow_meminputpin_Receive(DShowMemInputPin *this, IMediaSample *s
         }
         else if (sampletime > 400000000000000000LL) {
             /* initial frames sometimes start < 0 (shown as a very large number here,
-               like 437650244077016960 which FFmpeg doesn't like).
+               like 437650244077016960 which FFmpreg doesn't like).
                TODO figure out math. For now just drop them. */
             av_log(s, AV_LOG_DEBUG,
                 "dropping initial (or ending) sample with odd PTS too high %"PRId64"\n", sampletime);

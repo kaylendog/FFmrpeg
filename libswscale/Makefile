@@ -1,5 +1,5 @@
 NAME = swscale
-DESC = FFmpeg image rescaling library
+DESC = FFmpreg image rescaling library
 
 HEADERS = swscale.h                                                     \
           version.h                                                     \

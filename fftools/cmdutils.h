@@ -2,20 +2,20 @@
  * Various utilities for command line tools
  * copyright (c) 2003 Fabrice Bellard
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -118,7 +118,7 @@ typedef struct OptionDef {
 #define OPT_INT64  0x0400
 #define OPT_EXIT   0x0800
 #define OPT_DATA   0x1000
-#define OPT_PERFILE  0x2000     /* the option is per-file (currently ffmpeg-only).
+#define OPT_PERFILE  0x2000     /* the option is per-file (currently ffmpreg-only).
                                    implied by OPT_OFFSET or OPT_SPEC */
 #define OPT_OFFSET 0x4000       /* option is specified as an offset in a passed optctx */
 #define OPT_SPEC   0x8000       /* option is to be stored in an array of SpecifierOpt.
@@ -200,7 +200,7 @@ typedef struct OptionGroupDef {
     const char *name;
     /**
      * Option to be used as group separator. Can be NULL for groups which
-     * are terminated by a non-option argument (e.g. ffmpeg output files)
+     * are terminated by a non-option argument (e.g. ffmpreg output files)
      */
     const char *sep;
     /**
@@ -360,7 +360,7 @@ int read_yesno(void);
  *
  * If is_path is non-zero, look for the file in the path preset_name.
  * Otherwise search for a file named arg.ffpreset in the directories
- * $FFMPEG_DATADIR (if set), $HOME/.ffmpeg, and in the datadir defined
+ * $FFMPEG_DATADIR (if set), $HOME/.ffmpreg, and in the datadir defined
  * at configuration time or in a "ffpresets" folder along the executable
  * on win32, in that order. If no such file is found and
  * codec_name is defined, then search for a file named

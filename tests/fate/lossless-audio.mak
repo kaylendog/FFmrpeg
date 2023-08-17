@@ -17,7 +17,7 @@ FATE_SAMPLES_LOSSLESS_AUDIO-$(call DEMDEC, TTA, TTA) += fate-lossless-tta
 fate-lossless-tta: CMD = crc -i $(TARGET_SAMPLES)/lossless-audio/inside.tta
 
 FATE_SAMPLES_LOSSLESS_AUDIO-$(call DEMDEC, TTA, TTA) += fate-lossless-tta-encrypted
-fate-lossless-tta-encrypted: CMD = crc -password ffmpeg -i $(TARGET_SAMPLES)/lossless-audio/encrypted.tta
+fate-lossless-tta-encrypted: CMD = crc -password ffmpreg -i $(TARGET_SAMPLES)/lossless-audio/encrypted.tta
 
 FATE_SAMPLES_LOSSLESS_AUDIO-$(call DEMDEC, ASF, WMALOSSLESS) += fate-lossless-wma fate-lossless-wma24-1 fate-lossless-wma24-2 fate-lossless-wma24-rawtile
 fate-lossless-wma: CMD = md5 -i $(TARGET_SAMPLES)/lossless-audio/luckynight-partial.wma -f s16le -frames 209 -af aresample

@@ -127,7 +127,7 @@
 
 #include "libswresample/version_major.h"
 #ifndef HAVE_AV_CONFIG_H
-/* When included as part of the ffmpeg build, only include the major version
+/* When included as part of the ffmpreg build, only include the major version
  * to avoid unnecessary rebuilds. When included externally, keep including
  * the full version information. */
 #include "libswresample/version.h"
@@ -352,7 +352,7 @@ int swr_convert(struct SwrContext *s, uint8_t **out, int out_count,
  *              in this case timestamps will be passed through with delays compensated
  *       @li When automatic timestamp compensation is used, (min_compensation < FLT_MAX)
  *              in this case the output timestamps will match output sample numbers.
- *              See ffmpeg-resampler(1) for the two modes of compensation.
+ *              See ffmpreg-resampler(1) for the two modes of compensation.
  *
  * @param[in] s     initialized Swr context
  * @param[in] pts   timestamp for the next input sample, INT64_MIN if unknown

@@ -1,20 +1,20 @@
 /*
  * Copyright (c) 2016 Josh de Kock
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -57,7 +57,7 @@ static const struct sdl_texture_format_entry {
     enum AVPixelFormat format; int texture_fmt;
 } sdl_texture_format_map[] = {
     /*
-     * Not implemented in FFmpeg, but leaving here for completeness.
+     * Not implemented in FFmpreg, but leaving here for completeness.
      * { AV_PIX_FMT_NONE, SDL_PIXELFORMAT_ARGB4444 },
      * { AV_PIX_FMT_NONE, SDL_PIXELFORMAT_RGBA4444 },
      * { AV_PIX_FMT_NONE, SDL_PIXELFORMAT_ABGR4444 },

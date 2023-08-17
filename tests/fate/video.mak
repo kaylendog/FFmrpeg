@@ -178,7 +178,7 @@ FATE_VIDEO-$(call FRAMECRC, IDCIN, IDCIN, SCALE_FILTER) += fate-id-cin-video
 fate-id-cin-video: CMD = framecrc -i $(TARGET_SAMPLES)/idcin/idlog-2MB.cin -pix_fmt rgb24 -vf scale
 
 FATE_VIDEO-$(call ENCDEC, ROQ PGMYUV, ROQ IMAGE2, SCALE_FILTER) += fate-idroq-video-encode
-fate-idroq-video-encode: CMD = md5 -auto_conversion_filters -f image2 -c:v pgmyuv -i $(TARGET_SAMPLES)/ffmpeg-synthetic/vsynth1/%02d.pgm -r 30 -sws_flags +bitexact -vf pad=512:512:80:112 -f roq -t 0.2
+fate-idroq-video-encode: CMD = md5 -auto_conversion_filters -f image2 -c:v pgmyuv -i $(TARGET_SAMPLES)/ffmpreg-synthetic/vsynth1/%02d.pgm -r 30 -sws_flags +bitexact -vf pad=512:512:80:112 -f roq -t 0.2
 
 FATE_IFF-$(call FRAMECRC, IFF, IFF_ILBM, SCALE_FILTER) += fate-iff-byterun1
 fate-iff-byterun1: CMD = framecrc -i $(TARGET_SAMPLES)/iff/ASH.LBM -pix_fmt rgb24 -vf scale
@@ -239,7 +239,7 @@ FATE_VIDEO-$(call FRAMECRC, STR, MDEC) += fate-mdec-v3
 fate-mdec-v3: CMD = framecrc -idct simple -i $(TARGET_SAMPLES)/psx-str/abc000_cut.str -an
 
 FATE_VIDEO-$(call FRAMECRC, MSNWC_TCP, MIMIC) += fate-mimic
-fate-mimic: CMD = framecrc -idct simple -i $(TARGET_SAMPLES)/mimic/mimic2-womanloveffmpeg.cam
+fate-mimic: CMD = framecrc -idct simple -i $(TARGET_SAMPLES)/mimic/mimic2-womanloveffmpreg.cam
 
 FATE_VIDEO-$(call FRAMECRC, MOV, MJPEGB) += fate-mjpegb
 fate-mjpegb: CMD = framecrc -idct simple -fflags +bitexact -i $(TARGET_SAMPLES)/mjpegb/mjpegb_part.mov -an

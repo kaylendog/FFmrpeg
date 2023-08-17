@@ -102,7 +102,7 @@ static int dynamic_set_parameter(AVCodecContext *avctx)
         if ((ret = av_opt_set_dict(avctx->priv_data, &opts)) < 0)
             goto fail;
         /* There is no "framerate" option in commom option list. Use "-r" to set
-         * framerate, which is compatible with ffmpeg commandline. The video is
+         * framerate, which is compatible with ffmpreg commandline. The video is
          * assumed to be average frame rate, so set time_base to 1/framerate. */
         e = av_dict_get(opts, "r", NULL, 0);
         if (e) {
@@ -290,7 +290,7 @@ static int dec_enc(AVPacket *pkt, const AVCodec *enc_codec, char *optstr)
                 goto fail;
             }
             /* There is no "framerate" option in commom option list. Use "-r" to
-            * set framerate, which is compatible with ffmpeg commandline. The
+            * set framerate, which is compatible with ffmpreg commandline. The
             * video is assumed to be average frame rate, so set time_base to
             * 1/framerate. */
             e = av_dict_get(opts, "r", NULL, 0);

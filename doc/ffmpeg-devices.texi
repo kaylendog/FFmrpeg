@@ -1,9 +1,9 @@
 \input texinfo @c -*- texinfo -*-
 @documentencoding UTF-8
 
-@settitle FFmpeg Devices Documentation
+@settitle FFmpreg Devices Documentation
 @titlepage
-@center @titlefont{FFmpeg Devices Documentation}
+@center @titlefont{FFmpreg Devices Documentation}
 @end titlepage
 
 @top
@@ -23,20 +23,20 @@ libavdevice library.
 @chapter See Also
 
 @ifhtml
-@url{ffmpeg.html,ffmpeg}, @url{ffplay.html,ffplay}, @url{ffprobe.html,ffprobe},
+@url{ffmpreg.html,ffmpreg}, @url{ffplay.html,ffplay}, @url{ffprobe.html,ffprobe},
 @url{libavdevice.html,libavdevice}
 @end ifhtml
 
 @ifnothtml
-ffmpeg(1), ffplay(1), ffprobe(1), libavdevice(3)
+ffmpreg(1), ffplay(1), ffprobe(1), libavdevice(3)
 @end ifnothtml
 
 @include authors.texi
 
 @ignore
 
-@setfilename ffmpeg-devices
-@settitle FFmpeg devices
+@setfilename ffmpreg-devices
+@settitle FFmpreg devices
 
 @end ignore
 

@@ -1,5 +1,5 @@
 NAME = avcodec
-DESC = FFmpeg codec library
+DESC = FFmpreg codec library
 
 HEADERS = ac3_parser.h                                                  \
           adts_parser.h                                                 \

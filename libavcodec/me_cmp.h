@@ -1,18 +1,18 @@
 /*
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -31,7 +31,7 @@ extern const uint32_t attribute_visibility_hidden ff_square_tab[512];
 /* minimum alignment rules ;)
  * If you notice errors in the align stuff, need more alignment for some ASM code
  * for some CPU or need to use a function with less aligned data then send a mail
- * to the ffmpeg-devel mailing list, ...
+ * to the ffmpreg-devel mailing list, ...
  *
  * !warning These alignments might not match reality, (missing attribute((align))
  * stuff somewhere possible).

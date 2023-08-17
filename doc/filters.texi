@@ -1,7 +1,7 @@
 @chapter Filtering Introduction
 @c man begin FILTERING INTRODUCTION
 
-Filtering in FFmpeg is enabled through the libavfilter library.
+Filtering in FFmpreg is enabled through the libavfilter library.
 
 In libavfilter, a filter can have multiple inputs and multiple
 outputs.
@@ -22,7 +22,7 @@ back with the other stream by overlaying it on top. You can use the
 following command to achieve this:
 
 @example
-ffmpeg -i INPUT -vf "split [main][tmp]; [tmp] crop=iw:ih/2:0:0, vflip [flip]; [main][flip] overlay=0:H/2" OUTPUT
+ffmpreg -i INPUT -vf "split [main][tmp]; [tmp] crop=iw:ih/2:0:0, vflip [flip]; [main][flip] overlay=0:H/2" OUTPUT
 @end example
 
 The result will be that the top half of the video is mirrored
@@ -56,7 +56,7 @@ output.
 @chapter graph2dot
 @c man begin GRAPH2DOT
 
-The @file{graph2dot} program included in the FFmpeg @file{tools}
+The @file{graph2dot} program included in the FFmpreg @file{tools}
 directory can be used to parse a filtergraph description and issue a
 corresponding textual representation in the dot language.
 
@@ -84,7 +84,7 @@ described by the @var{GRAPH_DESCRIPTION} string. Note that this string must be
 a complete self-contained graph, with its inputs and outputs explicitly defined.
 For example if your command line is of the form:
 @example
-ffmpeg -i infile -vf scale=640:360 outfile
+ffmpreg -i infile -vf scale=640:360 outfile
 @end example
 your @var{GRAPH_DESCRIPTION} string will need to be of the form:
 @example
@@ -116,7 +116,7 @@ output pads is called a "sink".
 
 A filtergraph has a textual representation, which is recognized by the
 @option{-filter}/@option{-vf}/@option{-af} and
-@option{-filter_complex} options in @command{ffmpeg} and
+@option{-filter_complex} options in @command{ffmpreg} and
 @option{-vf}/@option{-af} in @command{ffplay}, and by the
 @code{avfilter_graph_parse_ptr()} function defined in
 @file{libavfilter/avfilter.h}.
@@ -171,12 +171,12 @@ within the quoted text; otherwise the argument string is considered
 terminated when the next special character (belonging to the set
 @samp{[]=;,}) is encountered.
 
-A special syntax implemented in the @command{ffmpeg} CLI tool allows loading
+A special syntax implemented in the @command{ffmpreg} CLI tool allows loading
 option values from files. This is done be prepending a slash '/' to the option
 name, then the supplied value is interpreted as a path from which the actual
 value is loaded. E.g.
 @example
-ffmpeg -i <INPUT> -vf drawtext=/text=/tmp/some_text <OUTPUT>
+ffmpreg -i <INPUT> -vf drawtext=/text=/tmp/some_text <OUTPUT>
 @end example
 will load the text to be drawn from @file{/tmp/some_text}. API users wishing to
 implement a similar feature should use the @code{avfilter_graph_segment_*()}
@@ -254,7 +254,7 @@ Here is a BNF description of the filtergraph syntax:
 
 Filtergraph description composition entails several levels of
 escaping. See @ref{quoting_and_escaping,,the "Quoting and escaping"
-section in the ffmpeg-utils(1) manual,ffmpeg-utils} for more
+section in the ffmpreg-utils(1) manual,ffmpreg-utils} for more
 information about the employed escaping procedure.
 
 A first level escaping affects the content of each filter option
@@ -307,9 +307,9 @@ For example, in case of the @ref{drawtext,,drawtext filter}, you might prefer to
 use the @option{textfile} option in place of @option{text} to specify the text
 to render.
 
-When using the @command{ffmpeg} tool, you might consider to use the
-@ref{filter_script option,,-filter_script option,ffmpeg} or
-@ref{filter_complex_script option,,-filter_complex_script option,ffmpeg}.
+When using the @command{ffmpreg} tool, you might consider to use the
+@ref{filter_script option,,-filter_script option,ffmpreg} or
+@ref{filter_complex_script option,,-filter_complex_script option,ffmpreg}.
 
 @chapter Timeline editing
 
@@ -349,7 +349,7 @@ smartblur = enable='between(t,10,3*60)',
 curves    = enable='gte(t,3)' : preset=cross_process
 @end example
 
-See @code{ffmpeg -filters} to view which filters have timeline support.
+See @code{ffmpreg -filters} to view which filters have timeline support.
 
 @c man end FILTERGRAPH DESCRIPTION
 
@@ -358,7 +358,7 @@ See @code{ffmpeg -filters} to view which filters have timeline support.
 
 Some options can be changed during the operation of the filter using
 a command. These options are marked 'T' on the output of
-@command{ffmpeg} @option{-h filter=<name of filter>}.
+@command{ffmpreg} @option{-h filter=<name of filter>}.
 The name of the command is the name of the option and the argument is
 the new value.
 
@@ -411,7 +411,7 @@ input frame.
 @chapter Audio Filters
 @c man begin AUDIO FILTERS
 
-When you configure your FFmpeg build, you can disable any of the
+When you configure your FFmpreg build, you can disable any of the
 existing filters using @code{--disable-filters}.
 The configure output will show the audio filters included in your
 build.
@@ -531,7 +531,7 @@ silent. Default is 44100.
 
 @item duration, d
 Specify the duration of the cross fade effect. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 By default the duration is determined by @var{nb_samples}.
 If set this option is used instead of @var{nb_samples}.
@@ -554,13 +554,13 @@ For description of available curve types see @ref{afade} filter description.
 @item
 Cross fade from one input to another:
 @example
-ffmpeg -i first.flac -i second.flac -filter_complex acrossfade=d=10:c1=exp:c2=exp output.flac
+ffmpreg -i first.flac -i second.flac -filter_complex acrossfade=d=10:c1=exp:c2=exp output.flac
 @end example
 
 @item
 Cross fade from one input to another but without overlapping:
 @example
-ffmpeg -i first.flac -i second.flac -filter_complex acrossfade=d=10:o=0:c1=exp:c2=exp output.flac
+ffmpreg -i first.flac -i second.flac -filter_complex acrossfade=d=10:o=0:c1=exp:c2=exp output.flac
 @end example
 @end itemize
 
@@ -636,19 +636,19 @@ Default value is @code{auto}.
 Split input audio stream into two bands (low and high) with split frequency of 1500 Hz,
 each band will be in separate stream:
 @example
-ffmpeg -i in.flac -filter_complex 'acrossover=split=1500[LOW][HIGH]' -map '[LOW]' low.wav -map '[HIGH]' high.wav
+ffmpreg -i in.flac -filter_complex 'acrossover=split=1500[LOW][HIGH]' -map '[LOW]' low.wav -map '[HIGH]' high.wav
 @end example
 
 @item
 Same as above, but with higher filter order:
 @example
-ffmpeg -i in.flac -filter_complex 'acrossover=split=1500:order=8th[LOW][HIGH]' -map '[LOW]' low.wav -map '[HIGH]' high.wav
+ffmpreg -i in.flac -filter_complex 'acrossover=split=1500:order=8th[LOW][HIGH]' -map '[LOW]' low.wav -map '[HIGH]' high.wav
 @end example
 
 @item
 Same as above, but also with additional middle band (frequencies between 1500 and 8000):
 @example
-ffmpeg -i in.flac -filter_complex 'acrossover=split=1500 8000:order=8th[LOW][MID][HIGH]' -map '[LOW]' low.wav -map '[MID]' mid.wav -map '[HIGH]' high.wav
+ffmpreg -i in.flac -filter_complex 'acrossover=split=1500 8000:order=8th[LOW][MID][HIGH]' -map '[LOW]' low.wav -map '[MID]' mid.wav -map '[HIGH]' high.wav
 @end example
 @end itemize
 
@@ -1402,13 +1402,13 @@ the output audio will be silence. Default is 44100.
 @item start_time, st
 Specify the start time of the fade effect. Default is 0.
 The value must be specified as a time duration; see
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 If set this option is used instead of @var{start_sample}.
 
 @item duration, d
 Specify the duration of the fade effect. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 At the end of the fade-in effect the output audio will have the same
 volume as the input audio, at the end of the fade-out transition
@@ -1886,9 +1886,9 @@ Default is @code{init}.
 
 @itemize
 @item
-Apply reverb to stream using mono IR file as second input, complete command using ffmpeg:
+Apply reverb to stream using mono IR file as second input, complete command using ffmpreg:
 @example
-ffmpeg -i input.wav -i middle_tunnel_1way_mono.wav -lavfi afir output.wav
+ffmpreg -i input.wav -i middle_tunnel_1way_mono.wav -lavfi afir output.wav
 @end example
 
 @item
@@ -1917,7 +1917,7 @@ A '|'-separated list of requested sample rates.
 @item channel_layouts, cl
 A '|'-separated list of requested channel layouts.
 
-See @ref{channel layout syntax,,the Channel Layout section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+See @ref{channel layout syntax,,the Channel Layout section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the required syntax.
 @end table
 
@@ -2417,7 +2417,7 @@ amovie=left.wav [l] ; amovie=right.mp3 [r] ; [l] [r] amerge
 @item
 Multiple merges assuming 1 video stream and 6 audio streams in @file{input.mkv}:
 @example
-ffmpeg -i input.mkv -filter_complex "[0:1][0:2][0:3][0:4][0:5][0:6] amerge=inputs=6" -c:a pcm_s16le output.mkv
+ffmpreg -i input.mkv -filter_complex "[0:1][0:2][0:3][0:4][0:5][0:6] amerge=inputs=6" -c:a pcm_s16le output.mkv
 @end example
 @end itemize
 
@@ -2475,14 +2475,14 @@ by this filter if this option is disabled. By default is enabled.
 This will mix 3 input audio streams to a single output with the same duration as the
 first input and a dropout transition time of 3 seconds:
 @example
-ffmpeg -i INPUT1 -i INPUT2 -i INPUT3 -filter_complex amix=inputs=3:duration=first:dropout_transition=3 OUTPUT
+ffmpreg -i INPUT1 -i INPUT2 -i INPUT3 -filter_complex amix=inputs=3:duration=first:dropout_transition=3 OUTPUT
 @end example
 
 @item
 This will mix one vocal and one music input audio stream to a single output with the same duration as the
 longest input. The music will have quarter the weight as the vocals, and the inputs are not normalized:
 @example
-ffmpeg -i VOCALS -i MUSIC -filter_complex amix=inputs=2:duration=longest:dropout_transition=0:weights="1 0.25":normalize=0 OUTPUT
+ffmpreg -i VOCALS -i MUSIC -filter_complex amix=inputs=2:duration=longest:dropout_transition=0:weights="1 0.25":normalize=0 OUTPUT
 @end example
 
 @end itemize
@@ -2713,7 +2713,7 @@ Pass the audio source unchanged to the output.
 
 Pad the end of an audio stream with silence.
 
-This can be used together with @command{ffmpeg} @option{-shortest} to
+This can be used together with @command{ffmpreg} @option{-shortest} to
 extend audio streams to the same length as the video stream.
 
 A description of the accepted options follows.
@@ -2735,12 +2735,12 @@ with @option{pad_len}.
 
 @item pad_dur
 Specify the duration of samples of silence to add. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax. Used only if set to non-negative value.
 
 @item whole_dur
 Specify the minimum total duration in the output audio stream. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax. Used only if set to non-negative value. If the value is longer than
 the input audio length, silence is added to the end, until the value is reached.
 This option is mutually exclusive with @option{pad_dur}
@@ -2750,7 +2750,7 @@ If neither the @option{pad_len} nor the @option{whole_len} nor @option{pad_dur}
 nor @option{whole_dur} option is set, the filter will add silence to the end of
 the input stream indefinitely.
 
-Note that for ffmpeg 4.4 and earlier a zero @option{pad_dur} or
+Note that for ffmpreg 4.4 and earlier a zero @option{pad_dur} or
 @option{whole_dur} also caused the filter to add silence indefinitely.
 
 @subsection Examples
@@ -2770,12 +2770,12 @@ apad=whole_len=10000
 @end example
 
 @item
-Use @command{ffmpeg} to pad the audio input with silence, so that the
+Use @command{ffmpreg} to pad the audio input with silence, so that the
 video stream will always result the shortest and will be converted
 until the end in the output file when using the @option{shortest}
 option:
 @example
-ffmpeg -i VIDEO -i AUDIO -filter_complex "[1:0]apad" -shortest OUTPUT
+ffmpreg -i VIDEO -i AUDIO -filter_complex "[1:0]apad" -shortest OUTPUT
 @end example
 @end itemize
 
@@ -2952,7 +2952,7 @@ The filter accepts the syntax
 expresses a sample rate and @var{resampler_options} is a list of
 @var{key}=@var{value} pairs, separated by ":". See the
 @ref{Resampler Options,,"Resampler Options" section in the
-ffmpeg-resampler(1) manual,ffmpeg-resampler}
+ffmpreg-resampler(1) manual,ffmpreg-resampler}
 for the complete list of supported options.
 
 @subsection Examples
@@ -3262,7 +3262,7 @@ A list of each metadata key follows:
 Automatic Speech Recognition
 
 This filter uses PocketSphinx for speech recognition. To enable
-compilation of this filter, you need to configure FFmpeg with
+compilation of this filter, you need to configure FFmpreg with
 @code{--enable-pocketsphinx}.
 
 It accepts the following options:
@@ -3725,7 +3725,7 @@ The number of the first sample that should be dropped.
 
 @option{start}, @option{end}, and @option{duration} are expressed as time
 duration specifications; see
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}.
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}.
 
 Note that the first two sets of the start/end options and the @option{duration}
 option look at the frame timestamp, while the _sample options simply count the
@@ -3748,13 +3748,13 @@ Examples:
 @item
 Drop everything except the second minute of input:
 @example
-ffmpeg -i INPUT -af atrim=60:120
+ffmpreg -i INPUT -af atrim=60:120
 @end example
 
 @item
 Keep only the first 1000 samples:
 @example
-ffmpeg -i INPUT -af atrim=end_sample=1000
+ffmpreg -i INPUT -af atrim=end_sample=1000
 @end example
 
 @end itemize
@@ -3788,7 +3788,7 @@ This is generally not true, but is valid for typical audio streams.
 @item
 Calculate correlation between channels in stereo audio stream:
 @example
-ffmpeg -i stereo.wav -af channelsplit,axcorrelate=size=1024:algo=fast correlation.wav
+ffmpreg -i stereo.wav -af channelsplit,axcorrelate=size=1024:algo=fast correlation.wav
 @end example
 @end itemize
 
@@ -4173,7 +4173,7 @@ Note that filter delay will be exactly this many samples when set to non-zero va
 Bauer stereo to binaural transformation, which improves headphone listening of
 stereo audio records.
 
-To enable compilation of this filter you need to configure FFmpeg with
+To enable compilation of this filter you need to configure FFmpreg with
 @code{--enable-libbs2b}.
 
 It accepts the following parameters:
@@ -4230,7 +4230,7 @@ output channels, preserving indices.
 @item
 For example, assuming a 5.1+downmix input MOV file,
 @example
-ffmpeg -i in.mov -filter 'channelmap=map=DL-FL|DR-FR' out.wav
+ffmpreg -i in.mov -filter 'channelmap=map=DL-FL|DR-FR' out.wav
 @end example
 will create an output WAV file tagged as stereo from the downmix channels of
 the input.
@@ -4238,7 +4238,7 @@ the input.
 @item
 To fix a 5.1 WAV improperly encoded in AAC's native channel order
 @example
-ffmpeg -i in.wav -filter 'channelmap=1|2|0|5|3|4:5.1' out.wav
+ffmpreg -i in.wav -filter 'channelmap=1|2|0|5|3|4:5.1' out.wav
 @end example
 @end itemize
 
@@ -4263,7 +4263,7 @@ Choosing channels not present in channel layout in the input will result in an e
 @item
 For example, assuming a stereo input MP3 file,
 @example
-ffmpeg -i in.mp3 -filter_complex channelsplit out.mkv
+ffmpreg -i in.mp3 -filter_complex channelsplit out.mkv
 @end example
 will create an output Matroska file with two audio streams, one containing only
 the left channel and the other the right channel.
@@ -4271,7 +4271,7 @@ the left channel and the other the right channel.
 @item
 Split a 5.1 WAV file into per-channel files:
 @example
-ffmpeg -i in.wav -filter_complex
+ffmpreg -i in.wav -filter_complex
 'channelsplit=channel_layout=5.1[FL][FR][FC][LFE][SL][SR]'
 -map '[FL]' front_left.wav -map '[FR]' front_right.wav -map '[FC]'
 front_center.wav -map '[LFE]' lfe.wav -map '[SL]' side_left.wav -map '[SR]'
@@ -4281,7 +4281,7 @@ side_right.wav
 @item
 Extract only LFE from a 5.1 WAV file:
 @example
-ffmpeg -i in.wav -filter_complex 'channelsplit=channel_layout=5.1:channels=LFE[LFE]'
+ffmpreg -i in.wav -filter_complex 'channelsplit=channel_layout=5.1:channels=LFE[LFE]'
 -map '[LFE]' lfe.wav
 @end example
 @end itemize
@@ -5319,15 +5319,15 @@ The filter supports the Peak Extend and Low-level Gain Adjustment features
 of HDCD, and detects the Transient Filter flag.
 
 @example
-ffmpeg -i HDCD16.flac -af hdcd OUT24.flac
+ffmpreg -i HDCD16.flac -af hdcd OUT24.flac
 @end example
 
 When using the filter with wav, note the default encoding for wav is 16-bit,
 so the resulting 20-bit stream will be truncated back to 16-bit. Use something
 like @command{-acodec pcm_s24le} after the filter to get 24-bit PCM output.
 @example
-ffmpeg -i HDCD16.wav -af hdcd OUT16.wav
-ffmpeg -i HDCD16.wav -af hdcd -c:a pcm_s24le OUT24.wav
+ffmpreg -i HDCD16.wav -af hdcd OUT16.wav
+ffmpreg -i HDCD16.wav -af hdcd -c:a pcm_s24le OUT24.wav
 @end example
 
 The filter accepts the following options:
@@ -5421,7 +5421,7 @@ Full example using wav files as coefficients with amovie filters for 7.1 downmix
 each amovie filter use stereo file with IR coefficients as input.
 The files give coefficients for each position of virtual loudspeaker:
 @example
-ffmpeg -i input.wav
+ffmpreg -i input.wav
 -filter_complex "amovie=azi_270_ele_0_DFC.wav[sr];amovie=azi_90_ele_0_DFC.wav[sl];amovie=azi_225_ele_0_DFC.wav[br];amovie=azi_135_ele_0_DFC.wav[bl];amovie=azi_0_ele_0_DFC.wav,asplit[fc][lfe];amovie=azi_35_ele_0_DFC.wav[fl];amovie=azi_325_ele_0_DFC.wav[fr];[0:a][fl][fr][fc][lfe][bl][br][sl][sr]headphone=FL|FR|FC|LFE|BL|BR|SL|SR"
 output.wav
 @end example
@@ -5430,7 +5430,7 @@ output.wav
 Full example using wav files as coefficients with amovie filters for 7.1 downmix,
 but now in @var{multich} @var{hrir} format.
 @example
-ffmpeg -i input.wav -filter_complex "amovie=minp.wav[hrirs];[0:a][hrirs]headphone=map=FL|FR|FC|LFE|BL|BR|SL|SR:hrir=multich"
+ffmpreg -i input.wav -filter_complex "amovie=minp.wav[hrirs];[0:a][hrirs]headphone=map=FL|FR|FC|LFE|BL|BR|SL|SR:hrir=multich"
 output.wav
 @end example
 @end itemize
@@ -5565,12 +5565,12 @@ and if that fails it picks the first unused input channel.
 
 Join 3 inputs (with properly set channel layouts):
 @example
-ffmpeg -i INPUT1 -i INPUT2 -i INPUT3 -filter_complex join=inputs=3 OUTPUT
+ffmpreg -i INPUT1 -i INPUT2 -i INPUT3 -filter_complex join=inputs=3 OUTPUT
 @end example
 
 Build a 5.1 output from 6 single-channel streams:
 @example
-ffmpeg -i fl -i fr -i fc -i sl -i sr -i lfe -filter_complex
+ffmpreg -i fl -i fr -i fc -i sl -i sr -i lfe -filter_complex
 'join=inputs=6:channel_layout=5.1:map=0.0-FL|1.0-FR|2.0-FC|3.0-SL|4.0-SR|5.0-LFE'
 out
 @end example
@@ -5579,7 +5579,7 @@ out
 
 Load a LADSPA (Linux Audio Developer's Simple Plugin API) plugin.
 
-To enable compilation of this filter you need to configure FFmpeg with
+To enable compilation of this filter you need to configure FFmpreg with
 @code{--enable-ladspa}.
 
 @table @option
@@ -5619,7 +5619,7 @@ is 1024. Only used if plugin have zero inputs.
 
 @item duration, d
 Set the minimum duration of the sourced audio. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 Note that the resulting duration may be greater than the specified duration,
 as the generated audio is always cut at the end of a complete frame.
@@ -5910,7 +5910,7 @@ Syntax for the command is : "@var{mix}"
 
 Load a LV2 (LADSPA Version 2) plugin.
 
-To enable compilation of this filter you need to configure FFmpeg with
+To enable compilation of this filter you need to configure FFmpreg with
 @code{--enable-lv2}.
 
 @table @option
@@ -5934,7 +5934,7 @@ is 1024. Only used if plugin have zero inputs.
 
 @item duration, d
 Set the minimum duration of the sourced audio. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 Note that the resulting duration may be greater than the specified duration,
 as the generated audio is always cut at the end of a complete frame.
@@ -6035,7 +6035,7 @@ A customized down-mix to stereo that works automatically for 3-, 4-, 5- and
 pan=stereo| FL < FL + 0.5*FC + 0.6*BL + 0.6*SL | FR < FR + 0.5*FC + 0.6*BR + 0.6*SR
 @end example
 
-Note that @command{ffmpeg} integrates a default down-mix (and up-mix) system
+Note that @command{ffmpreg} integrates a default down-mix (and up-mix) system
 that should be preferred (see "-ac" option) unless you have very specific
 needs.
 
@@ -6100,7 +6100,7 @@ not meant to be used directly.
 @section rubberband
 Apply time-stretching and pitch-shifting with librubberband.
 
-To enable compilation of this filter, you need to configure FFmpeg with
+To enable compilation of this filter, you need to configure FFmpreg with
 @code{--enable-librubberband}.
 
 The filter accepts the following options:
@@ -6264,11 +6264,11 @@ This filter supports the all above options as @ref{commands}.
 
 @itemize
 @item
-Full ffmpeg example taking 2 audio inputs, 1st input to be compressed
+Full ffmpreg example taking 2 audio inputs, 1st input to be compressed
 depending on the signal of 2nd input and later compressed signal to be
 merged with 2nd input:
 @example
-ffmpeg -i main.flac -i sidechain.flac -filter_complex "[1:a]asplit=2[sc][mix];[0:a][sc]sidechaincompress[compr];[compr][mix]amerge"
+ffmpreg -i main.flac -i sidechain.flac -filter_complex "[1:a]asplit=2[sc][mix];[0:a][sc]sidechaincompress[compr];[compr][mix]amerge"
 @end example
 @end itemize
 
@@ -6375,7 +6375,7 @@ specified value) or amplitude ratio. Default is -60dB, or 0.001.
 
 @item duration, d
 Set silence duration until notification (default is 2 seconds). See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 
 @item mono, m
@@ -6392,10 +6392,10 @@ silencedetect=n=-50dB:d=5
 @end example
 
 @item
-Complete example with @command{ffmpeg} to detect silence with 0.0001 noise
+Complete example with @command{ffmpreg} to detect silence with 0.0001 noise
 tolerance in @file{silence.mp3}:
 @example
-ffmpeg -i silence.mp3 -af silencedetect=noise=0.0001 -f null -
+ffmpreg -i silence.mp3 -af silencedetect=noise=0.0001 -f null -
 @end example
 @end itemize
 
@@ -6572,7 +6572,7 @@ The HRTFs are stored in SOFA files (see @url{http://www.sofacoustics.org/} for a
 SOFAlizer is developed at the Acoustics Research Institute (ARI) of the
 Austrian Academy of Sciences.
 
-To enable compilation of this filter you need to configure FFmpeg with
+To enable compilation of this filter you need to configure FFmpreg with
 @code{--enable-libmysofa}.
 
 The filter accepts the following options:
@@ -6991,13 +6991,13 @@ The filter accepts the following options:
 @item chl_out
 Set output channel layout. By default, this is @var{5.1}.
 
-See @ref{channel layout syntax,,the Channel Layout section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+See @ref{channel layout syntax,,the Channel Layout section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the required syntax.
 
 @item chl_in
 Set input channel layout. By default, this is @var{stereo}.
 
-See @ref{channel layout syntax,,the Channel Layout section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+See @ref{channel layout syntax,,the Channel Layout section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the required syntax.
 
 @item level_in
@@ -7677,7 +7677,7 @@ must be equal to the number of specified expressions.
 
 @item duration, d
 Set the minimum duration of the sourced audio. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 Note that the resulting duration may be greater than the specified
 duration, as the generated audio is always cut at the end of a
@@ -7910,7 +7910,7 @@ Set the number of samples per requested frames.
 
 @item duration, d
 Set the duration of the sourced audio. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 
 If not specified, or the expressed duration is negative, the audio is
@@ -7939,7 +7939,7 @@ All the parameters need to be explicitly defined.
 
 Synthesize a voice utterance using the libflite library.
 
-To enable compilation of this filter you need to configure FFmpeg with
+To enable compilation of this filter you need to configure FFmpreg with
 @code{--enable-libflite}.
 
 Note that versions of the flite library prior to 2.0 are not thread-safe.
@@ -7983,9 +7983,9 @@ flite=text='So fare thee well, poor devil of a Sub-Sub, whose commentator I am':
 @end example
 
 @item
-Input text to ffmpeg:
+Input text to ffmpreg:
 @example
-ffmpeg -f lavfi -i flite=text='So fare thee well, poor devil of a Sub-Sub, whose commentator I am':voice=slt
+ffmpreg -f lavfi -i flite=text='So fare thee well, poor devil of a Sub-Sub, whose commentator I am':voice=slt
 @end example
 
 @item
@@ -8213,7 +8213,7 @@ tools.
 @chapter Video Filters
 @c man begin VIDEO FILTERS
 
-When you configure your FFmpeg build, you can disable any of the
+When you configure your FFmpreg build, you can disable any of the
 existing filters using @code{--disable-filters}.
 The configure output will show the video filters included in your
 build.
@@ -8562,7 +8562,7 @@ Allowed range is 1 to 255. Default is 1.
 Apply the bilateral filter on a video.
 
 @example
-./ffmpeg -v verbose \
+./ffmpreg -v verbose \
 -hwaccel cuda -hwaccel_output_format cuda -i input.mp4  \
 -init_hw_device cuda \
 -filter_complex \
@@ -9314,13 +9314,13 @@ value.
 @item
 Make every green pixel in the input image transparent:
 @example
-ffmpeg -i input.png -vf chromakey=green out.png
+ffmpreg -i input.png -vf chromakey=green out.png
 @end example
 
 @item
 Overlay a greenscreen-video on top of a static black background.
 @example
-ffmpeg -f lavfi -i color=c=black:s=1280x720 -i video.mp4 -shortest -filter_complex "[1:v]chromakey=0x70de77:0.1:0.2[ckout];[0:v][ckout]overlay[out]" -map "[out]" output.mkv
+ffmpreg -f lavfi -i color=c=black:s=1280x720 -i video.mp4 -shortest -filter_complex "[1:v]chromakey=0x70de77:0.1:0.2[ckout];[0:v][ckout]overlay[out]" -map "[out]" output.mkv
 @end example
 @end itemize
 
@@ -9337,7 +9337,7 @@ for more details and parameters see @ref{chromakey}.
 Make all the green pixels in the input video transparent and use it as an overlay for another video:
 
 @example
-./ffmpeg \
+./ffmpreg \
     -hwaccel cuda -hwaccel_output_format cuda -i input_green.mp4  \
     -hwaccel cuda -hwaccel_output_format cuda -i base_video.mp4 \
     -init_hw_device cuda \
@@ -9353,7 +9353,7 @@ Make all the green pixels in the input video transparent and use it as an overla
 Process two software sources, explicitly uploading the frames:
 
 @example
-./ffmpeg -init_hw_device cuda=cuda -filter_hw_device cuda \
+./ffmpreg -init_hw_device cuda=cuda -filter_hw_device cuda \
     -f lavfi -i color=size=800x600:color=white,format=yuv420p \
     -f lavfi -i yuvtestsrc=size=200x200,format=yuv420p \
     -filter_complex \
@@ -9834,7 +9834,7 @@ The filter accepts the following options:
 @table @option
 @item color
 Set the color for which alpha will be set to 0 (full transparency).
-See @ref{color syntax,,"Color" section in the ffmpeg-utils manual,ffmpeg-utils}.
+See @ref{color syntax,,"Color" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default is @code{black}.
 
 @item similarity
@@ -9858,13 +9858,13 @@ Range is 0.0 to 1.0. Default is @code{0.0}.
 @item
 Make every green pixel in the input image transparent:
 @example
-ffmpeg -i input.png -vf colorkey=green out.png
+ffmpreg -i input.png -vf colorkey=green out.png
 @end example
 
 @item
 Overlay a greenscreen-video on top of a static background image.
 @example
-ffmpeg -i background.png -i video.mp4 -filter_complex "[1:v]colorkey=0x3BBD1E:0.3:0.2[ckout];[0:v][ckout]overlay[out]" -map "[out]" output.flv
+ffmpreg -i background.png -i video.mp4 -filter_complex "[1:v]colorkey=0x3BBD1E:0.3:0.2[ckout];[0:v][ckout]overlay[out]" -map "[out]" output.flv
 @end example
 @end itemize
 
@@ -10599,10 +10599,10 @@ coreimage=filter=CIBoxBlur@@default#CIVignetteEffect@@inputCenter=100\ 100@@inpu
 @end example
 
 @item
-Use nullsrc and CIQRCodeGenerator to create a QR code for the FFmpeg homepage,
+Use nullsrc and CIQRCodeGenerator to create a QR code for the FFmpreg homepage,
 given as complete and escaped command-line for Apple's standard bash shell:
 @example
-ffmpeg -f lavfi -i nullsrc=s=100x100,coreimage=filter=CIQRCodeGenerator@@inputMessage=https\\\\\://FFmpeg.org/@@inputCorrectionLevel=H -frames:v 1 QRCode.png
+ffmpreg -f lavfi -i nullsrc=s=100x100,coreimage=filter=CIQRCodeGenerator@@inputMessage=https\\\\\://FFmpreg.org/@@inputCorrectionLevel=H -frames:v 1 QRCode.png
 @end example
 @end itemize
 
@@ -10627,7 +10627,7 @@ In the below example the input file @file{main.mpg} being processed is compared
 with the reference file @file{ref.mpg}.
 
 @example
-ffmpeg -i main.mpg -i ref.mpg -lavfi corr -f null -
+ffmpreg -i main.mpg -i ref.mpg -lavfi corr -f null -
 @end example
 
 @section cover_rect
@@ -10658,9 +10658,9 @@ Default value is @var{blur}.
 
 @itemize
 @item
-Cover a rectangular object by the supplied image of a given video using @command{ffmpeg}:
+Cover a rectangular object by the supplied image of a given video using @command{ffmpreg}:
 @example
-ffmpeg -i file.ts -vf find_rect=newref.pgm,cover_rect=cover.jpg:mode=cover new.mkv
+ffmpreg -i file.ts -vf find_rect=newref.pgm,cover_rect=cover.jpg:mode=cover new.mkv
 @end example
 @end itemize
 
@@ -10935,19 +10935,19 @@ is @code{15/255}.
 @item
 Find video area surrounded by black borders:
 @example
-ffmpeg -i file.mp4 -vf cropdetect,metadata=mode=print -f null -
+ffmpreg -i file.mp4 -vf cropdetect,metadata=mode=print -f null -
 @end example
 
 @item
 Find an embedded video area, generate motion vectors beforehand:
 @example
-ffmpeg -i file.mp4 -vf mestimate,cropdetect=mode=mvedges,metadata=mode=print -f null -
+ffmpreg -i file.mp4 -vf mestimate,cropdetect=mode=mvedges,metadata=mode=print -f null -
 @end example
 
 @item
 Find an embedded video area, use motion vectors from decoder:
 @example
-ffmpeg -flags2 +export_mvs -i file.mp4 -vf cropdetect=mode=mvedges,metadata=mode=print -f null -
+ffmpreg -flags2 +export_mvs -i file.mp4 -vf cropdetect=mode=mvedges,metadata=mode=print -f null -
 @end example
 @end itemize
 
@@ -10970,7 +10970,7 @@ passes on @option{preroll} amount of frames, then it buffers at most
 it forwards the buffered frames and also any subsequent frames coming in its
 input.
 
-The filter can be used synchronize the output of multiple ffmpeg processes for
+The filter can be used synchronize the output of multiple ffmpreg processes for
 realtime output devices like decklink. By putting the delay in the filtering
 chain and pre-buffering frames the process can pass on data to output almost
 immediately after the target wallclock timestamp is reached.
@@ -11121,10 +11121,10 @@ curves=psfile='MyCurvesPresets/purple.acv':green='0/0 0.45/0.53 1/1'
 @end example
 
 @item
-Check out the curves of the @code{cross_process} profile using @command{ffmpeg}
+Check out the curves of the @code{cross_process} profile using @command{ffmpreg}
 and @command{gnuplot}:
 @example
-ffmpeg -f lavfi -i color -vf curves=cross_process:plot=/tmp/curves.plt -frames:v 1 -f null -
+ffmpreg -f lavfi -i color -vf curves=cross_process:plot=/tmp/curves.plt -frames:v 1 -f null -
 gnuplot -p /tmp/curves.plt
 @end example
 @end itemize
@@ -11646,7 +11646,7 @@ the following values:
 @item tensorflow
 TensorFlow backend. To enable this backend you
 need to install the TensorFlow for C library (see
-@url{https://www.tensorflow.org/install/lang_c}) and configure FFmpeg with
+@url{https://www.tensorflow.org/install/lang_c}) and configure FFmpreg with
 @code{--enable-libtensorflow}
 @end table
 
@@ -11876,13 +11876,13 @@ Default is @samp{smear}.
 @item
 Add ripple effect to rgb input of video size hd720:
 @example
-ffmpeg -i INPUT -f lavfi -i nullsrc=s=hd720,lutrgb=128:128:128 -f lavfi -i nullsrc=s=hd720,geq='r=128+30*sin(2*PI*X/400+T):g=128+30*sin(2*PI*X/400+T):b=128+30*sin(2*PI*X/400+T)' -lavfi '[0][1][2]displace' OUTPUT
+ffmpreg -i INPUT -f lavfi -i nullsrc=s=hd720,lutrgb=128:128:128 -f lavfi -i nullsrc=s=hd720,geq='r=128+30*sin(2*PI*X/400+T):g=128+30*sin(2*PI*X/400+T):b=128+30*sin(2*PI*X/400+T)' -lavfi '[0][1][2]displace' OUTPUT
 @end example
 
 @item
 Add wave effect to rgb input of video size hd720:
 @example
-ffmpeg -i INPUT -f lavfi -i nullsrc=hd720,geq='r=128+80*(sin(sqrt((X-W/2)*(X-W/2)+(Y-H/2)*(Y-H/2))/220*2*PI+T)):g=128+80*(sin(sqrt((X-W/2)*(X-W/2)+(Y-H/2)*(Y-H/2))/220*2*PI+T)):b=128+80*(sin(sqrt((X-W/2)*(X-W/2)+(Y-H/2)*(Y-H/2))/220*2*PI+T))' -lavfi '[1]split[x][y],[0][x][y]displace' OUTPUT
+ffmpreg -i INPUT -f lavfi -i nullsrc=hd720,geq='r=128+80*(sin(sqrt((X-W/2)*(X-W/2)+(Y-H/2)*(Y-H/2))/220*2*PI+T)):g=128+80*(sin(sqrt((X-W/2)*(X-W/2)+(Y-H/2)*(Y-H/2))/220*2*PI+T)):b=128+80*(sin(sqrt((X-W/2)*(X-W/2)+(Y-H/2)*(Y-H/2))/220*2*PI+T))' -lavfi '[1]split[x][y],[0][x][y]displace' OUTPUT
 @end example
 @end itemize
 
@@ -11979,13 +11979,13 @@ the following values:
 @item tensorflow
 TensorFlow backend. To enable this backend you
 need to install the TensorFlow for C library (see
-@url{https://www.tensorflow.org/install/lang_c}) and configure FFmpeg with
+@url{https://www.tensorflow.org/install/lang_c}) and configure FFmpreg with
 @code{--enable-libtensorflow}
 
 @item openvino
 OpenVINO backend. To enable this backend you
 need to build and install the OpenVINO for C library (see
-@url{https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md}) and configure FFmpeg with
+@url{https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md}) and configure FFmpreg with
 @code{--enable-libopenvino} (--extra-cflags=-I... --extra-ldflags=-L... might
 be needed if the header files and libraries are not installed into system path)
 
@@ -12016,20 +12016,20 @@ please use tools/python/tf_sess_config.py to get the configs of TensorFlow backe
 @item
 Remove rain in rgb24 frame with can.pb (see @ref{derain} filter):
 @example
-./ffmpeg -i rain.jpg -vf format=rgb24,dnn_processing=dnn_backend=tensorflow:model=can.pb:input=x:output=y derain.jpg
+./ffmpreg -i rain.jpg -vf format=rgb24,dnn_processing=dnn_backend=tensorflow:model=can.pb:input=x:output=y derain.jpg
 @end example
 
 @item
 Handle the Y channel with srcnn.pb (see @ref{sr} filter) for frame with yuv420p (planar YUV formats supported):
 @example
-./ffmpeg -i 480p.jpg -vf format=yuv420p,scale=w=iw*2:h=ih*2,dnn_processing=dnn_backend=tensorflow:model=srcnn.pb:input=x:output=y -y srcnn.jpg
+./ffmpreg -i 480p.jpg -vf format=yuv420p,scale=w=iw*2:h=ih*2,dnn_processing=dnn_backend=tensorflow:model=srcnn.pb:input=x:output=y -y srcnn.jpg
 @end example
 
 @item
 Handle the Y channel with espcn.pb (see @ref{sr} filter), which changes frame size, for format yuv420p (planar YUV formats supported),
 please use tools/python/tf_sess_config.py to get the configs of TensorFlow backend for your system.
 @example
-./ffmpeg -i 480p.jpg -vf format=yuv420p,dnn_processing=dnn_backend=tensorflow:model=espcn.pb:input=x:output=y:backend_configs=sess_config=0x10022805320e09cdccccccccccec3f20012a01303801 -y tmp.espcn.jpg
+./ffmpreg -i 480p.jpg -vf format=yuv420p,dnn_processing=dnn_backend=tensorflow:model=espcn.pb:input=x:output=y:backend_configs=sess_config=0x10022805320e09cdccccccccccec3f20012a01303801 -y tmp.espcn.jpg
 @end example
 
 @end itemize
@@ -12052,7 +12052,7 @@ the input width and height. It defaults to 0.
 
 @item color, c
 Specify the color of the box to write. For the general syntax of this option,
-check the @ref{color syntax,,"Color" section in the ffmpeg-utils manual,ffmpeg-utils}. If the special
+check the @ref{color syntax,,"Color" section in the ffmpreg-utils manual,ffmpreg-utils}. If the special
 value @code{invert} is used, the box edge color is the same as the
 video with inverted luma.
 
@@ -12228,7 +12228,7 @@ Default is @code{frame}.
 
 @item size
 Set size of graph video. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 The default value is @code{900x256}.
 
 @item rate, r
@@ -12278,7 +12278,7 @@ framed. Default to 0.
 
 @item color, c
 Specify the color of the grid. For the general syntax of this option,
-check the @ref{color syntax,,"Color" section in the ffmpeg-utils manual,ffmpeg-utils}. If the special
+check the @ref{color syntax,,"Color" section in the ffmpreg-utils manual,ffmpreg-utils}. If the special
 value @code{invert} is used, the grid color is the same as the
 video with inverted luma.
 
@@ -12357,11 +12357,11 @@ value.
 Draw a text string or text from a specified file on top of a video, using the
 libfreetype library.
 
-To enable compilation of this filter, you need to configure FFmpeg with
+To enable compilation of this filter, you need to configure FFmpreg with
 @code{--enable-libfreetype} and @code{--enable-libharfbuzz}.
 To enable default font fallback and the @var{font} option you need to
-configure FFmpeg with @code{--enable-libfontconfig}.
-To enable the @var{text_shaping} option, you need to configure FFmpeg with
+configure FFmpreg with @code{--enable-libfontconfig}.
+To enable the @var{text_shaping} option, you need to configure FFmpreg with
 @code{--enable-libfribidi}.
 
 @subsection Syntax
@@ -12391,7 +12391,7 @@ The default value of @var{boxborderw} is "0".
 
 @item boxcolor
 The color to be used for drawing box around text. For the syntax of this
-option, check the @ref{color syntax,,"Color" section in the ffmpeg-utils manual,ffmpeg-utils}.
+option, check the @ref{color syntax,,"Color" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 The default value of @var{boxcolor} is "white".
 
@@ -12420,7 +12420,7 @@ The default value of @var{borderw} is 0.
 
 @item bordercolor
 Set the color to be used for drawing border around text. For the syntax of this
-option, check the @ref{color syntax,,"Color" section in the ffmpeg-utils manual,ffmpeg-utils}.
+option, check the @ref{color syntax,,"Color" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 The default value of @var{bordercolor} is "black".
 
@@ -12440,7 +12440,7 @@ If true, check and fix text coords to avoid clipping.
 
 @item fontcolor
 The color to be used for drawing fonts. For the syntax of this option, check
-the @ref{color syntax,,"Color" section in the ffmpeg-utils manual,ffmpeg-utils}.
+the @ref{color syntax,,"Color" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 The default value of @var{fontcolor} is "black".
 
@@ -12504,7 +12504,7 @@ libfreetype flags.
 @item shadowcolor
 The color to be used for drawing a shadow behind the drawn text. For the
 syntax of this option, check the @ref{color syntax,,"Color" section in the
-ffmpeg-utils manual,ffmpeg-utils}.
+ffmpreg-utils manual,ffmpreg-utils}.
 
 The default value of @var{shadowcolor} is "black".
 
@@ -12900,7 +12900,7 @@ drawtext="fontfile=FreeSerif.ttf:fontcolor=white:x=100:y=x/dar:enable=lt(mod(t\,
 @item
 Use fontconfig to set the font. Note that the colons need to be escaped.
 @example
-drawtext='fontfile=Linux Libertine O-40\:style=Semibold:text=FFmpeg'
+drawtext='fontfile=Linux Libertine O-40\:style=Semibold:text=FFmpreg'
 @end example
 
 @item
@@ -13359,7 +13359,7 @@ with @code{y}, @code{u}, @code{v} planes at same time.
 Extract luma, u and v color channel component from input video frame
 into 3 grayscale outputs:
 @example
-ffmpeg -i video.avi -filter_complex 'extractplanes=y+u+v[y][u][v]' -map '[y]' y.avi -map '[u]' u.avi -map '[v]' v.avi
+ffmpreg -i video.avi -filter_complex 'extractplanes=y+u+v[y][u][v]' -map '[y]' y.avi -map '[u]' u.avi -map '[v]' v.avi
 @end example
 @end itemize
 
@@ -13718,7 +13718,7 @@ Specify the assumed field order of the input stream. Available values are:
 
 @table @samp
 @item auto
-Auto detect parity (use FFmpeg's internal parity value).
+Auto detect parity (use FFmpreg's internal parity value).
 @item bff
 Assume bottom field first.
 @item tff
@@ -14033,7 +14033,7 @@ which is bottom field first.
 
 For example:
 @example
-ffmpeg -i in.vob -vf "fieldorder=bff" out.dv
+ffmpreg -i in.vob -vf "fieldorder=bff" out.dv
 @end example
 
 @section fifo, afifo
@@ -14166,9 +14166,9 @@ Discard frames where object is not detected. Default is disabled.
 
 @itemize
 @item
-Cover a rectangular object by the supplied image of a given video using @command{ffmpeg}:
+Cover a rectangular object by the supplied image of a given video using @command{ffmpreg}:
 @example
-ffmpeg -i file.ts -vf find_rect=newref.pgm,cover_rect=cover.jpg:mode=cover new.mkv
+ffmpreg -i file.ts -vf find_rect=newref.pgm,cover_rect=cover.jpg:mode=cover new.mkv
 @end example
 
 @item
@@ -14382,10 +14382,10 @@ Some examples:
 
 @example
 # Convert left and right views into a frame-sequential video
-ffmpeg -i LEFT -i RIGHT -filter_complex framepack=frameseq OUTPUT
+ffmpreg -i LEFT -i RIGHT -filter_complex framepack=frameseq OUTPUT
 
 # Convert views into a side-by-side video with the same output resolution as the input
-ffmpeg -i LEFT -i RIGHT -filter_complex [0:v]scale=w=iw/2[left],[1:v]scale=w=iw/2[right],[left][right]framepack=sbs OUTPUT
+ffmpreg -i LEFT -i RIGHT -filter_complex [0:v]scale=w=iw/2[left],[1:v]scale=w=iw/2[right],[left][right]framepack=sbs OUTPUT
 @end example
 
 @section framerate
@@ -14498,7 +14498,7 @@ Set number of frame from 2nd input which will be used instead of replaced frames
 Apply a frei0r effect to the input video.
 
 To enable the compilation of this filter, you need to install the frei0r
-header and configure FFmpeg with @code{--enable-frei0r}.
+header and configure FFmpreg with @code{--enable-frei0r}.
 
 It accepts the following parameters:
 
@@ -14521,7 +14521,7 @@ A frei0r effect parameter can be a boolean (its value is either
 "y" or "n"), a double, a color (specified as
 @var{R}/@var{G}/@var{B}, where @var{R}, @var{G}, and @var{B} are floating point
 numbers between 0.0 and 1.0, inclusive) or a color description as specified in the
-@ref{color syntax,,"Color" section in the ffmpeg-utils manual,ffmpeg-utils},
+@ref{color syntax,,"Color" section in the ffmpreg-utils manual,ffmpreg-utils},
 a position (specified as @var{X}/@var{Y}, where
 @var{X} and @var{Y} are floating point numbers) and/or a string.
 
@@ -14927,7 +14927,7 @@ The algorithm  uses linear light, so input
 data should be linearized beforehand (and possibly correctly tagged).
 
 @example
-ffmpeg -i INPUT -vf zscale=transfer=linear,grayworld,zscale=transfer=bt709,format=yuv420p OUTPUT
+ffmpreg -i INPUT -vf zscale=transfer=linear,grayworld,zscale=transfer=bt709,format=yuv420p OUTPUT
 @end example
 
 @section greyedge
@@ -15011,7 +15011,7 @@ This filter supports the all above options as @ref{commands}.
 @item
 Edge-preserving smoothing with guided filter:
 @example
-ffmpeg -i in.png -vf guided out.png
+ffmpreg -i in.png -vf guided out.png
 @end example
 
 @item
@@ -15019,7 +15019,7 @@ Dehazing, structure-transferring filtering, detail enhancement with guided filte
 For the generation of guidance image, refer to paper "Guided Image Filtering".
 See: @url{http://kaiminghe.com/publications/pami12guidedfilter.pdf}.
 @example
-ffmpeg -i in.png -i guidance.png -filter_complex guided=guidance=on out.png
+ffmpreg -i in.png -i guidance.png -filter_complex guided=guidance=on out.png
 @end example
 
 @end itemize
@@ -15065,14 +15065,14 @@ This filter supports the @code{interp} option as @ref{commands}.
 
 Generate an identity Hald CLUT stream altered with various effects:
 @example
-ffmpeg -f lavfi -i @ref{haldclutsrc}=8 -vf "hue=H=2*PI*t:s=sin(2*PI*t)+1, curves=cross_process" -t 10 -c:v ffv1 clut.nut
+ffmpreg -f lavfi -i @ref{haldclutsrc}=8 -vf "hue=H=2*PI*t:s=sin(2*PI*t)+1, curves=cross_process" -t 10 -c:v ffv1 clut.nut
 @end example
 
 Note: make sure you use a lossless codec.
 
 Then use it with @code{haldclut} to apply it on some random stream:
 @example
-ffmpeg -f lavfi -i mandelbrot -i clut.nut -filter_complex '[0][1] haldclut' -t 20 mandelclut.mkv
+ffmpreg -f lavfi -i mandelbrot -i clut.nut -filter_complex '[0][1] haldclut' -t 20 mandelclut.mkv
 @end example
 
 The Hald CLUT will be applied to the 10 first seconds (duration of
@@ -15082,7 +15082,7 @@ to the remaining frames of the @code{mandelbrot} stream.
 @subsubsection Hald CLUT with preview
 
 A Hald CLUT is supposed to be a squared image of @code{Level*Level*Level} by
-@code{Level*Level*Level} pixels. For a given Hald CLUT, FFmpeg will select the
+@code{Level*Level*Level} pixels. For a given Hald CLUT, FFmpreg will select the
 biggest possible square starting at the top left of the picture. The remaining
 padding pixels (bottom or right) will be ignored. This area can be used to add
 a preview of the Hald CLUT.
@@ -15091,7 +15091,7 @@ Typically, the following generated Hald CLUT will be supported by the
 @code{haldclut} filter:
 
 @example
-ffmpeg -f lavfi -i @ref{haldclutsrc}=8 -vf "
+ffmpreg -f lavfi -i @ref{haldclutsrc}=8 -vf "
    pad=iw+320 [padded_clut];
    smptebars=s=320x256, split [a][b];
    [padded_clut][a] overlay=W-320:h, curves=color_negative [main];
@@ -15111,9 +15111,9 @@ ffplay input.mkv -vf "movie=clut.png, [in] haldclut"
 
 Flip the input video horizontally.
 
-For example, to horizontally flip the input video with @command{ffmpeg}:
+For example, to horizontally flip the input video with @command{ffmpreg}:
 @example
-ffmpeg -i in.avi -vf "hflip" out.avi
+ffmpreg -i in.avi -vf "hflip" out.avi
 @end example
 
 @section histeq
@@ -15365,7 +15365,7 @@ Do not use it without fully understanding the implications of its use.
 Upload system memory frames to hardware surfaces.
 
 The device to upload to must be supplied when the filter is initialised.  If
-using ffmpeg, select the appropriate device with the @option{-filter_hw_device}
+using ffmpreg, select the appropriate device with the @option{-filter_hw_device}
 option or with the @option{derive_device} option.  The input and output devices
 must be of different types and compatible - the exact meaning of this is
 system-dependent, but typically it means that they must refer to the same
@@ -15742,7 +15742,7 @@ In the below example the input file @file{main.mpg} being processed is compared
 with the reference file @file{ref.mpg}.
 
 @example
-ffmpeg -i main.mpg -i ref.mpg -lavfi identity -f null -
+ffmpreg -i main.mpg -i ref.mpg -lavfi identity -f null -
 @end example
 
 @section idet
@@ -16070,8 +16070,8 @@ Set interpolation type. Can be @code{nearest} or @code{bilinear}.
 Default is @code{nearest}.
 @item fc
 Specify the color of the unmapped pixels. For the syntax of this option,
-check the @ref{color syntax,,"Color" section in the ffmpeg-utils
-manual,ffmpeg-utils}. Default color is @code{black@@0}.
+check the @ref{color syntax,,"Color" section in the ffmpreg-utils
+manual,ffmpreg-utils}. Default color is @code{black@@0}.
 @end table
 
 The formula that generates the correction is:
@@ -16103,7 +16103,7 @@ To obtain a list of available makes and models, leave out one or both of @code{m
 The first column is the make and the second column is the model.
 To obtain a list of available lenses, set any values for make and model and leave out the
 @code{lens_model} option. The filter will send the full list of lenses in the log with level
-@code{INFO}. The ffmpeg tool will exit after the list is printed.
+@code{INFO}. The ffmpreg tool will exit after the list is printed.
 
 The filter accepts the following options:
 
@@ -16211,14 +16211,14 @@ model "Canon EF-S 18-55mm f/3.5-5.6 IS STM" with focal length of "18" and
 aperture of "8.0".
 
 @example
-ffmpeg -i input.mov -vf lensfun=make=Canon:model="Canon EOS 100D":lens_model="Canon EF-S 18-55mm f/3.5-5.6 IS STM":focal_length=18:aperture=8 -c:v h264 -b:v 8000k output.mov
+ffmpreg -i input.mov -vf lensfun=make=Canon:model="Canon EOS 100D":lens_model="Canon EF-S 18-55mm f/3.5-5.6 IS STM":focal_length=18:aperture=8 -c:v h264 -b:v 8000k output.mov
 @end example
 
 @item
 Apply the same as before, but only for the first 5 seconds of video.
 
 @example
-ffmpeg -i input.mov -vf lensfun=make=Canon:model="Canon EOS 100D":lens_model="Canon EF-S 18-55mm f/3.5-5.6 IS STM":focal_length=18:aperture=8:enable='lte(t\,5)' -c:v h264 -b:v 8000k output.mov
+ffmpreg -i input.mov -vf lensfun=make=Canon:model="Canon EOS 100D":lens_model="Canon EF-S 18-55mm f/3.5-5.6 IS STM":focal_length=18:aperture=8:enable='lte(t\,5)' -c:v h264 -b:v 8000k output.mov
 @end example
 
 @end itemize
@@ -16303,8 +16303,8 @@ approaches.
 @item fillcolor
 Set the color used to fill the output area not covered by the output image, for
 example as a result of @option{normalize_sar}. For the general syntax of this
-option, check the @ref{color syntax,,"Color" section in the ffmpeg-utils
-manual,ffmpeg-utils}. Defaults to @code{black}.
+option, check the @ref{color syntax,,"Color" section in the ffmpreg-utils
+manual,ffmpreg-utils}. Defaults to @code{black}.
 
 @item corner_rounding
 Render frames with rounded corners. The value, given as a float ranging from
@@ -16800,7 +16800,7 @@ libplacebo=deband=true:deband_iterations=3:deband_radius=8:deband_threshold=6
 Run this filter on the CPU, on systems with Mesa installed (and with the most
 expensive options disabled):
 @example
-ffmpeg ... -init_hw_device vulkan:llvmpipe ... -vf libplacebo=upscaler=none:downscaler=none:peak_detect=false
+ffmpreg ... -init_hw_device vulkan:llvmpipe ... -vf libplacebo=upscaler=none:downscaler=none:peak_detect=false
 @end example
 
 @item
@@ -16809,13 +16809,13 @@ doing it with this filter. Note that this is only a gain if the frames are
 either already on the GPU, or if you're using libplacebo for other purposes,
 since otherwise the VRAM roundtrip will more than offset any expected speedup.
 @example
-ffmpeg -export_side_data +film_grain ... -vf libplacebo=apply_filmgrain=true
+ffmpreg -export_side_data +film_grain ... -vf libplacebo=apply_filmgrain=true
 @end example
 
 @item
 Interop with VAAPI hwdec to avoid round-tripping through RAM:
 @example
-ffmpeg -init_hw_device vulkan -hwaccel vaapi -hwaccel_output_format vaapi ... -vf libplacebo
+ffmpreg -init_hw_device vulkan -hwaccel vaapi -hwaccel_output_format vaapi ... -vf libplacebo
 @end example
 @end itemize
 
@@ -16888,25 +16888,25 @@ compared with a reference file @file{reference.mpg}.
 @item
 Basic usage:
 @example
-ffmpeg -i distorted.mpg -i reference.mpg -lavfi libvmaf=log_path=output.xml -f null -
+ffmpreg -i distorted.mpg -i reference.mpg -lavfi libvmaf=log_path=output.xml -f null -
 @end example
 
 @item
 Example with multiple models:
 @example
-ffmpeg -i distorted.mpg -i reference.mpg -lavfi libvmaf='model=version=vmaf_v0.6.1\\:name=vmaf|version=vmaf_v0.6.1neg\\:name=vmaf_neg' -f null -
+ffmpreg -i distorted.mpg -i reference.mpg -lavfi libvmaf='model=version=vmaf_v0.6.1\\:name=vmaf|version=vmaf_v0.6.1neg\\:name=vmaf_neg' -f null -
 @end example
 
 @item
 Example with multiple addtional features:
 @example
-ffmpeg -i distorted.mpg -i reference.mpg -lavfi libvmaf='feature=name=psnr|name=ciede' -f null -
+ffmpreg -i distorted.mpg -i reference.mpg -lavfi libvmaf='feature=name=psnr|name=ciede' -f null -
 @end example
 
 @item
 Example with options and different containers:
 @example
-ffmpeg -i distorted.mpg -i reference.mkv -lavfi "[0:v]settb=AVTB,setpts=PTS-STARTPTS[main];[1:v]settb=AVTB,setpts=PTS-STARTPTS[ref];[main][ref]libvmaf=log_fmt=json:log_path=output.json" -f null -
+ffmpreg -i distorted.mpg -i reference.mkv -lavfi "[0:v]settb=AVTB,setpts=PTS-STARTPTS[main];[1:v]settb=AVTB,setpts=PTS-STARTPTS[ref];[main][ref]libvmaf=log_fmt=json:log_path=output.json" -f null -
 @end example
 @end itemize
 
@@ -17976,7 +17976,7 @@ In the below example the input file @file{main.mpg} being processed is compared
 with the reference file @file{ref.mpg}.
 
 @example
-ffmpeg -i main.mpg -i ref.mpg -lavfi msad -f null -
+ffmpreg -i main.mpg -i ref.mpg -lavfi msad -f null -
 @end example
 
 @section multiply
@@ -18353,7 +18353,7 @@ Pass the video source unchanged to the output.
 Optical Character Recognition
 
 This filter uses Tesseract for optical character recognition. To enable
-compilation of this filter, you need to configure FFmpeg with
+compilation of this filter, you need to configure FFmpreg with
 @code{--enable-libtesseract}.
 
 It accepts the following options:
@@ -18381,7 +18381,7 @@ The filter exports confidence of recognized words as the frame metadata @code{la
 Apply a video transform using libopencv.
 
 To enable this filter, install the libopencv library and headers and
-configure FFmpeg with @code{--enable-libopencv}.
+configure FFmpreg with @code{--enable-libopencv}.
 
 It accepts the following parameters:
 
@@ -18729,16 +18729,16 @@ overlay=x=main_w-overlay_w-10:y=main_h-overlay_h-10
 
 @item
 Insert a transparent PNG logo in the bottom left corner of the input,
-using the @command{ffmpeg} tool with the @code{-filter_complex} option:
+using the @command{ffmpreg} tool with the @code{-filter_complex} option:
 @example
-ffmpeg -i input -i logo -filter_complex 'overlay=10:main_h-overlay_h-10' output
+ffmpreg -i input -i logo -filter_complex 'overlay=10:main_h-overlay_h-10' output
 @end example
 
 @item
 Insert 2 different transparent PNG logos (second logo on bottom
-right corner) using the @command{ffmpeg} tool:
+right corner) using the @command{ffmpreg} tool:
 @example
-ffmpeg -i input -i logo1 -i logo2 -filter_complex 'overlay=x=10:y=H-h-10,overlay=x=W-w-10:y=H-h-10' output
+ffmpreg -i input -i logo1 -i logo2 -filter_complex 'overlay=x=10:y=H-h-10,overlay=x=W-w-10:y=H-h-10' output
 @end example
 
 @item
@@ -18770,7 +18770,7 @@ overlay=x='if(gte(t,2), -w+(t-2)*20, NAN)':y=0
 @item
 Compose output by putting two input videos side to side:
 @example
-ffmpeg -i left.avi -i right.avi -filter_complex "
+ffmpreg -i left.avi -i right.avi -filter_complex "
 nullsrc=size=200x100 [background];
 [0:v] setpts=PTS-STARTPTS, scale=100x100 [left];
 [1:v] setpts=PTS-STARTPTS, scale=100x100 [right];
@@ -18782,7 +18782,7 @@ nullsrc=size=200x100 [background];
 @item
 Mask 10-20 seconds of a video by applying the delogo filter to a section
 @example
-ffmpeg -i test.avi -codec:v:0 wmv2 -ar 11025 -b:v 9000k
+ffmpreg -i test.avi -codec:v:0 wmv2 -ar 11025 -b:v 9000k
 -vf '[in]split[split_main][split_delogo];[split_delogo]trim=start=360:end=371,delogo=0:0:640:480[delogoed];[split_main][delogoed]overlay=eof_action=pass[out]'
 masked.avi
 @end example
@@ -18939,8 +18939,8 @@ so the input image is centered on the padded area.
 
 @item color
 Specify the color of the padded area. For the syntax of this option,
-check the @ref{color syntax,,"Color" section in the ffmpeg-utils
-manual,ffmpeg-utils}.
+check the @ref{color syntax,,"Color" section in the ffmpreg-utils
+manual,ffmpreg-utils}.
 
 The default value of @var{color} is "black".
 
@@ -19116,9 +19116,9 @@ color quantization of the palette. This information is also visible at
 
 @itemize
 @item
-Generate a representative palette of a given video using @command{ffmpeg}:
+Generate a representative palette of a given video using @command{ffmpreg}:
 @example
-ffmpeg -i input.mkv -vf palettegen palette.png
+ffmpreg -i input.mkv -vf palettegen palette.png
 @end example
 @end itemize
 
@@ -19198,9 +19198,9 @@ The option must be an integer value in the range [0,255]. Default is @var{128}.
 @itemize
 @item
 Use a palette (generated for example with @ref{palettegen}) to encode a GIF
-using @command{ffmpeg}:
+using @command{ffmpreg}:
 @example
-ffmpeg -i input.mkv -i palette.png -lavfi paletteuse output.gif
+ffmpreg -i input.mkv -i palette.png -lavfi paletteuse output.gif
 @end example
 @end itemize
 
@@ -19561,8 +19561,8 @@ cubically interpolating every second line.
 Median deinterlacing filter that deinterlaces the given block by applying a
 median filter to every second line.
 
-@item fd/ffmpegdeint
-FFmpeg deinterlacing filter that deinterlaces the given block by filtering every
+@item fd/ffmpregdeint
+FFmpreg deinterlacing filter that deinterlaces the given block by filtering every
 second line with a @code{(-1 4 2 4 -1)} filter.
 
 @item l5/lowpass5
@@ -19877,7 +19877,7 @@ is stored in @file{stats.log}.
 @item
 Another example with different containers:
 @example
-ffmpeg -i main.mpg -i ref.mkv -lavfi  "[0:v]settb=AVTB,setpts=PTS-STARTPTS[main];[1:v]settb=AVTB,setpts=PTS-STARTPTS[ref];[main][ref]psnr" -f null -
+ffmpreg -i main.mpg -i ref.mkv -lavfi  "[0:v]settb=AVTB,setpts=PTS-STARTPTS[main];[1:v]settb=AVTB,setpts=PTS-STARTPTS[ref];[main][ref]psnr" -f null -
 @end example
 @end itemize
 
@@ -19943,7 +19943,7 @@ For best results (without duplicated frames in the output file) it is
 necessary to change the output frame rate. For example, to inverse
 telecine NTSC input:
 @example
-ffmpeg -i input -vf pullup -r 24000/1001 ...
+ffmpreg -i input -vf pullup -r 24000/1001 ...
 @end example
 
 @section qp
@@ -20080,7 +20080,7 @@ default value is @code{0.6}. The value must be equal or greater than @code{thr_b
 Detect and draw VITC data onto the video frame; if no valid VITC is detected,
 draw @code{--:--:--:--} as a placeholder:
 @example
-ffmpeg -i input.avi -filter:v 'readvitc,drawtext=fontfile=FreeMono.ttf:text=%@{metadata\\:lavfi.readvitc.tc_str\\:--\\\\\\:--\\\\\\:--\\\\\\:--@}:x=(w-tw)/2:y=400-ascent'
+ffmpreg -i input.avi -filter:v 'readvitc,drawtext=fontfile=FreeMono.ttf:text=%@{metadata\\:lavfi.readvitc.tc_str\\:--\\\\\\:--\\\\\\:--\\\\\\:--@}:x=(w-tw)/2:y=400-ascent'
 @end example
 @end itemize
 
@@ -20103,8 +20103,8 @@ Default is @code{color}.
 
 @item fill
 Specify the color of the unmapped pixels. For the syntax of this option,
-check the @ref{color syntax,,"Color" section in the ffmpeg-utils
-manual,ffmpeg-utils}. Default color is @code{black}.
+check the @ref{color syntax,,"Color" section in the ffmpreg-utils
+manual,ffmpreg-utils}. Default color is @code{black}.
 @end table
 
 @section removegrain
@@ -20343,7 +20343,7 @@ it. Default value is 1.
 @item fillcolor, c
 Set the color used to fill the output area not covered by the rotated
 image. For the general syntax of this option, check the
-@ref{color syntax,,"Color" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{color syntax,,"Color" section in the ffmpreg-utils manual,ffmpreg-utils}.
 If the special value "none" is selected then no
 background is printed (useful for example if the background is never shown).
 
@@ -20499,7 +20499,7 @@ requested format.
 The filter accepts the following options, or any of the options
 supported by the libswscale scaler.
 
-See @ref{scaler_options,,the ffmpeg-scaler manual,ffmpeg-scaler} for
+See @ref{scaler_options,,the ffmpreg-scaler manual,ffmpreg-scaler} for
 the complete list of scaler options.
 
 @table @option
@@ -20558,14 +20558,14 @@ Default value is @samp{0}.
 
 @item flags
 Set libswscale scaling flags. See
-@ref{sws_flags,,the ffmpeg-scaler manual,ffmpeg-scaler} for the
+@ref{sws_flags,,the ffmpreg-scaler manual,ffmpreg-scaler} for the
 complete list of values. If not explicitly specified the filter applies
 the default flags.
 
 
 @item param0, param1
 Set libswscale input parameters for scaling algorithms that need them. See
-@ref{sws_params,,the ffmpeg-scaler manual,ffmpeg-scaler} for the
+@ref{sws_params,,the ffmpreg-scaler manual,ffmpreg-scaler} for the
 complete documentation. If not explicitly specified the filter applies
 empty parameters.
 
@@ -20573,7 +20573,7 @@ empty parameters.
 
 @item size, s
 Set the video size. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 @item in_color_matrix
 @item out_color_matrix
@@ -21661,7 +21661,7 @@ Allowed range is from -2 to 2.
 @item fillcolor, c
 Set the color used to fill the output area not covered by the transformed
 video. For the general syntax of this option, check the
-@ref{color syntax,,"Color" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{color syntax,,"Color" section in the ffmpreg-utils manual,ffmpreg-utils}.
 If the special value "none" is selected then no
 background is printed (useful for example if the background is never shown).
 
@@ -21713,7 +21713,7 @@ The sample aspect ratio of the input frame, expressed in the form
 
 @item s
 The size of the input frame. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 @item i
 The type of interlaced mode ("P" for "progressive", "T" for top field first, "B"
@@ -21781,13 +21781,13 @@ The first frame has the index 0. The default is to keep the input unchanged.
 @item
 Swap second and third frame of every three frames of the input:
 @example
-ffmpeg -i INPUT -vf "shuffleframes=0 2 1" OUTPUT
+ffmpreg -i INPUT -vf "shuffleframes=0 2 1" OUTPUT
 @end example
 
 @item
 Swap 10th and 1st frame of every ten frames of the input:
 @example
-ffmpeg -i INPUT -vf "shuffleframes=9 1 2 3 4 5 6 7 8 0" OUTPUT
+ffmpreg -i INPUT -vf "shuffleframes=9 1 2 3 4 5 6 7 8 0" OUTPUT
 @end example
 @end itemize
 
@@ -21848,7 +21848,7 @@ The first plane has the index 0. The default is to keep the input unchanged.
 @item
 Swap the second and third planes of the input:
 @example
-ffmpeg -i INPUT -vf shuffleplanes=0:2:1:3 OUTPUT
+ffmpreg -i INPUT -vf shuffleplanes=0:2:1:3 OUTPUT
 @end example
 @end itemize
 
@@ -22124,14 +22124,14 @@ The option value must be a double value between 0 and 1. The default value is 0.
 @item
 To calculate the signature of an input video and store it in signature.bin:
 @example
-ffmpeg -i input.mkv -vf signature=filename=signature.bin -map 0:v -f null -
+ffmpreg -i input.mkv -vf signature=filename=signature.bin -map 0:v -f null -
 @end example
 
 @item
 To detect whether two videos match and store the signatures in XML format in
 signature0.xml and signature1.xml:
 @example
-ffmpeg -i input1.mkv -i input2.mkv -filter_complex "[0:v][1:v] signature=nb_inputs=2:detectmode=full:format=xml:filename=signature%d.xml" -map :v -f null -
+ffmpreg -i input1.mkv -i input2.mkv -filter_complex "[0:v][1:v] signature=nb_inputs=2:detectmode=full:format=xml:filename=signature%d.xml" -map :v -f null -
 @end example
 
 @end itemize
@@ -22157,7 +22157,7 @@ If set to 1, Summary statistics will be printed to the console. Default 0.
 @item
 To calculate SI/TI metrics and print summary:
 @example
-ffmpeg -i input.mp4 -vf siti=print_summary=1 -f null -
+ffmpreg -i input.mp4 -vf siti=print_summary=1 -f null -
 @end example
 @end itemize
 
@@ -22307,7 +22307,7 @@ the following values:
 @item tensorflow
 TensorFlow backend. To enable this backend you
 need to install the TensorFlow for C library (see
-@url{https://www.tensorflow.org/install/lang_c}) and configure FFmpeg with
+@url{https://www.tensorflow.org/install/lang_c}) and configure FFmpreg with
 @code{--enable-libtensorflow}
 @end table
 
@@ -22386,13 +22386,13 @@ is stored in @file{stats.log}.
 @item
 Another example with both psnr and ssim at same time:
 @example
-ffmpeg -i main.mpg -i ref.mpg -lavfi  "ssim;[0:v][1:v]psnr" -f null -
+ffmpreg -i main.mpg -i ref.mpg -lavfi  "ssim;[0:v][1:v]psnr" -f null -
 @end example
 
 @item
 Another example with different containers:
 @example
-ffmpeg -i main.mpg -i ref.mkv -lavfi  "[0:v]settb=AVTB,setpts=PTS-STARTPTS[main];[1:v]settb=AVTB,setpts=PTS-STARTPTS[ref];[main][ref]ssim" -f null -
+ffmpreg -i main.mpg -i ref.mkv -lavfi  "[0:v]settb=AVTB,setpts=PTS-STARTPTS[main];[1:v]settb=AVTB,setpts=PTS-STARTPTS[ref];[main][ref]ssim" -f null -
 @end example
 @end itemize
 
@@ -22650,7 +22650,7 @@ asendcmd='5.0 astreamselect map 1',astreamselect=inputs=2:map=0
 
 Draw subtitles on top of input video using the libass library.
 
-To enable compilation of this filter you need to configure FFmpeg with
+To enable compilation of this filter you need to configure FFmpreg with
 @code{--enable-libass}. This filter also requires a build with libavcodec and
 libavformat to convert the passed subtitles file to ASS (Advanced Substation
 Alpha) subtitles format.
@@ -22664,7 +22664,7 @@ Set the filename of the subtitle file to read. It must be specified.
 @item original_size
 Specify the size of the original video, the video for which the ASS file
 was composed. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Due to a misdesign in ASS aspect ratio arithmetic, this is necessary to
 correctly scale the fonts if the aspect ratio has been changed.
 
@@ -22948,31 +22948,31 @@ This filter supports the all options as @ref{commands}.
 @item
 Binary threshold, using gray color as threshold:
 @example
-ffmpeg -i 320x240.avi -f lavfi -i color=gray -f lavfi -i color=black -f lavfi -i color=white -lavfi threshold output.avi
+ffmpreg -i 320x240.avi -f lavfi -i color=gray -f lavfi -i color=black -f lavfi -i color=white -lavfi threshold output.avi
 @end example
 
 @item
 Inverted binary threshold, using gray color as threshold:
 @example
-ffmpeg -i 320x240.avi -f lavfi -i color=gray -f lavfi -i color=white -f lavfi -i color=black -lavfi threshold output.avi
+ffmpreg -i 320x240.avi -f lavfi -i color=gray -f lavfi -i color=white -f lavfi -i color=black -lavfi threshold output.avi
 @end example
 
 @item
 Truncate binary threshold, using gray color as threshold:
 @example
-ffmpeg -i 320x240.avi -f lavfi -i color=gray -i 320x240.avi -f lavfi -i color=gray -lavfi threshold output.avi
+ffmpreg -i 320x240.avi -f lavfi -i color=gray -i 320x240.avi -f lavfi -i color=gray -lavfi threshold output.avi
 @end example
 
 @item
 Threshold to zero, using gray color as threshold:
 @example
-ffmpeg -i 320x240.avi -f lavfi -i color=gray -f lavfi -i color=white -i 320x240.avi -lavfi threshold output.avi
+ffmpreg -i 320x240.avi -f lavfi -i color=gray -f lavfi -i color=white -i 320x240.avi -lavfi threshold output.avi
 @end example
 
 @item
 Inverted threshold to zero, using gray color as threshold:
 @example
-ffmpeg -i 320x240.avi -f lavfi -i color=gray -i 320x240.avi -f lavfi -i color=white -lavfi threshold output.avi
+ffmpreg -i 320x240.avi -f lavfi -i color=gray -i 320x240.avi -f lavfi -i color=white -lavfi threshold output.avi
 @end example
 @end itemize
 
@@ -23005,9 +23005,9 @@ thumbnail=50
 @end example
 
 @item
-Complete example of a thumbnail creation with @command{ffmpeg}:
+Complete example of a thumbnail creation with @command{ffmpreg}:
 @example
-ffmpeg -i in.avi -vf thumbnail,scale=300:200 -frames:v 1 out.png
+ffmpreg -i in.avi -vf thumbnail,scale=300:200 -frames:v 1 out.png
 @end example
 @end itemize
 
@@ -23041,7 +23041,7 @@ refer to the pad video filter. Range is 0 to 1024. Default is @code{0}.
 
 @item color
 Specify the color of the unused area. For the syntax of this option, check the
-@ref{color syntax,,"Color" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{color syntax,,"Color" section in the ffmpreg-utils manual,ffmpreg-utils}.
 The default value of @var{color} is "black".
 
 @item overlap
@@ -23060,9 +23060,9 @@ The value must be between @code{0} and @var{nb_frames - 1}. Default is @code{0}.
 @item
 Produce 8x8 PNG tiles of all keyframes (@option{-skip_frame nokey}) in a movie:
 @example
-ffmpeg -skip_frame nokey -i file.avi -vf 'scale=128:72,tile=8x8' -an -vsync 0 keyframes%03d.png
+ffmpreg -skip_frame nokey -i file.avi -vf 'scale=128:72,tile=8x8' -an -vsync 0 keyframes%03d.png
 @end example
-The @option{-vsync 0} is necessary to prevent @command{ffmpeg} from
+The @option{-vsync 0} is necessary to prevent @command{ffmpreg} from
 duplicating each output frame to accommodate the originally detected frame
 rate.
 
@@ -23427,7 +23427,7 @@ The tonemapping algorithms implemented only work on linear light, so input
 data should be linearized beforehand (and possibly correctly tagged).
 
 @example
-ffmpeg -i INPUT -vf zscale=transfer=linear,tonemap=clip,zscale=transfer=bt709,format=yuv420p OUTPUT
+ffmpreg -i INPUT -vf zscale=transfer=linear,tonemap=clip,zscale=transfer=bt709,format=yuv420p OUTPUT
 @end example
 
 @subsection Options
@@ -23553,14 +23553,14 @@ Default is @var{add}.
 
 @item start_duration, stop_duration
 Specify the duration of the start/stop delay. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 These options override @var{start} and @var{stop}. Default is 0.
 
 @item color
 Specify the color of the padded area. For the syntax of this option,
-check the @ref{color syntax,,"Color" section in the ffmpeg-utils
-manual,ffmpeg-utils}.
+check the @ref{color syntax,,"Color" section in the ffmpreg-utils
+manual,ffmpreg-utils}.
 
 The default value of @var{color} is "black".
 @end table
@@ -23720,7 +23720,7 @@ The number of the first frame that should be dropped.
 
 @option{start}, @option{end}, and @option{duration} are expressed as time
 duration specifications; see
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 
 Note that the first two sets of the start/end options and the @option{duration}
@@ -23742,13 +23742,13 @@ Examples:
 @item
 Drop everything except the second minute of input:
 @example
-ffmpeg -i INPUT -vf trim=60:120
+ffmpreg -i INPUT -vf trim=60:120
 @end example
 
 @item
 Keep only the first second:
 @example
-ffmpeg -i INPUT -vf trim=duration=1
+ffmpreg -i INPUT -vf trim=duration=1
 @end example
 
 @end itemize
@@ -23873,7 +23873,7 @@ The filter accepts the following options:
 @item layout
 Set the grid size (i.e. the number of lines and columns). For the syntax of
 this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 @end table
 
 @subsection Examples
@@ -23883,7 +23883,7 @@ this option, check the
 Produce a 1-second video from a still image file made of 25 frames stacked
 vertically, like an analogic film reel:
 @example
-ffmpeg -r 1 -i image.jpg -vf untile=1x25 movie.mkv
+ffmpreg -r 1 -i image.jpg -vf untile=1x25 movie.mkv
 @end example
 @end itemize
 
@@ -23897,7 +23897,7 @@ The way this differs from the behavior of spp is that uspp actually encodes &
 decodes each case with libavcodec Snow, whereas spp uses a simplified intra only 8x8
 DCT similar to MJPEG.
 
-This filter is only available in ffmpeg version 4.4 or earlier.
+This filter is only available in ffmpreg version 4.4 or earlier.
 
 The filter accepts the following options:
 
@@ -24313,12 +24313,12 @@ Reset rotation of output video. Boolean value, by default disabled.
 @item
 Convert equirectangular video to cubemap with 3x2 layout and 1% padding using bicubic interpolation:
 @example
-ffmpeg -i input.mkv -vf v360=e:c3x2:cubic:out_pad=0.01 output.mkv
+ffmpreg -i input.mkv -vf v360=e:c3x2:cubic:out_pad=0.01 output.mkv
 @end example
 @item
 Extract back view of Equi-Angular Cubemap:
 @example
-ffmpeg -i input.mkv -vf v360=eac:flat:yaw=180 output.mkv
+ffmpreg -i input.mkv -vf v360=eac:flat:yaw=180 output.mkv
 @end example
 @item
 Convert transposed and horizontally flipped Equi-Angular Cubemap in side-by-side stereo format to equirectangular top-bottom stereo format:
@@ -24550,7 +24550,7 @@ This filter generates a file with relative translation and rotation
 transform information about subsequent frames, which is then used by
 the @ref{vidstabtransform} filter.
 
-To enable compilation of this filter you need to configure FFmpeg with
+To enable compilation of this filter you need to configure FFmpreg with
 @code{--enable-libvidstab}.
 
 This filter accepts the following options:
@@ -24619,9 +24619,9 @@ vidstabdetect=show=1
 @end example
 
 @item
-Analyze a video with medium shakiness using @command{ffmpeg}:
+Analyze a video with medium shakiness using @command{ffmpreg}:
 @example
-ffmpeg -i input -vf vidstabdetect=shakiness=5:show=1 dummy.avi
+ffmpreg -i input -vf vidstabdetect=shakiness=5:show=1 dummy.avi
 @end example
 @end itemize
 
@@ -24637,7 +24637,7 @@ filter this can be used to deshake videos. See also
 @url{http://public.hronopik.de/vid.stab}. It is important to also use
 the @ref{unsharp} filter, see below.
 
-To enable compilation of this filter you need to configure FFmpeg with
+To enable compilation of this filter you need to configure FFmpreg with
 @code{--enable-libvidstab}.
 
 @subsection Options
@@ -24753,9 +24753,9 @@ value is 0.
 
 @itemize
 @item
-Use @command{ffmpeg} for a typical stabilization with default values:
+Use @command{ffmpreg} for a typical stabilization with default values:
 @example
-ffmpeg -i inp.mpeg -vf vidstabtransform,unsharp=5:5:0.8:3:3:0.4 inp_stabilized.mpeg
+ffmpreg -i inp.mpeg -vf vidstabtransform,unsharp=5:5:0.8:3:3:0.4 inp_stabilized.mpeg
 @end example
 
 Note the use of the @ref{unsharp} filter which is always recommended.
@@ -24777,9 +24777,9 @@ vidstabtransform=smoothing=30
 
 Flip the input video vertically.
 
-For example, to vertically flip a video with @command{ffmpeg}:
+For example, to vertically flip a video with @command{ffmpreg}:
 @example
-ffmpeg -i in.avi -vf "vflip" out.avi
+ffmpreg -i in.avi -vf "vflip" out.avi
 @end example
 
 @section vfrdet
@@ -24850,7 +24850,7 @@ In the below example the input file @file{main.mpg} being processed is compared
 with the reference file @file{ref.mpg}.
 
 @example
-ffmpeg -i main.mpg -i ref.mpg -lavfi vif -f null -
+ffmpreg -i main.mpg -i ref.mpg -lavfi vif -f null -
 @end example
 
 @anchor{vignette}
@@ -24982,7 +24982,7 @@ When filename equals "-" the data is sent to standard output.
 
 Example:
 @example
-ffmpeg -i ref.mpg -vf vmafmotion -f null -
+ffmpreg -i ref.mpg -vf vmafmotion -f null -
 @end example
 
 @anchor{vstack}
@@ -25457,7 +25457,7 @@ first/second/third/fourth component of second input.
 Cross fade from one input video to another input video, with fade transition and duration of transition
 of 2 seconds starting at offset of 5 seconds:
 @example
-ffmpeg -i first.mp4 -i second.mp4 -filter_complex xfade=transition=fade:duration=2:offset=5 output.mp4
+ffmpreg -i first.mp4 -i second.mp4 -filter_complex xfade=transition=fade:duration=2:offset=5 output.mp4
 @end example
 @end itemize
 
@@ -25872,7 +25872,7 @@ zoompan=z='if(between(in_time,0,1),2,1)':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zo
 @section zscale
 Scale (resize) the input video, using the z.lib library:
 @url{https://github.com/sekrit-twc/zimg}. To enable compilation of this
-filter, you need to configure FFmpeg with @code{--enable-libzimg}.
+filter, you need to configure FFmpreg with @code{--enable-libzimg}.
 
 The zscale filter forces the output display aspect ratio to be the same
 as the input, by changing the output sample aspect ratio.
@@ -25908,7 +25908,7 @@ expression.
 
 @item size, s
 Set the video size. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 @item dither, d
 Set the dither type.
@@ -26156,7 +26156,7 @@ value.
 
 Below is a description of the currently available OpenCL video filters.
 
-To enable compilation of these filters you need to configure FFmpeg with
+To enable compilation of these filters you need to configure FFmpreg with
 @code{--enable-opencl}.
 
 Running OpenCL filters requires you to initialize a hardware device and to pass that device to all filters in any filter graph.
@@ -26171,7 +26171,7 @@ Pass the hardware device called @var{name} to all filters in any filter graph.
 
 @end table
 
-For more detailed information see @url{https://www.ffmpeg.org/ffmpeg.html#Advanced-Video-options}
+For more detailed information see @url{https://www.ffmpreg.org/ffmpreg.html#Advanced-Video-options}
 
 @itemize
 @item
@@ -26458,7 +26458,7 @@ Simulates a tripod by preventing any camera movement whatsoever from the origina
 @item debug
 Whether or not additional debug info should be displayed, both in the processed output and in the console.
 
-Note that in order to see console debug output you will also need to pass @code{-v verbose} to ffmpeg.
+Note that in order to see console debug output you will also need to pass @code{-v verbose} to ffmpreg.
 
 Viewing point matches in the output video is only supported for RGB input.
 
@@ -26630,8 +26630,8 @@ so the input image is centered on the padded area.
 
 @item color
 Specify the color of the padded area. For the syntax of this option,
-check the @ref{color syntax,,"Color" section in the ffmpeg-utils
-manual,ffmpeg-utils}.
+check the @ref{color syntax,,"Color" section in the ffmpreg-utils
+manual,ffmpreg-utils}.
 
 @item aspect
 Pad to an aspect instead to a resolution.
@@ -26854,8 +26854,8 @@ Default value is @code{linear}.
 
 @item fill
 Specify the color of the unmapped pixels. For the syntax of this option,
-check the @ref{color syntax,,"Color" section in the ffmpeg-utils
-manual,ffmpeg-utils}. Default color is @code{black}.
+check the @ref{color syntax,,"Color" section in the ffmpreg-utils
+manual,ffmpreg-utils}. Default color is @code{black}.
 @end table
 
 @section roberts_opencl
@@ -27172,10 +27172,10 @@ __kernel void blend_images(__write_only image2d_t dst,
 
 VAAPI Video filters are usually used with VAAPI decoder and VAAPI encoder. Below is a description of VAAPI video filters.
 
-To enable compilation of these filters you need to configure FFmpeg with
+To enable compilation of these filters you need to configure FFmpreg with
 @code{--enable-vaapi}.
 
-To use vaapi filters, you need to setup the vaapi device correctly. For more information, please read @url{https://trac.ffmpeg.org/wiki/Hardware/VAAPI}
+To use vaapi filters, you need to setup the vaapi device correctly. For more information, please read @url{https://trac.ffmpreg.org/wiki/Hardware/VAAPI}
 
 @section overlay_vaapi
 
@@ -27375,7 +27375,7 @@ See @ref{xstack}.
 Set output size for each input stream when @option{grid} is set. If this option
 is not set, this filter will set output size by default to the size of the
 first input stream. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 @item fill
 See @ref{xstack}.
@@ -27388,7 +27388,7 @@ See @ref{xstack}.
 
 Below is a description of the currently available Vulkan video filters.
 
-To enable compilation of these filters you need to configure FFmpeg with
+To enable compilation of these filters you need to configure FFmpreg with
 @code{--enable-vulkan} and either @code{--enable-libglslang} or @code{--enable-libshaderc}.
 
 Running Vulkan filters requires you to initialize a hardware device and to pass that device to all filters in any filter graph.
@@ -27415,7 +27415,7 @@ Pass the hardware device called @var{name} to all filters in any filter graph.
 
 @end table
 
-For more detailed information see @url{https://www.ffmpeg.org/ffmpeg.html#Advanced-Video-options}
+For more detailed information see @url{https://www.ffmpreg.org/ffmpreg.html#Advanced-Video-options}
 
 @itemize
 @item
@@ -27780,10 +27780,10 @@ Preserve landscape geometry (when @var{width} >= @var{height}).
 
 Below is a description of the currently available QSV video filters.
 
-To enable compilation of these filters you need to configure FFmpeg with
+To enable compilation of these filters you need to configure FFmpreg with
 @code{--enable-libmfx} or @code{--enable-libvpl}.
 
-To use QSV filters, you need to setup the QSV device correctly. For more information, please read @url{https://trac.ffmpeg.org/wiki/Hardware/QuickSync}
+To use QSV filters, you need to setup the QSV device correctly. For more information, please read @url{https://trac.ffmpreg.org/wiki/Hardware/QuickSync}
 
 @section hstack_qsv
 Stack input videos horizontally.
@@ -27855,7 +27855,7 @@ See @ref{xstack}.
 Set output size for each input stream when @option{grid} is set. If this option
 is not set, this filter will set output size by default to the size of the
 first input stream. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 @item fill
 See @ref{xstack}.
@@ -27882,7 +27882,7 @@ It accepts the following parameters:
 @item video_size
 Specify the size (width and height) of the buffered video frames. For the
 syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 @item width
 The input video width.
@@ -27982,7 +27982,7 @@ Default value is 110.
 
 @item size, s
 Set the size of the output video. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 If @option{filename} or @option{pattern} is specified, the size is set
 by default to the width of the specified initial state row, and the
@@ -28062,7 +28062,7 @@ list_generators=true
 
 @item size, s
 Specify the size of the sourced video. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 The default value is @code{320x240}.
 
 @item rate, r
@@ -28077,7 +28077,7 @@ Set the sample aspect ratio of the sourced video.
 
 @item duration, d
 Set the duration of the sourced video. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 
 If not specified, or the expressed duration is negative, the video is
@@ -28094,10 +28094,10 @@ and examples for details.
 @itemize
 
 @item
-Use CIQRCodeGenerator to create a QR code for the FFmpeg homepage,
+Use CIQRCodeGenerator to create a QR code for the FFmpreg homepage,
 given as complete and escaped command-line for Apple's standard bash shell:
 @example
-ffmpeg -f lavfi -i coreimagesrc=s=100x100:filter=CIQRCodeGenerator@@inputMessage=https\\\\\://FFmpeg.org/@@inputCorrectionLevel=H -frames:v 1 QRCode.png
+ffmpreg -f lavfi -i coreimagesrc=s=100x100:filter=CIQRCodeGenerator@@inputMessage=https\\\\\://FFmpreg.org/@@inputCorrectionLevel=H -frames:v 1 QRCode.png
 @end example
 This example is equivalent to the QRCode example of @ref{coreimage} without the
 need for a nullsrc video source.
@@ -28171,14 +28171,14 @@ Filter initialization will fail if 10 bit format is requested but unavailable.
 
 Capture primary screen and encode using nvenc:
 @example
-ffmpeg -f lavfi -i ddagrab -c:v h264_nvenc -cq 18 output.mp4
+ffmpreg -f lavfi -i ddagrab -c:v h264_nvenc -cq 18 output.mp4
 @end example
 
 You can also skip the lavfi device and directly use the filter.
 Also demonstrates downloading the frame and encoding with libx264.
 Explicit output format specification is required in this case:
 @example
-ffmpeg -filter_complex ddagrab=output_idx=1:framerate=60,hwdownload,format=bgra -c:v libx264 -crf 18 output.mp4
+ffmpreg -filter_complex ddagrab=output_idx=1:framerate=60,hwdownload,format=bgra -c:v libx264 -crf 18 output.mp4
 @end example
 
 If you want to capture only a subsection of the desktop, this can be achieved
@@ -28194,7 +28194,7 @@ Generate several gradients.
 @table @option
 @item size, s
 Set frame size. For the syntax of this option, check the @ref{video size syntax,,"Video
-size" section in the ffmpeg-utils manual,ffmpeg-utils}. Default value is "640x480".
+size" section in the ffmpreg-utils manual,ffmpreg-utils}. Default value is "640x480".
 
 @item rate, r
 Set frame rate, expressed as number of frames per second. Default
@@ -28215,7 +28215,7 @@ Set seed for picking gradient line points.
 
 @item duration, d
 Set the duration of the sourced video. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 
 If not specified, or the expressed duration is negative, the video is
@@ -28287,7 +28287,7 @@ value is "25".
 
 @item size, s
 Set frame size. For the syntax of this option, check the @ref{video size syntax,,"Video
-size" section in the ffmpeg-utils manual,ffmpeg-utils}. Default value is "640x480".
+size" section in the ffmpreg-utils manual,ffmpreg-utils}. Default value is "640x480".
 
 @item start_scale
 Set the initial scale value. Default value is 3.0.
@@ -28321,7 +28321,7 @@ number or a valid video frame rate abbreviation. The default value is
 
 @item duration, d
 Set the duration of the sourced video. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 
 If not specified, or the expressed duration is negative, the video is
@@ -28363,7 +28363,7 @@ will generate a "dc_luma" test pattern.
 Provide a frei0r source.
 
 To enable compilation of this filter you need to install the frei0r
-header and configure FFmpeg with @code{--enable-frei0r}.
+header and configure FFmpreg with @code{--enable-frei0r}.
 
 This source accepts the following parameters:
 
@@ -28371,7 +28371,7 @@ This source accepts the following parameters:
 
 @item size
 The size of the video to generate. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 @item framerate
 The framerate of the generated video. It may be a string of the form
@@ -28460,7 +28460,7 @@ a dead cell.
 
 @item size, s
 Set the size of the output video. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 If @option{filename} is specified, the size is set by default to the
 same size of the input file. If @option{size} is set, it must contain
@@ -28490,7 +28490,7 @@ used to represent a dead cell.
 Set mold color, for definitely dead and moldy cells.
 
 For the syntax of these 3 color options, check the @ref{color syntax,,"Color" section in the
-ffmpeg-utils manual,ffmpeg-utils}.
+ffmpreg-utils manual,ffmpreg-utils}.
 @end table
 
 @subsection Examples
@@ -28596,11 +28596,11 @@ coded on a @code{1/(N*N)} scale.
 @item color, c
 Specify the color of the source, only available in the @code{color}
 source. For the syntax of this option, check the
-@ref{color syntax,,"Color" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{color syntax,,"Color" section in the ffmpreg-utils manual,ffmpreg-utils}.
 
 @item size, s
 Specify the size of the sourced video. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 The default value is @code{320x240}.
 
 This option is not available with the @code{allrgb}, @code{allyuv}, and
@@ -28615,7 +28615,7 @@ number or a valid video frame rate abbreviation. The default value is
 
 @item duration, d
 Set the duration of the sourced video. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 
 If not specified, or the expressed duration is negative, the video is
@@ -28786,7 +28786,7 @@ This source accepts the following options:
 @table @option
 @item size, s
 Set frame size. For the syntax of this option, check the @ref{video size syntax,,"Video
-size" section in the ffmpeg-utils manual,ffmpeg-utils}. Default value is "640x480".
+size" section in the ffmpreg-utils manual,ffmpreg-utils}. Default value is "640x480".
 
 @item rate, r
 Set frame rate, expressed as number of frames per second. Default
@@ -28810,7 +28810,7 @@ This source accepts the following options:
 @table @option
 @item size, s
 Set frame size. For the syntax of this option, check the @ref{video size syntax,,"Video
-size" section in the ffmpeg-utils manual,ffmpeg-utils}. Default value is "320x240".
+size" section in the ffmpreg-utils manual,ffmpreg-utils}. Default value is "320x240".
 
 @item rate, r
 Set frame rate, expressed as number of frames per second. Default
@@ -28818,7 +28818,7 @@ value is "25".
 
 @item duration, d
 Set the duration of the sourced video. See
-@ref{time duration syntax,,the Time duration section in the ffmpeg-utils(1) manual,ffmpeg-utils}
+@ref{time duration syntax,,the Time duration section in the ffmpreg-utils(1) manual,ffmpreg-utils}
 for the accepted syntax.
 
 If not specified, or the expressed duration is negative, the video is
@@ -28946,7 +28946,7 @@ value is "25".
 
 @item size, s
 Specify the video size for the output. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{hd720}.
 
 @item fov
@@ -29001,7 +29001,7 @@ value is "25".
 
 @item size, s
 Specify the video size for the output. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{1024x256}.
 
 @item colors
@@ -29047,7 +29047,7 @@ value is "25".
 
 @item size, s
 Specify the video size for the output. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{hd720}.
 
 @item scale
@@ -29130,7 +29130,7 @@ Set the output frame rate. Default value is @code{25}.
 
 @item size, s
 Set the video size for the output. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{800x400}.
 
 @item rc
@@ -29175,9 +29175,9 @@ Set mono or out of phase duration until notification, expressed in seconds. Defa
 
 @itemize
 @item
-Complete example with @command{ffmpeg} to detect 1 second of mono with 0.001 phase tolerance:
+Complete example with @command{ffmpreg} to detect 1 second of mono with 0.001 phase tolerance:
 @example
-ffmpeg -i stereo.wav -af aphasemeter=video=0:phasing=1:duration=1:tolerance=0.001 -f null -
+ffmpreg -i stereo.wav -af aphasemeter=video=0:phasing=1:duration=1:tolerance=0.001 -f null -
 @end example
 @end itemize
 
@@ -29215,7 +29215,7 @@ Default value is @samp{lissajous}.
 
 @item size, s
 Set the video size for the output. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{400x400}.
 
 @item rate, r
@@ -29408,7 +29408,7 @@ at output; be sure to configure the output file to handle it.
 Concatenate an opening, an episode and an ending, all in bilingual version
 (video in stream 0, audio in streams 1 and 2):
 @example
-ffmpeg -i opening.mkv -i episode.mkv -i ending.mkv -filter_complex \
+ffmpreg -i opening.mkv -i episode.mkv -i ending.mkv -filter_complex \
   '[0:0] [0:1] [0:2] [1:0] [1:1] [1:2] [2:0] [2:1] [2:2]
    concat=n=3:v=1:a=2 [v] [a1] [a2]' \
   -map '[v]' -map '[a1]' -map '[a2]' output.mkv
@@ -29474,7 +29474,7 @@ activated. Default is @code{0}.
 @item size
 Set the video size. This option is for video only. For the syntax of this
 option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default and minimum resolution is @code{640x480}.
 
 @item meter
@@ -29583,9 +29583,9 @@ ffplay -f lavfi -i "amovie=input.mp3,ebur128=video=1:meter=18 [out0][out1]"
 @end example
 
 @item
-Run an analysis with @command{ffmpeg}:
+Run an analysis with @command{ffmpreg}:
 @example
-ffmpeg -nostats -i input.mp3 -filter_complex ebur128 -f null -
+ffmpreg -nostats -i input.mp3 -filter_complex ebur128 -f null -
 @end example
 @end itemize
 
@@ -29640,9 +29640,9 @@ The duration of the first input.
 
 @itemize
 @item
-Interleave frames belonging to different streams using @command{ffmpeg}:
+Interleave frames belonging to different streams using @command{ffmpreg}:
 @example
-ffmpeg -i bambi.avi -i pr0n.mkv -filter_complex "[0:v][1:v] interleave" out.avi
+ffmpreg -i bambi.avi -i pr0n.mkv -filter_complex "[0:v][1:v] interleave" out.avi
 @end example
 
 @item
@@ -29824,7 +29824,7 @@ Slow down filtering to match real time approximately.
 
 These filters will pause the filtering for a variable amount of time to
 match the output rate with the input timestamps.
-They are similar to the @option{re} option to @code{ffmpeg}.
+They are similar to the @option{re} option to @code{ffmpreg}.
 
 They accept the following options:
 
@@ -30074,7 +30074,7 @@ aselect='gt(samples_n\,100)'
 @item
 Create a mosaic of the first scenes:
 @example
-ffmpeg -i video.avi -vf select='gt(scene\,0.4)',scale=160:120,tile -frames:v 1 preview.png
+ffmpreg -i video.avi -vf select='gt(scene\,0.4)',scale=160:120,tile -frames:v 1 preview.png
 @end example
 
 Comparing @var{scene} against a value between 0.3 and 0.5 is generally a sane
@@ -30090,7 +30090,7 @@ select=n=2:e='mod(n, 2)+1' [odd][even]; [odd] pad=h=2*ih [tmp]; [tmp][even] over
 Select useful frames from an ffconcat file which is using inpoints and
 outpoints but where the source files are not intra frame only.
 @example
-ffmpeg -copyts -vsync 0 -segment_time_metadata 1 -i input.ffconcat -vf select=concatdec_select -af aselect=concatdec_select output.avi
+ffmpreg -copyts -vsync 0 -segment_time_metadata 1 -i input.ffconcat -vf select=concatdec_select -af aselect=concatdec_select output.avi
 @end example
 @end itemize
 
@@ -30505,7 +30505,7 @@ The filter accepts the following options:
 @table @option
 @item size, s
 Specify the video size for the output. It must be even. For the syntax of this option,
-check the @ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+check the @ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{1920x1080}.
 
 @item fps, rate, r
@@ -30786,7 +30786,7 @@ The filter accepts the following options:
 @table @option
 @item size, s
 Specify the video size for the output. For the syntax of this option,
-check the @ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+check the @ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{640x512}.
 
 @item rate, r
@@ -30913,7 +30913,7 @@ The filter accepts the following options:
 @table @option
 @item size, s
 Specify size of video. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default is @code{1024x512}.
 
 @item rate, r
@@ -31051,7 +31051,7 @@ The filter accepts the following options:
 @table @option
 @item size, s
 Specify the video size for the output. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{512x512}.
 
 @item win_size
@@ -31103,7 +31103,7 @@ The filter accepts the following options:
 @table @option
 @item size, s
 Specify the video size for the output. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{640x512}.
 
 @item slide
@@ -31323,7 +31323,7 @@ The filter accepts the following options:
 @table @option
 @item size, s
 Specify the video size for the output. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{4096x2048}.
 
 @item mode
@@ -31483,9 +31483,9 @@ Set opacity strength when using pixel format output with alpha component.
 @itemize
 @item
 Extract an audio spectrogram of a whole audio track
-in a 1024x1024 picture using @command{ffmpeg}:
+in a 1024x1024 picture using @command{ffmpreg}:
 @example
-ffmpeg -i audio.flac -lavfi showspectrumpic=s=1024x1024 spectrogram.png
+ffmpreg -i audio.flac -lavfi showspectrumpic=s=1024x1024 spectrogram.png
 @end example
 @end itemize
 
@@ -31572,7 +31572,7 @@ The filter accepts the following options:
 @table @option
 @item size, s
 Specify the video size for the output. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{600x240}.
 
 @item mode
@@ -31673,7 +31673,7 @@ The filter accepts the following options:
 @table @option
 @item size, s
 Specify the video size for the output. For the syntax of this option, check the
-@ref{video size syntax,,"Video size" section in the ffmpeg-utils manual,ffmpeg-utils}.
+@ref{video size syntax,,"Video size" section in the ffmpreg-utils manual,ffmpreg-utils}.
 Default value is @code{600x240}.
 
 @item split_channels
@@ -31736,9 +31736,9 @@ Default value is @code{average}.
 @itemize
 @item
 Extract a channel split representation of the wave form of a whole audio track
-in a 1024x800 picture using @command{ffmpeg}:
+in a 1024x800 picture using @command{ffmpreg}:
 @example
-ffmpeg -i audio.flac -lavfi showwavespic=split_channels=1:s=1024x800 waveform.png
+ffmpreg -i audio.flac -lavfi showwavespic=split_channels=1:s=1024x800 waveform.png
 @end example
 @end itemize
 
@@ -31828,9 +31828,9 @@ Default is @code{vertical}.
 First create magnitude and phase videos from audio, assuming audio is stereo with 44100 sample rate,
 then resynthesize videos back to audio with spectrumsynth:
 @example
-ffmpeg -i input.flac -lavfi showspectrum=mode=separate:scale=log:overlap=0.875:color=channel:slide=fullframe:data=magnitude -an -c:v rawvideo magnitude.nut
-ffmpeg -i input.flac -lavfi showspectrum=mode=separate:scale=lin:overlap=0.875:color=channel:slide=fullframe:data=phase -an -c:v rawvideo phase.nut
-ffmpeg -i magnitude.nut -i phase.nut -lavfi spectrumsynth=channels=2:sample_rate=44100:win_func=hann:overlap=0.875:slide=fullframe output.flac
+ffmpreg -i input.flac -lavfi showspectrum=mode=separate:scale=log:overlap=0.875:color=channel:slide=fullframe:data=magnitude -an -c:v rawvideo magnitude.nut
+ffmpreg -i input.flac -lavfi showspectrum=mode=separate:scale=lin:overlap=0.875:color=channel:slide=fullframe:data=phase -an -c:v rawvideo phase.nut
+ffmpreg -i magnitude.nut -i phase.nut -lavfi spectrumsynth=channels=2:sample_rate=44100:win_func=hann:overlap=0.875:slide=fullframe output.flac
 @end example
 @end itemize
 
@@ -31869,9 +31869,9 @@ one padded:
 @end example
 
 @item
-Create 5 copies of the input audio with @command{ffmpeg}:
+Create 5 copies of the input audio with @command{ffmpreg}:
 @example
-ffmpeg -i INPUT -filter_complex asplit=5 OUTPUT
+ffmpreg -i INPUT -filter_complex asplit=5 OUTPUT
 @end example
 @end itemize
 
@@ -31885,7 +31885,7 @@ must be inserted between two video filters, @code{azmq} between two
 audio filters. Both are capable to send messages to any filter type.
 
 To enable these filters you need to install the libzmq library and
-headers and configure FFmpeg with @code{--enable-libzmq}.
+headers and configure FFmpreg with @code{--enable-libzmq}.
 
 For more information about libzmq see:
 @url{http://www.zeromq.org/}
@@ -32038,7 +32038,7 @@ postfix. The default value is "0".
 Specifies the streams to read. Several streams can be specified,
 separated by "+". The source will then have as many outputs, in the
 same order. The syntax is explained in the @ref{Stream specifiers,,"Stream specifiers"
-section in the ffmpeg manual,ffmpeg}. Two special names, "dv" and "da" specify
+section in the ffmpreg manual,ffmpreg}. Two special names, "dv" and "da" specify
 respectively the default (best suited) video and audio stream. Default
 is "dv", or "da" if the filter is called as "amovie".
 

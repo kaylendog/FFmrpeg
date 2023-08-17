@@ -3,7 +3,7 @@
 require 'open3'
 require 'json'
 
-ffmpeg_bin = 'ffmpeg'
+ffmpreg_bin = 'ffmpreg'
 target_il  = -24.0
 target_lra = +11.0
 target_tp  = -2.0
@@ -15,7 +15,7 @@ if ARGF.argv.count != 2
 end
 
 ff_cmd = Array.new([
-  ffmpeg_bin,
+  ffmpreg_bin,
   '-hide_banner',
   '-i', ARGF.argv[0],
   '-af', "loudnorm='I=#{target_il}:LRA=#{target_lra}:tp=#{target_tp}:print_format=json'",
@@ -43,7 +43,7 @@ else
 end
 
 ff_cmd = Array.new([
-  ffmpeg_bin,
+  ffmpreg_bin,
   '-y', '-hide_banner',
   '-i', ARGF.argv[0],
   '-af', loudnorm_string,

@@ -2,20 +2,20 @@
  * (c) 2001 Fabrice Bellard
  *     2007 Marc Hoffman <marc.hoffman@analog.com>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -502,7 +502,7 @@ int main(int argc, char **argv)
         test = atoi(argv[optind]);
     if(optind+1 < argc) bits= atoi(argv[optind+1]);
 
-    printf("ffmpeg DCT/IDCT test\n");
+    printf("ffmpreg DCT/IDCT test\n");
 
     if (test_248_dct) {
         idct248_error("SIMPLE-C", ff_simple_idct248_put, speed);

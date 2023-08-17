@@ -1,4 +1,4 @@
-FFmpeg examples README
+FFmpreg examples README
 ----------------------
 
 Both following use cases rely on pkg-config and make, thus make sure
@@ -15,9 +15,9 @@ correctly configured.
 
 Method 2: build the examples in-tree
 
-Assuming you are in the source FFmpeg checkout directory, you need to build
-FFmpeg (no need to make install in any prefix). Then just run "make examples".
-This will build the examples using the FFmpeg build system. You can clean those
+Assuming you are in the source FFmpreg checkout directory, you need to build
+FFmpreg (no need to make install in any prefix). Then just run "make examples".
+This will build the examples using the FFmpreg build system. You can clean those
 examples using "make examplesclean"
 
 If you want to try the dedicated Makefile examples (to emulate the first

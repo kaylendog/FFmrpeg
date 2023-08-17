@@ -128,7 +128,7 @@ FATE_AFILTER-$(call FILTERDEMDECENCMUX, FIREQUALIZER ATRIM VOLUME, WAV, PCM_S16L
 fate-filter-firequalizer: tests/data/asynth-44100-2.wav
 fate-filter-firequalizer: tests/data/filtergraphs/firequalizer
 fate-filter-firequalizer: REF = tests/data/asynth-44100-2.wav
-fate-filter-firequalizer: CMD = ffmpeg -auto_conversion_filters -i $(TARGET_PATH)/tests/data/asynth-44100-2.wav -filter_script $(TARGET_PATH)/tests/data/filtergraphs/firequalizer -f wav -c:a pcm_s16le -
+fate-filter-firequalizer: CMD = ffmpreg -auto_conversion_filters -i $(TARGET_PATH)/tests/data/asynth-44100-2.wav -filter_script $(TARGET_PATH)/tests/data/filtergraphs/firequalizer -f wav -c:a pcm_s16le -
 fate-filter-firequalizer: CMP = oneoff
 fate-filter-firequalizer: CMP_UNIT = s16
 fate-filter-firequalizer: SIZE_TOLERANCE = 1058400 - 1097208
@@ -193,7 +193,7 @@ fate-filter-stereotools: CMD = framecrc -i $(SRC) -frames:a 20 -af aresample,ste
 FATE_AFILTER_SAMPLES-$(call FILTERDEMDECENCMUX, TREMOLO, WAV, PCM_S16LE, PCM_S16LE, WAV) += fate-filter-tremolo
 fate-filter-tremolo: tests/data/asynth-44100-2.wav
 fate-filter-tremolo: SRC = $(TARGET_PATH)/tests/data/asynth-44100-2.wav
-fate-filter-tremolo: CMD = ffmpeg -auto_conversion_filters -i $(SRC) -frames:a 20 -af tremolo -f wav -f s16le -
+fate-filter-tremolo: CMD = ffmpreg -auto_conversion_filters -i $(SRC) -frames:a 20 -af tremolo -f wav -f s16le -
 fate-filter-tremolo: REF = $(SAMPLES)/filter/tremolo.pcm
 fate-filter-tremolo: CMP = oneoff
 fate-filter-tremolo: CMP_UNIT = s16
@@ -205,7 +205,7 @@ fate-filter-compand: SRC = $(TARGET_PATH)/tests/data/asynth-44100-2.wav
 fate-filter-compand: CMD = framecrc -auto_conversion_filters -i $(SRC) -frames:a 20 -filter_complex_script $(TARGET_PATH)/tests/data/filtergraphs/compand
 
 tests/data/hls-list.m3u8: TAG = GEN
-tests/data/hls-list.m3u8: ffmpeg$(PROGSSUF)$(EXESUF) | tests/data
+tests/data/hls-list.m3u8: ffmpreg$(PROGSSUF)$(EXESUF) | tests/data
 	$(M)$(TARGET_EXEC) $(TARGET_PATH)/$< -nostdin \
         -f lavfi -i "aevalsrc=cos(2*PI*t)*sin(2*PI*(440+4*t)*t):d=20" -f segment -segment_time 10 -map 0 -flags +bitexact -codec:a mp2fixed \
         -segment_list $(TARGET_PATH)/$@ -y $(TARGET_PATH)/tests/data/hls-out-%03d.ts 2>/dev/null
@@ -215,7 +215,7 @@ fate-filter-hls: tests/data/hls-list.m3u8
 fate-filter-hls: CMD = framecrc -flags +bitexact -i $(TARGET_PATH)/tests/data/hls-list.m3u8 -af aresample
 
 tests/data/hls-list-append.m3u8: TAG = GEN
-tests/data/hls-list-append.m3u8: ffmpeg$(PROGSSUF)$(EXESUF) | tests/data
+tests/data/hls-list-append.m3u8: ffmpreg$(PROGSSUF)$(EXESUF) | tests/data
 	$(M)$(TARGET_EXEC) $(TARGET_PATH)/$< -nostdin \
         -f lavfi -i "aevalsrc=cos(2*PI*t)*sin(2*PI*(440+4*t)*t):d=20" -f segment -segment_time 10 -map 0 -flags +bitexact -codec:a mp2fixed \
         -segment_list $(TARGET_PATH)/$@ -y $(TARGET_PATH)/tests/data/hls-append-out-%03d.ts 2>/dev/null; \
@@ -229,17 +229,17 @@ fate-filter-hls-append: tests/data/hls-list-append.m3u8
 fate-filter-hls-append: CMD = framecrc -flags +bitexact -i $(TARGET_PATH)/tests/data/hls-list-append.m3u8 -af asetpts=N*23,aresample
 
 FATE_AMIX += fate-filter-amix-simple
-fate-filter-amix-simple: CMD = ffmpeg -auto_conversion_filters -filter_complex amix -i $(SRC) -ss 3 -i $(SRC1) -f f32le -
+fate-filter-amix-simple: CMD = ffmpreg -auto_conversion_filters -filter_complex amix -i $(SRC) -ss 3 -i $(SRC1) -f f32le -
 fate-filter-amix-simple: REF = $(SAMPLES)/filter/amix_simple.pcm
 
 FATE_AMIX += fate-filter-amix-first
-fate-filter-amix-first: CMD = ffmpeg -auto_conversion_filters -filter_complex amix=duration=first -ss 4 -i $(SRC) -i $(SRC1) -f f32le -
+fate-filter-amix-first: CMD = ffmpreg -auto_conversion_filters -filter_complex amix=duration=first -ss 4 -i $(SRC) -i $(SRC1) -f f32le -
 fate-filter-amix-first: REF = $(SAMPLES)/filter/amix_first.pcm
 
 FATE_AMIX += fate-filter-amix-transition
 fate-filter-amix-transition: tests/data/asynth-44100-2-3.wav
 fate-filter-amix-transition: SRC2 = $(TARGET_PATH)/tests/data/asynth-44100-2-3.wav
-fate-filter-amix-transition: CMD = ffmpeg -auto_conversion_filters -filter_complex amix=inputs=3:dropout_transition=0.5 -i $(SRC) -ss 2 -i $(SRC1) -ss 4 -i $(SRC2) -f f32le -
+fate-filter-amix-transition: CMD = ffmpreg -auto_conversion_filters -filter_complex amix=inputs=3:dropout_transition=0.5 -i $(SRC) -ss 2 -i $(SRC1) -ss 4 -i $(SRC2) -f f32le -
 fate-filter-amix-transition: REF = $(SAMPLES)/filter/amix_transition.pcm
 
 FATE_AFILTER_SAMPLES-$(call FILTERDEMDECENCMUX, AMIX, WAV, PCM_S16LE, PCM_F32LE, PCM_F32LE) += $(FATE_AMIX)

@@ -1,26 +1,26 @@
 /*
  * Copyright (c) 2007-2010 Stefano Sabatini
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
 /**
  * @file
- * simple media prober based on the FFmpeg libraries
+ * simple media prober based on the FFmpreg libraries
  */
 
 #include "config.h"
@@ -1770,8 +1770,8 @@ static void xml_print_section_header(WriterContext *wctx)
 
     if (wctx->level == 0) {
         const char *qual = " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
-            "xmlns:ffprobe=\"http://www.ffmpeg.org/schema/ffprobe\" "
-            "xsi:schemaLocation=\"http://www.ffmpeg.org/schema/ffprobe ffprobe.xsd\"";
+            "xmlns:ffprobe=\"http://www.ffmpreg.org/schema/ffprobe\" "
+            "xsi:schemaLocation=\"http://www.ffmpreg.org/schema/ffprobe ffprobe.xsd\"";
 
         writer_put_str(wctx, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
         writer_printf(wctx, "<%sffprobe%s>\n",
@@ -3565,7 +3565,7 @@ static void ffprobe_show_program_version(WriterContext *w)
 
     writer_print_section_header(w, SECTION_ID_PROGRAM_VERSION);
     print_str("version", FFMPEG_VERSION);
-    print_fmt("copyright", "Copyright (c) %d-%d the FFmpeg developers",
+    print_fmt("copyright", "Copyright (c) %d-%d the FFmpreg developers",
               program_birth_year, CONFIG_THIS_YEAR);
     print_str("compiler_ident", CC_IDENT);
     print_str("configuration", FFMPEG_CONFIGURATION);

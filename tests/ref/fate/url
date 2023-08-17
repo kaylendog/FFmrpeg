@@ -1,19 +1,19 @@
 Testing ff_url_decompose:
 
-http://user:pass@ffmpeg:8080/dir/file?query#fragment =>
+http://user:pass@ffmpreg:8080/dir/file?query#fragment =>
   scheme: http:
   authority: //
   userinfo: user:pass@
-  host: ffmpeg
+  host: ffmpreg
   port: :8080
   path: /dir/file
   query: ?query
   fragment: #fragment
 
-http://ffmpeg/dir/file =>
+http://ffmpreg/dir/file =>
   scheme: http:
   authority: //
-  host: ffmpeg
+  host: ffmpreg
   path: /dir/file
 
 file:///dev/null =>
@@ -38,9 +38,9 @@ http://[::1]:8080/dev/null =>
   port: :8080
   path: /dev/null
 
-//ffmpeg/dev/null =>
+//ffmpreg/dev/null =>
   authority: //
-  host: ffmpeg
+  host: ffmpreg
   path: /dev/null
 
 test?url=http://server/path =>

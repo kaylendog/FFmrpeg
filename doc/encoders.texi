@@ -1,10 +1,10 @@
 @chapter Encoders
 @c man begin ENCODERS
 
-Encoders are configured elements in FFmpeg which allow the encoding of
+Encoders are configured elements in FFmpreg which allow the encoding of
 multimedia streams.
 
-When you configure your FFmpeg build, all the supported native encoders
+When you configure your FFmpreg build, all the supported native encoders
 are enabled by default. Encoders requiring an external library must be enabled
 manually via the corresponding @code{--enable-lib} option. You can list all
 available encoders using the configure option @code{--list-encoders}.
@@ -30,7 +30,7 @@ follows.
 
 Advanced Audio Coding (AAC) encoder.
 
-This encoder is the default AAC encoder, natively implemented into FFmpeg.
+This encoder is the default AAC encoder, natively implemented into FFmpreg.
 
 @subsection Options
 
@@ -41,7 +41,7 @@ Set bit rate in bits/s. Setting this automatically activates constant bit rate
 
 @item q
 Set quality for variable bit rate (VBR) mode. This option is valid only using
-the @command{ffmpeg} command-line tool. For library interface users, use
+the @command{ffmpreg} command-line tool. For library interface users, use
 @option{global_quality}.
 
 @item cutoff
@@ -537,7 +537,7 @@ FLAC (Free Lossless Audio Codec) Encoder
 
 @subsection Options
 
-The following options are supported by FFmpeg's flac encoder.
+The following options are supported by FFmpreg's flac encoder.
 
 @table @option
 @item compression_level
@@ -615,7 +615,7 @@ and slightly improves compression.
 
 Opus encoder.
 
-This is a native FFmpeg encoder for the Opus format. Currently its in development and
+This is a native FFmpreg encoder for the Opus format. Currently its in development and
 only implements the CELT part of the codec. Its quality is usually worse and at best
 is equal to the libopus encoder.
 
@@ -659,7 +659,7 @@ For more information see the fdk-aac project at
 
 @subsection Options
 
-The following options are mapped on the shared FFmpeg codec options.
+The following options are mapped on the shared FFmpreg codec options.
 
 @table @option
 @item b
@@ -800,17 +800,17 @@ about supported values.
 
 @itemize
 @item
-Use @command{ffmpeg} to convert an audio file to VBR AAC in an M4A (MP4)
+Use @command{ffmpreg} to convert an audio file to VBR AAC in an M4A (MP4)
 container:
 @example
-ffmpeg -i input.wav -codec:a libfdk_aac -vbr 3 output.m4a
+ffmpreg -i input.wav -codec:a libfdk_aac -vbr 3 output.m4a
 @end example
 
 @item
-Use @command{ffmpeg} to convert an audio file to CBR 64k kbps AAC, using the
+Use @command{ffmpreg} to convert an audio file to CBR 64k kbps AAC, using the
 High-Efficiency AAC profile:
 @example
-ffmpeg -i input.wav -c:a libfdk_aac -profile:a aac_he -b:a 64k output.m4a
+ffmpreg -i input.wav -c:a libfdk_aac -profile:a aac_he -b:a 64k output.m4a
 @end example
 @end itemize
 
@@ -838,7 +838,7 @@ expressed in kilobits/s.
 
 @item q (@emph{-V})
 Set constant quality setting for VBR. This option is valid only
-using the @command{ffmpeg} command-line tool. For library interface
+using the @command{ffmpreg} command-line tool. For library interface
 users, use @option{global_quality}.
 
 @item compression_level (@emph{-q})
@@ -862,7 +862,7 @@ stereo or mid/side stereo. Default value is 1.
 @item abr (@emph{--abr})
 Enable the encoder to use ABR when set to 1. The @command{lame}
 @option{--abr} sets the target bitrate, while this options only
-tells FFmpeg to use ABR still relies on @option{b} to set bitrate.
+tells FFmpreg to use ABR still relies on @option{b} to set bitrate.
 
 @item copyright (@emph{-c})
 Set MPEG audio copyright flag when set to 1. The default value is 0
@@ -928,12 +928,12 @@ in parentheses.
 @table @option
 
 @item b (@emph{bitrate})
-Set the bit rate in bits/s.  FFmpeg's @option{b} option is
+Set the bit rate in bits/s.  FFmpreg's @option{b} option is
 expressed in bits/s, while @command{opusenc}'s @option{bitrate} in
 kilobits/s.
 
 @item vbr (@emph{vbr}, @emph{hard-cbr}, and @emph{cvbr})
-Set VBR mode. The FFmpeg @option{vbr} option has the following
+Set VBR mode. The FFmpreg @option{vbr} option has the following
 valid arguments, with the @command{opusenc} equivalent options
 in parentheses:
 
@@ -1051,7 +1051,7 @@ configuration. You need to explicitly configure the build with
 @subsection Options
 
 The following options are supported by the libtwolame wrapper. The
-@command{twolame}-equivalent options follow the FFmpeg ones and are in
+@command{twolame}-equivalent options follow the FFmpreg ones and are in
 parentheses.
 
 @table @option
@@ -1063,7 +1063,7 @@ option is expressed in kilobits/s. Default value is 128k.
 Set quality for experimental VBR support. Maximum value range is
 from -50 to 50, useful range is from -10 to 10. The higher the
 value, the better the quality. This option is valid only using the
-@command{ffmpeg} command-line tool. For library interface users,
+@command{ffmpreg} command-line tool. For library interface users,
 use @option{global_quality}.
 
 @item mode (@emph{--mode})
@@ -1171,7 +1171,7 @@ Set constant quality setting for VBR. The value should be a float
 number in the range of -1.0 to 10.0. The higher the value, the better
 the quality. The default value is @samp{3.0}.
 
-This option is valid only using the @command{ffmpeg} command-line tool.
+This option is valid only using the @command{ffmpreg} command-line tool.
 For library interface users, use @option{global_quality}.
 
 @item cutoff (@emph{--advanced-encode-option lowpass_frequency=N})
@@ -1463,7 +1463,7 @@ total file size is contained in the first @code{l} layers.
 Example usage:
 
 @example
-ffmpeg -i input.bmp -c:v jpeg2000 -layer_rates "100,10,1" output.j2k
+ffmpreg -i input.bmp -c:v jpeg2000 -layer_rates "100,10,1" output.j2k
 @end example
 
 This would compress the image to contain 3 layers, where the data contained in the
@@ -1510,7 +1510,7 @@ by ":". See @command{rav1e --help} for a list of options.
 For example to specify librav1e encoding options with @option{-rav1e-params}:
 
 @example
-ffmpeg -i input -c:v librav1e -b:v 500K -rav1e-params speed=5:low_latency=true output.mp4
+ffmpreg -i input -c:v librav1e -b:v 500K -rav1e-params speed=5:low_latency=true output.mp4
 @end example
 
 @end table
@@ -1794,7 +1794,7 @@ section "AV1 Specific Options".
 For example to specify libaom encoding options with @option{-aom-params}:
 
 @example
-ffmpeg -i input -c:v libaom-av1 -b:v 500K -aom-params tune=psnr:enable-tpl-model=1 output.mp4
+ffmpreg -i input -c:v libaom-av1 -b:v 500K -aom-params tune=psnr:enable-tpl-model=1 output.mp4
 @end example
 
 @end table
@@ -1940,7 +1940,7 @@ For more information about the library see
 
 @subsection Options
 
-The following FFmpeg global options affect the configurations of the
+The following FFmpreg global options affect the configurations of the
 libopenh264 encoder.
 
 @table @option
@@ -2021,7 +2021,7 @@ quality value as a double floating point value in QP units.
 The value is clipped in the [0-10] range, and then multiplied by 6.3
 to get a value in the native libtheora range [0-63].
 
-This option is valid only using the @command{ffmpeg} command-line
+This option is valid only using the @command{ffmpreg} command-line
 tool. For library interface users, use @option{global_quality}.
 @end table
 
@@ -2029,15 +2029,15 @@ tool. For library interface users, use @option{global_quality}.
 
 @itemize
 @item
-Set maximum constant quality (VBR) encoding with @command{ffmpeg}:
+Set maximum constant quality (VBR) encoding with @command{ffmpreg}:
 @example
-ffmpeg -i INPUT -codec:v libtheora -q:v 10 OUTPUT.ogg
+ffmpreg -i INPUT -codec:v libtheora -q:v 10 OUTPUT.ogg
 @end example
 
 @item
-Use @command{ffmpeg} to convert a CBR 1000 kbps Theora video stream:
+Use @command{ffmpreg} to convert a CBR 1000 kbps Theora video stream:
 @example
-ffmpeg -i INPUT -codec:v libtheora -b:v 1000k OUTPUT.ogg
+ffmpreg -i INPUT -codec:v libtheora -b:v 1000k OUTPUT.ogg
 @end example
 @end itemize
 
@@ -2060,14 +2060,14 @@ the documentation of the undocumented generic options, see
 @ref{codec-options,,the Codec Options chapter}.
 
 To get more documentation of the libvpx options, invoke the command
-@command{ffmpeg -h encoder=libvpx}, @command{ffmpeg -h encoder=libvpx-vp9} or
+@command{ffmpreg -h encoder=libvpx}, @command{ffmpreg -h encoder=libvpx-vp9} or
 @command{vpxenc --help}. Further information is available in the libvpx API
 documentation.
 
 @table @option
 
 @item b (@emph{target-bitrate})
-Set bitrate in bits/s. Note that FFmpeg's @option{b} option is
+Set bitrate in bits/s. Note that FFmpreg's @option{b} option is
 expressed in bits/s, while @command{vpxenc}'s @option{target-bitrate} is in
 kilobits/s.
 
@@ -2148,7 +2148,7 @@ Set a change threshold on blocks below which they will be skipped by the
 encoder.
 
 @item slices (@emph{token-parts})
-Note that FFmpeg's @option{slices} option gives the total number of partitions,
+Note that FFmpreg's @option{slices} option gives the total number of partitions,
 while @command{vpxenc}'s @option{token-parts} is given as
 @code{log2(partitions)}.
 
@@ -2186,9 +2186,9 @@ The valid range is [0, 7].
 @item ts-parameters
 Sets the temporal scalability configuration using a :-separated list of
 key=value pairs. For example, to specify temporal scalability parameters
-with @code{ffmpeg}:
+with @code{ffmpreg}:
 @example
-ffmpeg -i INPUT -c:v libvpx -ts-parameters ts_number_layers=3:\
+ffmpreg -i INPUT -c:v libvpx -ts-parameters ts_number_layers=3:\
 ts_target_bitrate=250,500,1000:ts_rate_decimator=4,2,1:\
 ts_periodicity=4:ts_layer_id=0,2,1,2:ts_layering_mode=3 OUTPUT
 @end example
@@ -2386,7 +2386,7 @@ libx264 supports an impressive number of features, including 8x8 and
 entropy coding, interlacing (MBAFF), lossless mode, psy optimizations
 for detail retention (adaptive quantization, psy-RD, psy-trellis).
 
-Many libx264 encoder options are mapped to FFmpeg global codec
+Many libx264 encoder options are mapped to FFmpreg global codec
 options, while unique encoder options are provided through private
 options. Additionally the @option{x264opts} and @option{x264-params}
 private options allows one to pass a list of key=value tuples as accepted
@@ -2420,7 +2420,7 @@ the libx264 documentation.
 
 @table @option
 @item b (@emph{bitrate})
-Set bitrate in bits/s. Note that FFmpeg's @option{b} option is
+Set bitrate in bits/s. Note that FFmpreg's @option{b} option is
 expressed in bits/s, while @command{x264}'s @option{bitrate} is in
 kilobits/s.
 
@@ -2726,9 +2726,9 @@ Argument is a list of @var{key}=@var{value} couples separated by
 themselves, use "," instead. They accept it as well since long ago but this
 is kept undocumented for some reason.
 
-For example to specify libx264 encoding options with @command{ffmpeg}:
+For example to specify libx264 encoding options with @command{ffmpreg}:
 @example
-ffmpeg -i foo.mpg -c:v libx264 -x264opts keyint=123:min-keyint=20 -an out.mkv
+ffmpreg -i foo.mpg -c:v libx264 -x264opts keyint=123:min-keyint=20 -an out.mkv
 @end example
 
 @item a53cc @var{boolean}
@@ -2749,9 +2749,9 @@ parameters.
 This option is functionally the same as the @option{x264opts}, but is
 duplicated for compatibility with the Libav fork.
 
-For example to specify libx264 encoding options with @command{ffmpeg}:
+For example to specify libx264 encoding options with @command{ffmpreg}:
 @example
-ffmpeg -i INPUT -c:v libx264 -x264-params level=30:bframes=0:weightp=0:\
+ffmpreg -i INPUT -c:v libx264 -x264-params level=30:bframes=0:weightp=0:\
 cabac=0:ref=1:vbv-maxrate=768:vbv-bufsize=2000:analyse=all:me=umh:\
 no-fast-pskip=1:subq=6:8x8dct=0:trellis=0 OUTPUT
 @end example
@@ -2833,7 +2833,7 @@ by ":". See @command{x265 --help} for a list of options.
 For example to specify libx265 encoding options with @option{-x265-params}:
 
 @example
-ffmpeg -i input -c:v libx265 -x265-params crf=26:psy-rd=1 output.mp4
+ffmpreg -i input -c:v libx265 -x265-params crf=26:psy-rd=1 output.mp4
 @end example
 @end table
 
@@ -2890,7 +2890,7 @@ by ":".
 For example to specify libxavs2 encoding options with @option{-xavs2-params}:
 
 @example
-ffmpeg -i input -c:v libxavs2 -xavs2-params RdoqLevel=0 output.avs2
+ffmpreg -i input -c:v libxavs2 -xavs2-params RdoqLevel=0 output.avs2
 @end example
 @end table
 
@@ -3152,7 +3152,7 @@ Set physical density of pixels, in dots per meter, unset by default
 
 Apple ProRes encoder.
 
-FFmpeg contains 2 ProRes encoders, the prores-aw and prores-ks encoder.
+FFmpreg contains 2 ProRes encoders, the prores-aw and prores-ks encoder.
 The used encoder can be chosen with the @code{-vcodec} option.
 
 @subsection Private Options for prores-ks
@@ -3230,7 +3230,7 @@ Specifically this means either
 @itemize @minus
 @item
 @var{CQP} - constant quantizer scale, when the @option{qscale} codec flag is
-also set (the @option{-qscale} ffmpeg option).
+also set (the @option{-qscale} ffmpreg option).
 
 @item
 @var{LA_ICQ} - intelligent constant quality with lookahead, when the

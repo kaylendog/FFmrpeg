@@ -4,26 +4,26 @@
 # Copyright (c) 2014 Andreas Cadhalpun
 # Copyright (c) 2014 Tiancheng "Timothy" Gu
 #
-# This file is part of FFmpeg.
+# This file is part of FFmpreg.
 #
-# FFmpeg is free software; you can redistribute it and/or modify
+# FFmpreg is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License, or
 # (at your option) any later version.
 #
-# FFmpeg is distributed in the hope that it will be useful,
+# FFmpreg is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # General Public License for more details.
 #
 # You should have received a copy of the GNU General Public
-# License along with FFmpeg; if not, write to the Free Software
+# License along with FFmpreg; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 # no navigation elements
 set_from_init_file('HEADERS', 0);
 
-sub ffmpeg_heading_command($$$$$)
+sub ffmpreg_heading_command($$$$$)
 {
     my $self = shift;
     my $cmdname = shift;
@@ -123,7 +123,7 @@ sub ffmpeg_heading_command($$$$$)
 }
 
 foreach my $command (keys(%Texinfo::Common::sectioning_commands), 'node') {
-    texinfo_register_command_formatting($command, \&ffmpeg_heading_command);
+    texinfo_register_command_formatting($command, \&ffmpreg_heading_command);
 }
 
 # determine if texinfo is at least version 6.8
@@ -145,7 +145,7 @@ set_from_init_file('DEFAULT_RULE', '');
 set_from_init_file('BIG_RULE', '');
 
 # Customized file beginning
-sub ffmpeg_begin_file($$$)
+sub ffmpreg_begin_file($$$)
 {
     my $self = shift;
     my $filename = shift;
@@ -193,12 +193,12 @@ EOT
     return $head1 . $head_title . $head2 . $head_title . $head3;
 }
 if ($program_version_6_8) {
-    texinfo_register_formatting_function('format_begin_file', \&ffmpeg_begin_file);
+    texinfo_register_formatting_function('format_begin_file', \&ffmpreg_begin_file);
 } else {
-    texinfo_register_formatting_function('begin_file', \&ffmpeg_begin_file);
+    texinfo_register_formatting_function('begin_file', \&ffmpreg_begin_file);
 }
 
-sub ffmpeg_program_string($)
+sub ffmpreg_program_string($)
 {
   my $self = shift;
   if (defined($self->get_conf('PROGRAM'))
@@ -214,13 +214,13 @@ sub ffmpeg_program_string($)
   }
 }
 if ($program_version_6_8) {
-    texinfo_register_formatting_function('format_program_string', \&ffmpeg_program_string);
+    texinfo_register_formatting_function('format_program_string', \&ffmpreg_program_string);
 } else {
-    texinfo_register_formatting_function('program_string', \&ffmpeg_program_string);
+    texinfo_register_formatting_function('program_string', \&ffmpreg_program_string);
 }
 
 # Customized file ending
-sub ffmpeg_end_file($)
+sub ffmpreg_end_file($)
 {
     my $self = shift;
     my $program_string = &{$self->{'format_program_string'}}($self);
@@ -237,24 +237,24 @@ EOT
     return $program_text . $footer;
 }
 if ($program_version_6_8) {
-    texinfo_register_formatting_function('format_end_file', \&ffmpeg_end_file);
+    texinfo_register_formatting_function('format_end_file', \&ffmpreg_end_file);
 } else {
-    texinfo_register_formatting_function('end_file', \&ffmpeg_end_file);
+    texinfo_register_formatting_function('end_file', \&ffmpreg_end_file);
 }
 
 # Dummy title command
-# Ignore title. Title is handled through ffmpeg_begin_file().
+# Ignore title. Title is handled through ffmpreg_begin_file().
 set_from_init_file('USE_TITLEPAGE_FOR_TITLE', 1);
-sub ffmpeg_title($$$$)
+sub ffmpreg_title($$$$)
 {
     return '';
 }
 
 texinfo_register_command_formatting('titlefont',
-                                    \&ffmpeg_title);
+                                    \&ffmpreg_title);
 
 # Customized float command. Part of code borrowed from GNU Texinfo.
-sub ffmpeg_float($$$$$)
+sub ffmpreg_float($$$$$)
 {
     my $self = shift;
     my $cmdname = shift;
@@ -354,6 +354,6 @@ sub ffmpeg_float($$$$$)
 }
 
 texinfo_register_command_formatting('float',
-                                    \&ffmpeg_float);
+                                    \&ffmpreg_float);
 
 1;

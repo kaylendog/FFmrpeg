@@ -2,20 +2,20 @@
  * log functions
  * Copyright (c) 2003 Michel Bardiaux
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -463,14 +463,14 @@ static void missing_feature_sample(int sample, void *avc, const char *msg,
                                    va_list argument_list)
 {
     av_vlog(avc, AV_LOG_WARNING, msg, argument_list);
-    av_log(avc, AV_LOG_WARNING, " is not implemented. Update your FFmpeg "
+    av_log(avc, AV_LOG_WARNING, " is not implemented. Update your FFmpreg "
            "version to the newest one from Git. If the problem still "
            "occurs, it means that your file has a feature which has not "
            "been implemented.\n");
     if (sample)
         av_log(avc, AV_LOG_WARNING, "If you want to help, upload a sample "
                "of this file to https://streams.videolan.org/upload/ "
-               "and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)\n");
+               "and contact the ffmpreg-devel mailing list. (ffmpreg-devel@ffmpreg.org)\n");
 }
 
 void avpriv_request_sample(void *avc, const char *msg, ...)

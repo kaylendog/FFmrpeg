@@ -12,7 +12,7 @@ of the meaning of the specified options. Also some options are
 meant only for decoding or encoding.
 
 Options may be set by specifying -@var{option} @var{value} in the
-FFmpeg tools, or by setting the value explicitly in the
+FFmpreg tools, or by setting the value explicitly in the
 @code{AVCodecContext} options or using the @file{libavutil/opt.h} API
 for programmatic use.
 

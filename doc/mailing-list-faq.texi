@@ -1,9 +1,9 @@
 \input texinfo @c -*- texinfo -*-
 @documentencoding UTF-8
 
-@settitle FFmpeg Mailing List FAQ
+@settitle FFmpreg Mailing List FAQ
 @titlepage
-@center @titlefont{FFmpeg Mailing List FAQ}
+@center @titlefont{FFmpreg Mailing List FAQ}
 @end titlepage
 
 @top
@@ -18,29 +18,29 @@ A mailing list is not much different than emailing someone, but the
 main difference is that your message is received by everyone who
 subscribes to the list. It is somewhat like a forum but in email form.
 
-See the @url{https://lists.ffmpeg.org/pipermail/ffmpeg-user/, ffmpeg-user archives}
+See the @url{https://lists.ffmpreg.org/pipermail/ffmpreg-user/, ffmpreg-user archives}
 for examples.
 
 @section What type of questions can I ask?
 
 @itemize
 @item
-@url{https://lists.ffmpeg.org/mailman/listinfo/ffmpeg-user/, ffmpeg-user}:
-For questions involving unscripted usage or compilation of the FFmpeg
-command-line tools (@command{ffmpeg}, @command{ffprobe}, @command{ffplay}).
+@url{https://lists.ffmpreg.org/mailman/listinfo/ffmpreg-user/, ffmpreg-user}:
+For questions involving unscripted usage or compilation of the FFmpreg
+command-line tools (@command{ffmpreg}, @command{ffprobe}, @command{ffplay}).
 
 @item
-@url{https://lists.ffmpeg.org/mailman/listinfo/libav-user/, libav-user}:
-For questions involving the FFmpeg libav* libraries (libavcodec,
+@url{https://lists.ffmpreg.org/mailman/listinfo/libav-user/, libav-user}:
+For questions involving the FFmpreg libav* libraries (libavcodec,
 libavformat, libavfilter, etc).
 
 @item
-@url{https://lists.ffmpeg.org/mailman/listinfo/ffmpeg-devel/, ffmpeg-devel}:
-For discussions involving the development of FFmpeg and for submitting
-patches. User questions should be asked at ffmpeg-user or libav-user.
+@url{https://lists.ffmpreg.org/mailman/listinfo/ffmpreg-devel/, ffmpreg-devel}:
+For discussions involving the development of FFmpreg and for submitting
+patches. User questions should be asked at ffmpreg-user or libav-user.
 @end itemize
 
-To report a bug see @url{https://ffmpeg.org/bugreports.html}.
+To report a bug see @url{https://ffmpreg.org/bugreports.html}.
 
 We cannot provide help for scripts and/or third-party tools.
 
@@ -52,16 +52,16 @@ send an email:
 
 @itemize
 @item
-Email @email{ffmpeg-user@@ffmpeg.org} to send a message to the
-ffmpeg-user mailing list.
+Email @email{ffmpreg-user@@ffmpreg.org} to send a message to the
+ffmpreg-user mailing list.
 
 @item
-Email @email{libav-user@@ffmpeg.org} to send a message to the
+Email @email{libav-user@@ffmpreg.org} to send a message to the
 libav-user mailing list.
 
 @item
-Email @email{ffmpeg-devel@@ffmpeg.org} to send a message to the
-ffmpeg-devel mailing list.
+Email @email{ffmpreg-devel@@ffmpreg.org} to send a message to the
+ffmpreg-devel mailing list.
 @end itemize
 
 @chapter Subscribing / Unsubscribing
@@ -69,19 +69,19 @@ ffmpeg-devel mailing list.
 @anchor{How do I subscribe?}
 @section How do I subscribe?
 
-Email @email{ffmpeg-user-request@@ffmpeg.org} with the subject
+Email @email{ffmpreg-user-request@@ffmpreg.org} with the subject
 @emph{subscribe}.
 
-Or visit the @url{https://lists.ffmpeg.org/mailman/listinfo/ffmpeg-user/, ffmpeg-user mailing list info page}
-and refer to the @emph{Subscribing to ffmpeg-user} section.
+Or visit the @url{https://lists.ffmpreg.org/mailman/listinfo/ffmpreg-user/, ffmpreg-user mailing list info page}
+and refer to the @emph{Subscribing to ffmpreg-user} section.
 
 The process is the same for the other mailing lists.
 
 @section How do I unsubscribe?
 
-Email @email{ffmpeg-user-request@@ffmpeg.org} with subject @emph{unsubscribe}.
+Email @email{ffmpreg-user-request@@ffmpreg.org} with subject @emph{unsubscribe}.
 
-Or visit the @url{https://lists.ffmpeg.org/mailman/listinfo/ffmpeg-user/, ffmpeg-user mailing list info page},
+Or visit the @url{https://lists.ffmpreg.org/mailman/listinfo/ffmpreg-user/, ffmpreg-user mailing list info page},
 scroll to bottom of page, enter your email address in the box, and click
 the @emph{Unsubscribe or edit options} button.
 
@@ -116,7 +116,7 @@ or is abusive towards others).
 @section How long does it take for my message in the moderation queue to be approved?
 
 The queue is not checked on a regular basis. You can ask on the
-@t{#ffmpeg-devel} IRC channel on Libera Chat for someone to approve your message.
+@t{#ffmpreg-devel} IRC channel on Libera Chat for someone to approve your message.
 
 @anchor{How do I delete my message in the moderation queue?}
 @section How do I delete my message in the moderation queue?
@@ -130,8 +130,8 @@ unless a mailing list admin already approved or rejected it.
 @anchor{Where are the archives?}
 @section Where are the archives?
 
-See the @emph{Archives} section on the @url{https://ffmpeg.org/contact.html, FFmpeg Contact}
-page for links to all FFmpeg mailing list archives.
+See the @emph{Archives} section on the @url{https://ffmpreg.org/contact.html, FFmpreg Contact}
+page for links to all FFmpreg mailing list archives.
 
 Note that the archives are split by month. Discussions that span
 several months will be split into separate months in the archives.
@@ -142,34 +142,34 @@ Click the email link at the top of the message just under the subject
 title. The link will provide the proper headers to keep the message
 within the thread.
 
-Note that you must be subscribed to send a message to the ffmpeg-user or
+Note that you must be subscribed to send a message to the ffmpreg-user or
 libav-user mailing lists.
 
 @section How do I search the archives?
 
 Perform a site search using your favorite search engine. Example:
 
-@t{site:lists.ffmpeg.org/pipermail/ffmpeg-user/ "search term"}
+@t{site:lists.ffmpreg.org/pipermail/ffmpreg-user/ "search term"}
 
 @chapter Other
 
 @section Is there an alternative to the mailing list?
 
-You can ask for help in the official @t{#ffmpeg} IRC channel on Libera Chat.
+You can ask for help in the official @t{#ffmpreg} IRC channel on Libera Chat.
 
-Some users prefer the third-party @url{http://www.ffmpeg-archive.org/, Nabble}
+Some users prefer the third-party @url{http://www.ffmpreg-archive.org/, Nabble}
 interface which presents the mailing lists in a typical forum layout.
 
 There are also numerous third-party help sites such as
-@url{https://superuser.com/tags/ffmpeg, Super User} and
-@url{https://www.reddit.com/r/ffmpeg/, r/ffmpeg on reddit}.
+@url{https://superuser.com/tags/ffmpreg, Super User} and
+@url{https://www.reddit.com/r/ffmpreg/, r/ffmpreg on reddit}.
 
 @anchor{What is top-posting?}
 @section What is top-posting?
 
 See @url{https://en.wikipedia.org/wiki/Posting_style#Top-posting}.
 
-Instead, use trimmed interleaved/inline replies (@url{https://lists.ffmpeg.org/pipermail/ffmpeg-user/2017-April/035849.html, example}).
+Instead, use trimmed interleaved/inline replies (@url{https://lists.ffmpreg.org/pipermail/ffmpreg-user/2017-April/035849.html, example}).
 
 @anchor{What is the message size limit?}
 @section What is the message size limit?
@@ -216,15 +216,15 @@ the hacked account were sent to their contacts (a mailing list being a
 contact in these cases).
 
 @item
-If you are subscribed to the bug tracker mailing list (ffmpeg-trac) you
+If you are subscribed to the bug tracker mailing list (ffmpreg-trac) you
 may see the occasional spam as a false bug report, but we take measures
 to try to prevent this.
 @end itemize
 
 @section How do I filter mailing list messages?
 
-Use the @emph{List-Id}. For example, the ffmpeg-user mailing list is
-@t{ffmpeg-user.ffmpeg.org}. You can view the List-Id in the raw message
+Use the @emph{List-Id}. For example, the ffmpreg-user mailing list is
+@t{ffmpreg-user.ffmpreg.org}. You can view the List-Id in the raw message
 or headers.
 
 You can then filter the mailing list messages to their own folder.
@@ -237,7 +237,7 @@ messages. This "vacation mode" is simple to do:
 
 @enumerate
 @item
-Go to the @url{https://lists.ffmpeg.org/mailman/listinfo/ffmpeg-user/, ffmpeg-user mailing list info page}
+Go to the @url{https://lists.ffmpreg.org/mailman/listinfo/ffmpreg-user/, ffmpreg-user mailing list info page}
 
 @item
 Enter your email address in the box at very bottom of the page and click the
@@ -249,12 +249,12 @@ Enter your password and click the @emph{Log in} button.
 @item
 Look for the @emph{Mail delivery} option. Here you can disable/enable mail
 delivery. If you check @emph{Set globally} it will apply your choice to all
-other FFmpeg mailing lists you are subscribed to.
+other FFmpreg mailing lists you are subscribed to.
 @end enumerate
 
-Alternatively, from your subscribed address, send a message to @email{ffmpeg-user-request@@ffmpeg.org}
+Alternatively, from your subscribed address, send a message to @email{ffmpreg-user-request@@ffmpreg.org}
 with the subject @emph{set delivery off}. To re-enable mail delivery send a
-message to @email{ffmpeg-user-request@@ffmpeg.org} with the subject
+message to @email{ffmpreg-user-request@@ffmpreg.org} with the subject
 @emph{set delivery on}.
 
 @anchor{Why is the mailing list munging my address?}
@@ -273,7 +273,7 @@ the particular mailing list.
 
 If you want to avoid this then please use a different email service.
 
-Note that ffmpeg-devel does not apply any munging as it causes issues with
+Note that ffmpreg-devel does not apply any munging as it causes issues with
 patch authorship. As a result users with an email service with a DMARC reject
 policy may be automatically unsubscribed due to rejected and bounced messages.
 
@@ -287,7 +287,7 @@ and help avoid getting ignored.
 
 @itemize
 @item
-Always show your actual, unscripted @command{ffmpeg} command and the
+Always show your actual, unscripted @command{ffmpreg} command and the
 complete, uncut console output from your command.
 
 @item
@@ -300,7 +300,7 @@ your issue. This includes the actual command, complete uncut console
 output, and any inputs that are required to duplicate the issue.
 
 @item
-Use the latest @command{ffmpeg} build you can get. See the @url{https://ffmpeg.org/download.html, FFmpeg Download}
+Use the latest @command{ffmpreg} build you can get. See the @url{https://ffmpreg.org/download.html, FFmpreg Download}
 page for links to recent builds for Linux, macOS, and Windows. Or
 compile from the current git master branch.
 
@@ -344,7 +344,7 @@ recommended.
 Avoid sending the same message to multiple mailing lists.
 
 @item
-Please follow our @url{https://ffmpeg.org/community.html#Code-of-conduct, Code of Conduct}.
+Please follow our @url{https://ffmpreg.org/community.html#Code-of-conduct, Code of Conduct}.
 @end itemize
 
 @chapter Help
@@ -375,11 +375,11 @@ form a multi-part message is recommended by email standards.
 Check your spam folder.
 @end itemize
 
-@anchor{Why do I keep getting unsubscribed from ffmpeg-devel?}
-@section Why do I keep getting unsubscribed from ffmpeg-devel?
+@anchor{Why do I keep getting unsubscribed from ffmpreg-devel?}
+@section Why do I keep getting unsubscribed from ffmpreg-devel?
 
 Users with an email service that has a DMARC reject or quarantine policy may be
-automatically unsubscribed from the ffmpeg-devel mailing list due to the mailing
+automatically unsubscribed from the ffmpreg-devel mailing list due to the mailing
 list messages being continuously rejected and bounced back.
 
 Consider using a different email service.
@@ -387,6 +387,6 @@ Consider using a different email service.
 @anchor{Who do I contact if I have a problem with the mailing list?}
 @section Who do I contact if I have a problem with the mailing list?
 
-Send a message to @email{ffmpeg-user-owner@@ffmpeg.org}.
+Send a message to @email{ffmpreg-user-owner@@ffmpreg.org}.
 
 @bye

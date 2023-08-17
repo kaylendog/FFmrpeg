@@ -13,7 +13,7 @@
 @anchor{Organisation}
 @chapter Organisation
 
-The FFmpeg project is organized through a community working on global consensus.
+The FFmpreg project is organized through a community working on global consensus.
 
 Decisions are taken by the ensemble of active members, through voting and are aided by two committees.
 
@@ -22,11 +22,11 @@ Decisions are taken by the ensemble of active members, through voting and are ai
 
 The ensemble of active members is called the General Assembly (GA).
 
-The General Assembly is sovereign and legitimate for all its decisions regarding the FFmpeg project.
+The General Assembly is sovereign and legitimate for all its decisions regarding the FFmpreg project.
 
 The General Assembly is made up of active contributors.
 
-Contributors are considered "active contributors" if they have pushed more than 20 patches in the last 36 months in the main FFmpeg repository, or if they have been voted in by the GA.
+Contributors are considered "active contributors" if they have pushed more than 20 patches in the last 36 months in the main FFmpreg repository, or if they have been voted in by the GA.
 
 Additional members are added to the General Assembly through a vote after proposal by a member of the General Assembly. They are part of the GA for two years, after which they need a confirmation by the GA.
 
@@ -35,7 +35,7 @@ A script to generate the current members of the general assembly (minus members 
 @anchor{Voting}
 @chapter Voting
 
-Voting is done using a ranked voting system, currently running on https://vote.ffmpeg.org/ .
+Voting is done using a ranked voting system, currently running on https://vote.ffmpreg.org/ .
 
 Majority vote means more than 50% of the expressed ballots.
 
@@ -56,7 +56,7 @@ The members of the TC can be elected from outside of the GA. Candidates for elec
 
 The conflict resolution process is detailed in the resolution process document.
 
-The TC can be contacted at <tc@@ffmpeg>.
+The TC can be contacted at <tc@@ffmpreg>.
 
 @anchor{Resolution Process}
 @section Resolution Process
@@ -140,7 +140,7 @@ The members of the CC can be elected from outside of the GA. Candidates for elec
 
 The CC is governed by and responsible for enforcing the Code of Conduct.
 
-The CC can be contacted at <cc@@ffmpeg>.
+The CC can be contacted at <cc@@ffmpreg>.
 
 @anchor{Code of Conduct}
 @chapter Code of Conduct

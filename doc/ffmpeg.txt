@@ -1,5 +1,5 @@
                                                                                                                                        :
-                                             ffmpeg.c                                                                                  :       libav*
+                                             ffmpreg.c                                                                                  :       libav*
                                              ========                                                                                  :       ======
                                                                                                                                        :
                                                                                                                                        :

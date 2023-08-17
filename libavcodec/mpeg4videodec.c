@@ -3,20 +3,20 @@
  * Copyright (c) 2000,2001 Fabrice Bellard
  * Copyright (c) 2002-2010 Michael Niedermayer <michaelni@gmx.at>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -2950,7 +2950,7 @@ static int decode_user_data(Mpeg4DecContext *ctx, GetBitContext *gb)
     /* libavcodec detection */
     e = sscanf(buf, "FFmpe%*[^b]b%d", &build) + 3;
     if (e != 4)
-        e = sscanf(buf, "FFmpeg v%d.%d.%d / libavcodec build: %d", &ver, &ver2, &ver3, &build);
+        e = sscanf(buf, "FFmpreg v%d.%d.%d / libavcodec build: %d", &ver, &ver2, &ver3, &build);
     if (e != 4) {
         e = sscanf(buf, "Lavc%d.%d.%d", &ver, &ver2, &ver3) + 1;
         if (e > 1) {
@@ -2964,7 +2964,7 @@ static int decode_user_data(Mpeg4DecContext *ctx, GetBitContext *gb)
         }
     }
     if (e != 4) {
-        if (strcmp(buf, "ffmpeg") == 0)
+        if (strcmp(buf, "ffmpreg") == 0)
             ctx->lavc_build = 4600;
     }
     if (e == 4)

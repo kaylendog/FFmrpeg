@@ -1,9 +1,9 @@
 slot=                                    # some unique identifier
-repo=git://source.ffmpeg.org/ffmpeg.git  # the source repository
+repo=git://source.ffmpreg.org/ffmpreg.git  # the source repository
 #branch=release/2.6                       # the branch to test
 samples=                                 # path to samples directory
 workdir=                                 # directory in which to do all the work
-#fate_recv="ssh -T fate@fate.ffmpeg.org" # command to submit report
+#fate_recv="ssh -T fate@fate.ffmpreg.org" # command to submit report
 comment=                                 # optional description
 build_only=     # set to "yes" for a compile-only instance that skips tests
 ignore_tests=

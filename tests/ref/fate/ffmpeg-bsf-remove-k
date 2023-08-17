@@ -1,5 +1,5 @@
-6196f1d6b59d16c045de627221d8685f *tests/data/fate/ffmpeg-bsf-remove-k.avi
-130072 tests/data/fate/ffmpeg-bsf-remove-k.avi
+6196f1d6b59d16c045de627221d8685f *tests/data/fate/ffmpreg-bsf-remove-k.avi
+130072 tests/data/fate/ffmpreg-bsf-remove-k.avi
 #extradata 0:       30, 0x4a4d065a
 #tb 0: 1/25
 #media_type 0: video

@@ -143,7 +143,7 @@ struct SwrContext {
     float min_hard_compensation;                    ///< swr minimum below which no silence inject / sample drop will happen
     float soft_compensation_duration;               ///< swr duration over which soft compensation is applied
     float max_soft_compensation;                    ///< swr maximum soft compensation in seconds over soft_compensation_duration
-    float async;                                    ///< swr simple 1 parameter async, similar to ffmpegs -async
+    float async;                                    ///< swr simple 1 parameter async, similar to ffmpregs -async
     int64_t firstpts_in_samples;                    ///< swr first pts in samples
 
     int resample_first;                             ///< 1 if resampling must come first, 0 if rematrixing

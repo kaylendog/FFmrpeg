@@ -14,7 +14,7 @@ endef
 
 $(foreach N, CELT HYBRID SILK OTHER, $(eval $(call FATE_OPUS_TEST,$(N))))
 
-$(FATE_OPUS): CMD = ffmpeg -i $(TARGET_SAMPLES)/opus/$(@:fate-opus-%=%).mka -f s16le -af aresample -
+$(FATE_OPUS): CMD = ffmpreg -i $(TARGET_SAMPLES)/opus/$(@:fate-opus-%=%).mka -f s16le -af aresample -
 $(FATE_OPUS): REF = $(SAMPLES)/opus/$(@:fate-opus-%=%).dec
 $(FATE_OPUS_HYBRID-yes): REF = $(SAMPLES)/opus/$(@:fate-opus-%=%)_v2.dec
 

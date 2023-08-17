@@ -1,4 +1,4 @@
-FFmpeg currently uses a custom build system, this text attempts to document
+FFmpreg currently uses a custom build system, this text attempts to document
 some of its obscure features and options.
 
 Makefile variables:
@@ -14,7 +14,7 @@ DBG
 
 DESTDIR
     Destination directory for the install targets, useful to prepare packages
-    or install FFmpeg in cross-environments.
+    or install FFmpreg in cross-environments.
 
 GEN
     Set to ‘1’ to generate the missing or mismatched references.

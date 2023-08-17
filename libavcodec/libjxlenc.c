@@ -2,20 +2,20 @@
  * JPEG XL encoding support via libjxl
  * Copyright (c) 2021 Leo Izen <leo.izen@gmail.com>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -120,7 +120,7 @@ static int libjxl_init_jxl_encoder(AVCodecContext *avctx)
 
     /* check for negative, our default */
     if (ctx->distance < 0.0) {
-        /* use ffmpeg.c -q option if passed */
+        /* use ffmpreg.c -q option if passed */
         if (avctx->flags & AV_CODEC_FLAG_QSCALE)
             ctx->distance = quality_to_distance((float)avctx->global_quality / FF_QP2LAMBDA);
         else

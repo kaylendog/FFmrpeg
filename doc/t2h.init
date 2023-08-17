@@ -3,8 +3,8 @@
 # This is deprecated, and the makeinfo/texi2any version is doc/t2h.pm
 
 # no horiz rules between sections
-$end_section = \&FFmpeg_end_section;
-sub FFmpeg_end_section($$)
+$end_section = \&FFmpreg_end_section;
+sub FFmpreg_end_section($$)
 {
 }
 
@@ -14,7 +14,7 @@ my $TEMPLATE_HEADER1 = $ENV{"FFMPEG_HEADER1"} || <<EOT;
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>FFmpeg documentation</title>
+    <title>FFmpreg documentation</title>
     <link rel="stylesheet" href="bootstrap.min.css" />
     <link rel="stylesheet" href="style.min.css" />
 EOT
@@ -34,8 +34,8 @@ EOT
 $SMALL_RULE = '';
 $BODYTEXT = '';
 
-$print_page_foot = \&FFmpeg_print_page_foot;
-sub FFmpeg_print_page_foot($$)
+$print_page_foot = \&FFmpreg_print_page_foot;
+sub FFmpreg_print_page_foot($$)
 {
     my $fh = shift;
     my $program_string = defined &T2H_DEFAULT_program_string ?
@@ -45,9 +45,9 @@ sub FFmpeg_print_page_foot($$)
     print $fh "</span></footer></div></div></body>\n";
 }
 
-$float = \&FFmpeg_float;
+$float = \&FFmpreg_float;
 
-sub FFmpeg_float($$$$)
+sub FFmpreg_float($$$$)
 {
     my $text = shift;
     my $float = shift;
@@ -74,8 +74,8 @@ sub FFmpeg_float($$$$)
     return '<div class="float ' . $class . '">' . "$label\n" . $text . '</div>';
 }
 
-$print_page_head = \&FFmpeg_print_page_head;
-sub FFmpeg_print_page_head($$)
+$print_page_head = \&FFmpreg_print_page_head;
+sub FFmpreg_print_page_head($$)
 {
     my $fh = shift;
     my $longtitle = "$Texi2HTML::THISDOC{'fulltitle_no_texi'}";
@@ -88,7 +88,7 @@ sub FFmpeg_print_page_head($$)
     my $encoding = '';
     $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$ENCODING\">" if (defined($ENCODING) and ($ENCODING ne ''));
     $longtitle =~ s/Documentation.*//g;
-    $longtitle = "FFmpeg documentation : " . $longtitle;
+    $longtitle = "FFmpreg documentation : " . $longtitle;
 
     print $fh <<EOT;
 $TEMPLATE_HEADER1
@@ -104,8 +104,8 @@ $TEMPLATE_HEADER2
 EOT
 }
 
-$print_page_foot = \&FFmpeg_print_page_foot;
-sub FFmpeg_print_page_foot($$)
+$print_page_foot = \&FFmpreg_print_page_foot;
+sub FFmpreg_print_page_foot($$)
 {
     my $fh = shift;
     print $fh <<EOT;

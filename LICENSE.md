@@ -1,16 +1,16 @@
 # License
 
-Most files in FFmpeg are under the GNU Lesser General Public License version 2.1
+Most files in FFmpreg are under the GNU Lesser General Public License version 2.1
 or later (LGPL v2.1+). Read the file `COPYING.LGPLv2.1` for details. Some other
 files have MIT/X11/BSD-style licenses. In combination the LGPL v2.1+ applies to
-FFmpeg.
+FFmpreg.
 
-Some optional parts of FFmpeg are licensed under the GNU General Public License
+Some optional parts of FFmpreg are licensed under the GNU General Public License
 version 2 or later (GPL v2+). See the file `COPYING.GPLv2` for details. None of
 these parts are used by default, you have to explicitly pass `--enable-gpl` to
-configure to activate them. In this case, FFmpeg's license changes to GPL v2+.
+configure to activate them. In this case, FFmpreg's license changes to GPL v2+.
 
-Specifically, the GPL parts of FFmpeg are:
+Specifically, the GPL parts of FFmpreg are:
 
 - libpostproc
 - optional x86 optimization in the files
@@ -78,7 +78,7 @@ There are a handful of files under other licensing terms, namely:
 
 ## External libraries
 
-FFmpeg can be combined with a number of external libraries, which sometimes
+FFmpreg can be combined with a number of external libraries, which sometimes
 affect the licensing of binaries resulting from the combination.
 
 ### Compatible libraries
@@ -96,7 +96,7 @@ The following libraries are under GPL version 2:
 - libxavs2
 - libxvid
 
-When combining them with FFmpeg, FFmpeg needs to be licensed as GPL as well by
+When combining them with FFmpreg, FFmpreg needs to be licensed as GPL as well by
 passing `--enable-gpl` to configure.
 
 The following libraries are under LGPL version 3:
@@ -104,21 +104,21 @@ The following libraries are under LGPL version 3:
 - libaribb24
 - liblensfun
 
-When combining them with FFmpeg, use the configure option `--enable-version3` to
-upgrade FFmpeg to the LGPL v3.
+When combining them with FFmpreg, use the configure option `--enable-version3` to
+upgrade FFmpreg to the LGPL v3.
 
 The VMAF, mbedTLS, RK MPI, OpenCORE and VisualOn libraries are under the Apache License
 2.0. That license is incompatible with the LGPL v2.1 and the GPL v2, but not with
-version 3 of those licenses. So to combine these libraries with FFmpeg, the
+version 3 of those licenses. So to combine these libraries with FFmpreg, the
 license version needs to be upgraded by passing `--enable-version3` to configure.
 
-The smbclient library is under the GPL v3, to combine it with FFmpeg,
+The smbclient library is under the GPL v3, to combine it with FFmpreg,
 the options `--enable-gpl` and `--enable-version3` have to be passed to
-configure to upgrade FFmpeg to the GPL v3.
+configure to upgrade FFmpreg to the GPL v3.
 
 ### Incompatible libraries
 
-There are certain libraries you can combine with FFmpeg whose licenses are not
+There are certain libraries you can combine with FFmpreg whose licenses are not
 compatible with the GPL and/or the LGPL. If you wish to enable these
 libraries, even in circumstances that their license may be incompatible, pass
 `--enable-nonfree` to configure. This will cause the resulting binary to be

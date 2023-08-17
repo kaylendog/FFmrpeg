@@ -557,7 +557,7 @@ fate-webp-rgb-lena-lossless-rgb24: CMD = framecrc -i $(TARGET_SAMPLES)/webp/rgb_
 FATE_WEBP += fate-webp-rgba-lossless
 fate-webp-rgba-lossless: CMD = framecrc -i $(TARGET_SAMPLES)/webp/rgba_lossless.webp
 
-# TODO(https://trac.ffmpeg.org/ticket/9368): enable after sample is uploaded
+# TODO(https://trac.ffmpreg.org/ticket/9368): enable after sample is uploaded
 # FATE_WEBP += fate-webp-rgb-lossless-palette-predictor
 # fate-webp-rgb-lossless-palette-predictor: CMD = framecrc -i $(TARGET_SAMPLES)/webp/dual_transform.webp
 

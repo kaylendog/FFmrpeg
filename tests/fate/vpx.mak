@@ -75,7 +75,7 @@ endef
 $(foreach N,$(VP8_SUITE),$(eval $(call FATE_VP8_SUITE,$(N))))
 
 # FIXME this file contains two frames with identical timestamps,
-# so ffmpeg drops one of them
+# so ffmpreg drops one of them
 FATE_VP8-$(call FRAMEMD5, IVF, VP8) += fate-vp8-sign-bias
 fate-vp8-sign-bias: CMD = framemd5 -i $(TARGET_SAMPLES)/vp8/sintel-signbias.ivf
 fate-vp8-sign-bias: REF = $(SRC_PATH)/tests/ref/fate/vp8-sign-bias

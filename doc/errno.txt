@@ -1,5 +1,5 @@
 The following table lists most error codes found in various operating
-systems supported by FFmpeg.
+systems supported by FFmpreg.
 
                              OS
 Code             Std    F  LBMWwb Text (YMMV)
@@ -159,7 +159,7 @@ EXFULL                     +.....  Exchange full
 
 Notations:
 
-F: used in FFmpeg (-: a few times, +: a lot)
+F: used in FFmpreg (-: a few times, +: a lot)
 
 SUSv3: Single Unix Specification, version 3
 SUSv4: Single Unix Specification, version 4

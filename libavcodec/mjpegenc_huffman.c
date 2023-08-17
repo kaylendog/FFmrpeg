@@ -2,20 +2,20 @@
  * MJPEG encoder
  * Copyright (c) 2016 William Ma, Ted Ying, Jerry Jiang
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -64,7 +64,7 @@ static int compare_by_length(const void *a, const void *b)
  * 6. if i < 16 goto 2
  * 7. select the n-1 elements in the last list with the lowest score (n = the number of symbols)
  * 8. the length of the huffman code for symbol s will be equal to the number of times the symbol occurs in the select elements
- * Go to guru.multimedia.cx/small-tasks-for-ffmpeg/ for more details
+ * Go to guru.multimedia.cx/small-tasks-for-ffmpreg/ for more details
  *
  * All probabilities should be positive integers. The output is sorted by code,
  * not by length.

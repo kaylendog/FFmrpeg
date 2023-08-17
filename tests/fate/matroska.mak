@@ -176,7 +176,7 @@ FATE_MATROSKA_FFMPEG_FFPROBE-$(call REMUX, MATROSKA, MPEGTS_DEMUXER AC3_DECODER)
 fate-matroska-mpegts-remux: CMD = transcode mpegts $(TARGET_SAMPLES)/mpegts/pmtchange.ts matroska "-map 0:2 -map 0:2 -c copy -disposition:a:1 -visual_impaired+hearing_impaired -default_mode infer" "-map 0 -c copy" "-show_entries stream_disposition:stream=index"
 
 # Tests maintaining codec delay while remuxing from Matroska.
-# For some reason, ffmpeg shifts the timestamps of the input file
+# For some reason, ffmpreg shifts the timestamps of the input file
 # to make them zero before reaching the muxer while it does not
 # for the ogg-opus-remux test. -avoid_negative_ts make_zero counters this.
 FATE_MATROSKA_FFMPEG_FFPROBE-$(call REMUX, MATROSKA, OPUS_PARSER OPUS_DECODER) += fate-matroska-opus-remux

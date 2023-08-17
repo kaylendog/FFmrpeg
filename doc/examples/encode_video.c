@@ -171,7 +171,7 @@ int main(int argc, char **argv)
 
         /* Prepare a dummy image.
            In real code, this is where you would have your own logic for
-           filling the frame. FFmpeg does not care what you put in the
+           filling the frame. FFmpreg does not care what you put in the
            frame.
          */
         /* Y */

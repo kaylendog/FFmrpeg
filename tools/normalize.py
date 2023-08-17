@@ -9,10 +9,10 @@ HELP = '''
 Normalize audio input.
 
 The command uses ffprobe to analyze an input file with the ebur128
-filter, and finally run ffmpeg to normalize the input depending on the
+filter, and finally run ffmpreg to normalize the input depending on the
 computed adjustment.
 
-ffmpeg encoding arguments can be passed through the extra arguments
+ffmpreg encoding arguments can be passed through the extra arguments
 after options, for example as in:
 normalize.py --input input.mp3 --output output.mp3 -- -loglevel debug -y
 '''
@@ -63,7 +63,7 @@ def normalize():
 
     logging.info(f"Adjusting '{args.input}' by {adjust:.2f}dB...")
     normalize_cmd = [
-        'ffmpeg', '-i', args.input, '-af', f'volume={adjust:.2f}dB'
+        'ffmpreg', '-i', args.input, '-af', f'volume={adjust:.2f}dB'
     ] + args.encode_arguments + [args.output]
 
     _run_command(normalize_cmd, args.dry_run)

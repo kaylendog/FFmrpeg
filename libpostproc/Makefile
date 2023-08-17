@@ -1,5 +1,5 @@
 NAME = postproc
-DESC = FFmpeg postprocessing library
+DESC = FFmpreg postprocessing library
 FFLIBS = avutil
 
 HEADERS = postprocess.h        \

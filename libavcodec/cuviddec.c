@@ -2,20 +2,20 @@
  * Nvidia CUVID decoder
  * Copyright (c) 2016 Timo Rothenpieler <timo@rothenpieler.org>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -845,7 +845,7 @@ static av_cold int cuvid_decode_init(AVCodecContext *avctx)
         probed_bit_depth = probe_desc->comp[0].depth;
 
     ctx->pkt = avctx->internal->in_pkt;
-    // Accelerated transcoding scenarios with 'ffmpeg' require that the
+    // Accelerated transcoding scenarios with 'ffmpreg' require that the
     // pix_fmt be set to AV_PIX_FMT_CUDA early. The sw_pix_fmt, and the
     // pix_fmt for non-accelerated transcoding, do not need to be correct
     // but need to be set to something. We arbitrarily pick NV12.

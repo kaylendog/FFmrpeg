@@ -1,9 +1,9 @@
 \input texinfo @c -*- texinfo -*-
 @documentencoding UTF-8
 
-@settitle FFmpeg Protocols Documentation
+@settitle FFmpreg Protocols Documentation
 @titlepage
-@center @titlefont{FFmpeg Protocols Documentation}
+@center @titlefont{FFmpreg Protocols Documentation}
 @end titlepage
 
 @top
@@ -23,20 +23,20 @@ libavformat library.
 @chapter See Also
 
 @ifhtml
-@url{ffmpeg.html,ffmpeg}, @url{ffplay.html,ffplay}, @url{ffprobe.html,ffprobe},
+@url{ffmpreg.html,ffmpreg}, @url{ffplay.html,ffplay}, @url{ffprobe.html,ffprobe},
 @url{libavformat.html,libavformat}
 @end ifhtml
 
 @ifnothtml
-ffmpeg(1), ffplay(1), ffprobe(1), libavformat(3)
+ffmpreg(1), ffplay(1), ffprobe(1), libavformat(3)
 @end ifnothtml
 
 @include authors.texi
 
 @ignore
 
-@setfilename ffmpeg-protocols
-@settitle FFmpeg protocols
+@setfilename ffmpreg-protocols
+@settitle FFmpreg protocols
 
 @end ignore
 

@@ -2,20 +2,20 @@
  * MLP decoder
  * Copyright (c) 2007-2008 Ian Caulfield
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -163,7 +163,7 @@ typedef struct MLPDecodeContext {
     /// Index of the last substream to decode - further substreams are skipped.
     uint8_t     max_decoded_substream;
 
-    /// Stream needs channel reordering to comply with FFmpeg's channel order
+    /// Stream needs channel reordering to comply with FFmpreg's channel order
     uint8_t     needs_reordering;
 
     /// number of PCM samples contained in each frame

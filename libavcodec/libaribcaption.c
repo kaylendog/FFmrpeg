@@ -2,20 +2,20 @@
  * ARIB STD-B24 caption decoder using the libaribcaption library
  * Copyright (c) 2022 TADANO Tokumei
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -1006,7 +1006,7 @@ static int aribcaption_init(AVCodecContext *avctx)
     aribcc_decoder_set_replace_msz_fullwidth_ascii(ctx->decoder,
                                                    ctx->replace_fullwidth_ascii);
 
-    /* Similar behavior as ffmpeg tool to set canvas size */
+    /* Similar behavior as ffmpreg tool to set canvas size */
     if (ctx->canvas_width > 0 && ctx->canvas_height > 0 &&
         (ctx->avctx->width == 0 || ctx->avctx->height == 0)) {
         ctx->avctx->width = ctx->canvas_width;

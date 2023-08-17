@@ -1,28 +1,28 @@
-FFmpeg's bug/feature request tracker manual
+FFmpreg's bug/feature request tracker manual
 =================================================
 
 Overview:
 ---------
 
-FFmpeg uses Trac for tracking issues, new issues and changes to
+FFmpreg uses Trac for tracking issues, new issues and changes to
 existing issues can be done through a web interface.
 
 Issues can be different kinds of things we want to keep track of
 but that do not belong into the source tree itself. This includes
 bug reports, feature requests and license violations. We
 might add more items to this list in the future, so feel free to
-propose a new `type of issue' on the ffmpeg-devel mailing list if
+propose a new `type of issue' on the ffmpreg-devel mailing list if
 you feel it is worth tracking.
 
 It is possible to subscribe to individual issues by adding yourself to the
-Cc list or to subscribe to the ffmpeg-trac mailing list which receives
+Cc list or to subscribe to the ffmpreg-trac mailing list which receives
 a mail for every change to every issue.
 (the above does all work already after light testing)
 
-The subscription URL for the ffmpeg-trac list is:
-https://lists.ffmpeg.org/mailman/listinfo/ffmpeg-trac
+The subscription URL for the ffmpreg-trac list is:
+https://lists.ffmpreg.org/mailman/listinfo/ffmpreg-trac
 The URL of the webinterface of the tracker is:
-https://trac.ffmpeg.org
+https://trac.ffmpreg.org
 
 Type:
 -----
@@ -30,7 +30,7 @@ art
     Artwork such as photos, music, banners, and logos.
 
 bug / defect
-    An error, flaw, mistake, failure, or fault in FFmpeg or libav* that
+    An error, flaw, mistake, failure, or fault in FFmpreg or libav* that
     prevents it from behaving as intended.
 
 feature request / enhancement
@@ -40,7 +40,7 @@ feature request / enhancement
     where the current implementation cannot be considered wrong.
 
 license violation
-    Ticket to keep track of (L)GPL violations of ffmpeg by others.
+    Ticket to keep track of (L)GPL violations of ffmpreg by others.
 
 sponsoring request
     Developer requests for hardware, software, specifications, money,
@@ -57,7 +57,7 @@ critical
     No feature request can be critical.
 
 important
-    Bugs which make FFmpeg unusable for a significant number of users.
+    Bugs which make FFmpreg unusable for a significant number of users.
     Examples here might be completely broken MPEG-4 decoding or a build issue
     on Linux.
     While broken 4xm decoding or a broken OS/2 build would not be important,
@@ -80,7 +80,7 @@ minor
 wish
     Something that is desirable to have but that there is no urgency at
     all to implement, e.g. something completely cosmetic like a website
-    restyle or a personalized doxy template or the FFmpeg logo.
+    restyle or a personalized doxy template or the FFmpreg logo.
     This priority is not valid for bugs.
 
 
@@ -184,8 +184,8 @@ build system
 documentation
     issues in or related to doc/*
 
-ffmpeg
-    issues in or related to ffmpeg.c
+ffmpreg
+    issues in or related to ffmpreg.c
 
 ffplay
     issues in or related to ffplay.c

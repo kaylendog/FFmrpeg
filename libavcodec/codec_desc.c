@@ -1,21 +1,21 @@
 /*
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
  * This table was generated from the long and short names of AVCodecs
  * please see the respective codec sources for authorship
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -274,7 +274,7 @@ static const AVCodecDescriptor codec_descriptors[] = {
         .id        = AV_CODEC_ID_FFV1,
         .type      = AVMEDIA_TYPE_VIDEO,
         .name      = "ffv1",
-        .long_name = NULL_IF_CONFIG_SMALL("FFmpeg video codec #1"),
+        .long_name = NULL_IF_CONFIG_SMALL("FFmpreg video codec #1"),
         .props     = AV_CODEC_PROP_LOSSLESS,
     },
     {
@@ -514,7 +514,7 @@ static const AVCodecDescriptor codec_descriptors[] = {
         .id        = AV_CODEC_ID_FFVHUFF,
         .type      = AVMEDIA_TYPE_VIDEO,
         .name      = "ffvhuff",
-        .long_name = NULL_IF_CONFIG_SMALL("Huffyuv FFmpeg variant"),
+        .long_name = NULL_IF_CONFIG_SMALL("Huffyuv FFmpreg variant"),
         .props     = AV_CODEC_PROP_INTRA_ONLY | AV_CODEC_PROP_LOSSLESS,
     },
     {

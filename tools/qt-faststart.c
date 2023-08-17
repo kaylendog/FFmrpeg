@@ -8,7 +8,7 @@
  * is in front of the data, thus facilitating network streaming.
  *
  * To compile this program, start from the base directory from which you
- * are building FFmpeg and type:
+ * are building FFmpreg and type:
  *  make tools/qt-faststart
  * The qt-faststart program will be built in the tools/ directory. If you
  * do not build the program in this manner, correct results are not
@@ -448,7 +448,7 @@ int main(int argc, char *argv[])
 
     if (argc != 3) {
         printf("Usage: qt-faststart <infile.mov> <outfile.mov>\n"
-               "Note: alternatively you can use -movflags +faststart in ffmpeg\n");
+               "Note: alternatively you can use -movflags +faststart in ffmpreg\n");
         return 0;
     }
 

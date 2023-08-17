@@ -5,7 +5,7 @@
 The video scaler supports the following named options.
 
 Options may be set by specifying -@var{option} @var{value} in the
-FFmpeg tools, with a few API-only exceptions noted below.
+FFmpreg tools, with a few API-only exceptions noted below.
 For programmatic use, they can be set explicitly in the
 @code{SwsContext} options or through the @file{libavutil/opt.h} API.
 

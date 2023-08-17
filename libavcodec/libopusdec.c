@@ -2,20 +2,20 @@
  * Opus decoder using libopus
  * Copyright (c) 2012 Nicolas George
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -99,7 +99,7 @@ static av_cold int libopus_decode_init(AVCodecContext *avc)
         const uint8_t *vorbis_offset = ff_vorbis_channel_layout_offsets[channels - 1];
         int ch;
 
-        /* Remap channels from Vorbis order to ffmpeg order */
+        /* Remap channels from Vorbis order to ffmpreg order */
         for (ch = 0; ch < channels; ch++)
             mapping_arr[ch] = mapping[vorbis_offset[ch]];
         mapping = mapping_arr;

@@ -1,9 +1,9 @@
 \input texinfo @c -*- texinfo -*-
 @documentencoding UTF-8
 
-@settitle FFmpeg Bitstream Filters Documentation
+@settitle FFmpreg Bitstream Filters Documentation
 @titlepage
-@center @titlefont{FFmpeg Bitstream Filters Documentation}
+@center @titlefont{FFmpreg Bitstream Filters Documentation}
 @end titlepage
 
 @top
@@ -26,20 +26,20 @@ bitstream level modifications without performing decoding.
 @chapter See Also
 
 @ifhtml
-@url{ffmpeg.html,ffmpeg}, @url{ffplay.html,ffplay}, @url{ffprobe.html,ffprobe},
+@url{ffmpreg.html,ffmpreg}, @url{ffplay.html,ffplay}, @url{ffprobe.html,ffprobe},
 @url{libavcodec.html,libavcodec}
 @end ifhtml
 
 @ifnothtml
-ffmpeg(1), ffplay(1), ffprobe(1), libavcodec(3)
+ffmpreg(1), ffplay(1), ffprobe(1), libavcodec(3)
 @end ifnothtml
 
 @include authors.texi
 
 @ignore
 
-@setfilename ffmpeg-bitstream-filters
-@settitle FFmpeg bitstream filters
+@setfilename ffmpreg-bitstream-filters
+@settitle FFmpreg bitstream filters
 
 @end ignore
 

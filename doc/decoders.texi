@@ -1,10 +1,10 @@
 @chapter Decoders
 @c man begin DECODERS
 
-Decoders are configured elements in FFmpeg which allow the decoding of
+Decoders are configured elements in FFmpreg which allow the decoding of
 multimedia streams.
 
-When you configure your FFmpeg build, all the supported native decoders
+When you configure your FFmpreg build, all the supported native decoders
 are enabled by default. Decoders requiring an external library must be enabled
 manually via the corresponding @code{--enable-lib} option. You can list all
 available decoders using the configure option @code{--list-decoders}.
@@ -296,7 +296,7 @@ Narrowband audio codec. Using it requires the presence of the
 libopencore-amrnb headers and library during configuration. You need to
 explicitly configure the build with @code{--enable-libopencore-amrnb}.
 
-An FFmpeg native decoder for AMR-NB exists, so users can decode AMR-NB
+An FFmpreg native decoder for AMR-NB exists, so users can decode AMR-NB
 without this library.
 
 @section libopencore-amrwb
@@ -308,7 +308,7 @@ Wideband audio codec. Using it requires the presence of the
 libopencore-amrwb headers and library during configuration. You need to
 explicitly configure the build with @code{--enable-libopencore-amrwb}.
 
-An FFmpeg native decoder for AMR-WB exists, so users can decode AMR-WB
+An FFmpreg native decoder for AMR-WB exists, so users can decode AMR-WB
 without this library.
 
 @section libopus
@@ -320,7 +320,7 @@ Requires the presence of the libopus headers and library during
 configuration. You need to explicitly configure the build with
 @code{--enable-libopus}.
 
-An FFmpeg native decoder for Opus exists, so users can decode Opus
+An FFmpreg native decoder for Opus exists, so users can decode Opus
 without this library.
 
 @c man end AUDIO DECODERS
@@ -500,7 +500,7 @@ ffplay -sub_type bitmap -canvas_size 1920x1080 MPEG.TS
 
 Embed ARIB subtitle in transcoded video:
 @example
-ffmpeg -sub_type bitmap -i src.m2t -filter_complex "[0:v][0:s]overlay" -vcodec h264 dest.mp4
+ffmpreg -sub_type bitmap -i src.m2t -filter_complex "[0:v][0:s]overlay" -vcodec h264 dest.mp4
 @end example
 
 @section dvbsub

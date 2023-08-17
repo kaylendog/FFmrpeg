@@ -2,20 +2,20 @@
  * Smacker decoder
  * Copyright (c) 2006 Konstantin Shishkov
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -189,7 +189,7 @@ static int smacker_decode_bigtree(AVCodecContext *avctx, GetBitContext *gb, DBCt
 }
 
 /**
- * Store large tree as FFmpeg's vlc codes
+ * Store large tree as FFmpreg's vlc codes
  *
  * Can read FFMAX(1 + SMKTREE_DECODE_MAX_RECURSION, 2 + 3 * 16) bits
  * before the first check; can overread by 6 * SMKTREE_BITS + 1 on success.

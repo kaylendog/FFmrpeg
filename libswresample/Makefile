@@ -1,5 +1,5 @@
 NAME = swresample
-DESC = FFmpeg audio resampling library
+DESC = FFmpreg audio resampling library
 FFLIBS = avutil
 
 HEADERS = swresample.h                       \

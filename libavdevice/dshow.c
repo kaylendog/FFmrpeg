@@ -2,20 +2,20 @@
  * Directshow capture interface
  * Copyright (c) 2010 Ramiro Polla
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -90,12 +90,12 @@ static enum AVColorRange dshow_color_range(DXVA2_ExtendedFormat *fmt_info)
     case DXVA2_NominalRange_Wide:   // equal to DXVA2_NominalRange_16_235
         return AVCOL_RANGE_MPEG;
     case DXVA2_NominalRange_48_208:
-        // not an ffmpeg color range
+        // not an ffmpreg color range
         return AVCOL_RANGE_UNSPECIFIED;
 
     // values from MediaFoundation SDK (mfobjects.h)
     case 4:     // MFNominalRange_64_127
-        // not an ffmpeg color range
+        // not an ffmpreg color range
         return AVCOL_RANGE_UNSPECIFIED;
 
     default:
@@ -156,7 +156,7 @@ static enum AVColorPrimaries dshow_color_primaries(DXVA2_ExtendedFormat *fmt_inf
     case 11:    // MFVideoPrimaries_DCI_P3
         return AVCOL_PRI_SMPTE431;
     case 12:    // MFVideoPrimaries_ACES (Academy Color Encoding System)
-        // not an FFmpeg color primary
+        // not an FFmpreg color primary
         return AVCOL_PRI_UNSPECIFIED;
 
     default:
@@ -173,10 +173,10 @@ static enum AVColorTransferCharacteristic dshow_color_trc(DXVA2_ExtendedFormat *
     case DXVA2_VideoTransFunc_10:
         return AVCOL_TRC_LINEAR;
     case DXVA2_VideoTransFunc_18:
-        // not an FFmpeg transfer characteristic
+        // not an FFmpreg transfer characteristic
         return AVCOL_TRC_UNSPECIFIED;
     case DXVA2_VideoTransFunc_20:
-        // not an FFmpeg transfer characteristic
+        // not an FFmpreg transfer characteristic
         return AVCOL_TRC_UNSPECIFIED;
     case DXVA2_VideoTransFunc_22:
         return AVCOL_TRC_GAMMA22;
@@ -195,7 +195,7 @@ static enum AVColorTransferCharacteristic dshow_color_trc(DXVA2_ExtendedFormat *
     case 10:    // MFVideoTransFunc_Log_316
         return AVCOL_TRC_LOG_SQRT;
     case 11:    // MFVideoTransFunc_709_sym
-        // not an FFmpeg transfer characteristic
+        // not an FFmpreg transfer characteristic
         return AVCOL_TRC_UNSPECIFIED;
     case 12:    // MFVideoTransFunc_2020_const
     case 13:    // MFVideoTransFunc_2020
@@ -204,14 +204,14 @@ static enum AVColorTransferCharacteristic dshow_color_trc(DXVA2_ExtendedFormat *
         else
             return AVCOL_TRC_BT2020_10;
     case 14:    // MFVideoTransFunc_26
-        // not an FFmpeg transfer characteristic
+        // not an FFmpreg transfer characteristic
         return AVCOL_TRC_UNSPECIFIED;
     case 15:    // MFVideoTransFunc_2084
         return AVCOL_TRC_SMPTEST2084;
     case 16:    // MFVideoTransFunc_HLG
         return AVCOL_TRC_ARIB_STD_B67;
     case 17:    // MFVideoTransFunc_10_rel
-        // not an FFmpeg transfer characteristic? Undocumented also by MS
+        // not an FFmpreg transfer characteristic? Undocumented also by MS
         return AVCOL_TRC_UNSPECIFIED;
 
     default:

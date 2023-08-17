@@ -7,7 +7,7 @@ version <next>:
 - Extend VAAPI support for libva-win32 on Windows
 - afireqsrc audio source filter
 - arls filter
-- ffmpeg CLI new option: -readrate_initial_burst
+- ffmpreg CLI new option: -readrate_initial_burst
 - zoneplate video source filter
 - command support in the setpts and asetpts filters
 - Vulkan decode hwaccel, supporting H264, HEVC and AV1
@@ -35,9 +35,9 @@ version <next>:
 version 6.0:
 - Radiance HDR image support
 - ddagrab (Desktop Duplication) video capture filter
-- ffmpeg -shortest_buf_duration option
-- ffmpeg now requires threading to be built
-- ffmpeg now runs every muxer in a separate thread
+- ffmpreg -shortest_buf_duration option
+- ffmpreg now requires threading to be built
+- ffmpreg now runs every muxer in a separate thread
 - Add new mode to cropdetect filter to detect crop-area based on motion vectors and edges
 - VAAPI decoding and encoding for 10/12bit 422, 10/12bit 444 HEVC and VP9
 - WBMP (Wireless Application Protocol Bitmap) image format
@@ -63,17 +63,17 @@ version 6.0:
 - WADY DPCM decoder and demuxer
 - CBD2 DPCM decoder
 - ssim360 video filter
-- ffmpeg CLI new options: -stats_enc_pre[_fmt], -stats_enc_post[_fmt],
+- ffmpreg CLI new options: -stats_enc_pre[_fmt], -stats_enc_post[_fmt],
   -stats_mux_pre[_fmt]
 - hstack_vaapi, vstack_vaapi and xstack_vaapi filters
 - XMD ADPCM decoder and demuxer
 - media100 to mjpegb bsf
-- ffmpeg CLI new option: -fix_sub_duration_heartbeat
+- ffmpreg CLI new option: -fix_sub_duration_heartbeat
 - WavArc decoder and demuxer
 - CrystalHD decoders deprecated
 - SDNS demuxer
 - RKA decoder and demuxer
-- filtergraph syntax in ffmpeg CLI now supports passing file contents
+- filtergraph syntax in ffmpreg CLI now supports passing file contents
   as option values, by prefixing option name with '/'
 - hstack_qsv, vstack_qsv and xstack_qsv filters
 
@@ -435,7 +435,7 @@ version 4.0:
 - codec2 en/decoding via libcodec2
 - muxer/demuxer for raw codec2 files and .c2 files
 - Moved nvidia codec headers into an external repository.
-  They can be found at http://git.videolan.org/?p=ffmpeg/nv-codec-headers.git
+  They can be found at http://git.videolan.org/?p=ffmpreg/nv-codec-headers.git
 - native SBC encoder and decoder
 - drmeter audio filter
 - hapqa_extract bitstream filter
@@ -473,7 +473,7 @@ version 3.4:
 - The x86 assembler default switched from yasm to nasm, pass
   --x86asmexe=yasm to configure to restore the old behavior.
 - additional frame format support for Interplay MVE movies
-- support for decoding through D3D11VA in ffmpeg
+- support for decoding through D3D11VA in ffmpreg
 - limiter video filter
 - libvmaf video filter
 - Dolby E decoder and SMPTE 337M demuxer
@@ -649,7 +649,7 @@ version 3.0:
 - 3dostr, dcstr, fsb, genh, vag, xvag, ads, msf, svag & vpk demuxer
 - zscale filter
 - wve demuxer
-- zero-copy Intel QSV transcoding in ffmpeg
+- zero-copy Intel QSV transcoding in ffmpreg
 - shuffleframes filter
 - SDX2 DPCM decoder
 - vibrato filter
@@ -755,7 +755,7 @@ version 2.7:
 - nvenc level and tier options
 - chorus filter
 - Canopus HQ/HQA decoder
-- Automatically rotate videos based on metadata in ffmpeg
+- Automatically rotate videos based on metadata in ffmpreg
 - improved Quickdraw compatibility
 - VP9 high bit-depth and extended colorspaces decoding support
 - WebPAnimEncoder API when available for encoding and muxing WebP
@@ -854,7 +854,7 @@ version 2.3:
 - Direct Stream Digital (DSD) decoder
 - Magic Lantern Video (MLV) demuxer
 - On2 AVC (Audio for Video) decoder
-- support for decoding through DXVA2 in ffmpeg
+- support for decoding through DXVA2 in ffmpreg
 - libbs2b-based stereo-to-binaural audio filter
 - libx264 reference frames count limiting depending on level
 - native Opus decoder
@@ -879,7 +879,7 @@ version 2.2:
 - setsar/setdar filters now support variables in ratio expressions
 - elbg filter
 - string validation in ffprobe
-- support for decoding through VDPAU in ffmpeg (the -hwaccel option)
+- support for decoding through VDPAU in ffmpreg (the -hwaccel option)
 - complete Voxware MetaSound decoder
 - remove mp3_header_compress bitstream filter
 - Windows resource files for shared libraries
@@ -910,10 +910,10 @@ version 2.1:
 - ffprobe -show_programs option
 - compand filter
 - RTMP seek support
-- when transcoding with ffmpeg (i.e. not streamcopying), -ss is now accurate
+- when transcoding with ffmpreg (i.e. not streamcopying), -ss is now accurate
   even when used as an input option. Previous behavior can be restored with
   the -noaccurate_seek option.
-- ffmpeg -t option can now be used for inputs, to limit the duration of
+- ffmpreg -t option can now be used for inputs, to limit the duration of
   data read from an input file
 - incomplete Voxware MetaSound decoder
 - read EXIF metadata from JPEG
@@ -940,7 +940,7 @@ version 2.1:
 - ladspa wrapper filter
 - native VP9 decoder
 - dpx parser
-- max_error_rate parameter in ffmpeg
+- max_error_rate parameter in ffmpreg
 - PulseAudio output device
 - ReplayGain scanner
 - Enhanced Low Delay AAC (ER AAC ELD) decoding (no LD SBR support)
@@ -954,7 +954,7 @@ version 2.0:
 
 - curves filter
 - reference-counting for AVFrame and AVPacket data
-- ffmpeg now fails when input options are used for output file
+- ffmpreg now fails when input options are used for output file
   or vice versa
 - support for Monkey's Audio versions from 3.93
 - perms and aperms filters
@@ -962,7 +962,7 @@ version 2.0:
 - 10% faster aac encoding on x86 and MIPS
 - sine audio filter source
 - WebP demuxing and decoding support
-- ffmpeg options -filter_script and -filter_complex_script, which allow a
+- ffmpreg options -filter_script and -filter_complex_script, which allow a
   filtergraph description to be read from a file
 - OpenCL support
 - audio phaser filter
@@ -985,7 +985,7 @@ version 2.0:
   the vid.stab library
 - astats filter
 - trim and atrim filters
-- ffmpeg -t and -ss (output-only) options are now sample-accurate when
+- ffmpreg -t and -ss (output-only) options are now sample-accurate when
   transcoding audio
 - Matroska muxer can now put the index at the beginning of the file.
 - extractplanes filter
@@ -1142,7 +1142,7 @@ version 1.0:
 - new option: -progress
 - 3GPP Timed Text encoder/decoder
 - GeoTIFF decoder support
-- ffmpeg -(no)stdin option
+- ffmpreg -(no)stdin option
 - Opus decoder using libopus
 - caca output device using libcaca
 - alphaextract and alphamerge filters
@@ -1159,7 +1159,7 @@ version 1.0:
 - SubRip encoder and decoder without embedded timing
 - edge detection filter
 - framestep filter
-- ffmpeg -shortest option is now per-output file
+- ffmpreg -shortest option is now per-output file
   -pass and -passlogfile are now per-output stream
 - volume measurement filter
 - Ut Video encoder
@@ -1205,15 +1205,15 @@ version 0.11:
 - Metal Gear Solid: The Twin Snakes demuxer
 - OpenEXR image decoder
 - removelogo filter
-- drop support for ffmpeg without libavfilter
+- drop support for ffmpreg without libavfilter
 - drawtext video filter: fontconfig support
-- ffmpeg -benchmark_all option
+- ffmpreg -benchmark_all option
 - super2xsai filter ported from libmpcodecs
 - add libavresample audio conversion library for compatibility
 - MicroDVD decoder
 - Avid Meridien (AVUI) encoder and decoder
 - accept + prefix to -pix_fmt option to disable automatic conversions.
-- complete audio filtering in libavfilter and ffmpeg
+- complete audio filtering in libavfilter and ffmpreg
 - add fps filter
 - vorbis parser
 - png parser
@@ -1272,7 +1272,7 @@ version 0.9:
 for a few incompatible changes in the options, which will hopefully make them
 easier to use. The changes are:
     * The options placement is now strictly enforced! While in theory the
-      options for ffmpeg should be given in [input options] -i INPUT [output
+      options for ffmpreg should be given in [input options] -i INPUT [output
       options] OUTPUT order, in practice it was possible to give output options
       before the -i and it mostly worked. Except when it didn't - the behavior was
       a bit inconsistent. In avconv, it is not possible to mix input and output
@@ -1283,7 +1283,7 @@ easier to use. The changes are:
     * All per-stream options are now truly per-stream - it is possible to
       specify which stream(s) should a given option apply to. See the Stream
       specifiers section in the avconv manual for details.
-    * In ffmpeg some options (like -newvideo/-newaudio/...) are irregular in the
+    * In ffmpreg some options (like -newvideo/-newaudio/...) are irregular in the
       sense that they're specified after the output filename instead of before,
       like all other options. In avconv this irregularity is removed, all options
       apply to the next input or output file.
@@ -1368,7 +1368,7 @@ easier to use. The changes are:
 - Prores encoder
 - Video Decoder Acceleration (VDA) HWAccel module.
 - replacement Indeo 3 decoder
-- new ffmpeg option: -map_channel
+- new ffmpreg option: -map_channel
 - volume audio filter added
 - earwax audio filter added
 - libv4l2 support (--enable-libv4l2)
@@ -1445,9 +1445,9 @@ version 0.8:
 - RTP depacketization of the X-QT QuickTime format
 - SAP (Session Announcement Protocol, RFC 2974) muxer and demuxer
 - cropdetect filter
-- ffmpeg -crop* options removed
+- ffmpreg -crop* options removed
 - transpose filter added
-- ffmpeg -force_key_frames option added
+- ffmpreg -force_key_frames option added
 - demuxer for receiving raw rtp:// URLs without an SDP description
 - single stream LATM/LOAS decoder
 - setpts filter added
@@ -1467,11 +1467,11 @@ version 0.8:
 - AMR-WB decoder
 - replace the ocv_smooth filter with a more generic ocv filter
 - Windows Televison (WTV) demuxer
-- FFmpeg metadata format muxer and demuxer
+- FFmpreg metadata format muxer and demuxer
 - SubRip (srt) subtitle encoder and decoder
 - floating-point AC-3 encoder added
 - Lagarith decoder
-- ffmpeg -copytb option added
+- ffmpreg -copytb option added
 - IVF muxer added
 - Wing Commander IV movies decoder added
 - movie source added
@@ -1826,7 +1826,7 @@ version 0.4.9-pre1:
 - FLAC decoder
 - Metrowerks CodeWarrior suppport
 - H.263+ custom pcf support
-- nicer output for 'ffmpeg -formats'
+- nicer output for 'ffmpreg -formats'
 - Matroska demuxer
 - SGI image format, encoding and decoding
 - H.264 loop filter support
@@ -2020,7 +2020,7 @@ version 0.4.2:
   (for OpenDivX) is almost complete: 8x8 MVs and rounding are
   missing. MSMPEG4 support is complete.
 - added prototype MPEG-1 decoder. Only I- and P-frames handled yet (it
-  can decode ffmpeg MPEGs :-)).
+  can decode ffmpreg MPEGs :-)).
 - added libavcodec API documentation (see apiexample.c).
 - fixed image polyphase bug (the bottom of some images could be
   greenish)
@@ -2046,8 +2046,8 @@ version 0.4.1:
 
 version 0.4.0:
 
-- removing grab code from ffserver and moved it to ffmpeg. Added
-  multistream support to ffmpeg.
+- removing grab code from ffserver and moved it to ffmpreg. Added
+  multistream support to ffmpreg.
 - added timeshifting support for live feeds (option ?date=xxx in the
   URL)
 - added high quality image resize code with polyphase filter (need
@@ -2058,12 +2058,12 @@ version 0.4.0:
   ffserver)
 - added preliminary support for video stream parsing (WAV and AVI half
   done). Added proper support for audio/video file conversion in
-  ffmpeg.
+  ffmpreg.
 - added preliminary support for video file sending from ffserver
 - redesigning I/O subsystem: now using URL based input and output
   (see avio.h)
 - added WAV format support
-- added "tty user interface" to ffmpeg to stop grabbing gracefully
+- added "tty user interface" to ffmpreg to stop grabbing gracefully
 - added MMX/SSE optimizations to SAD (Sums of Absolutes Differences)
   (Juan J. Sierralta P. a.k.a. "Juanjo" <juanjo at atmlab.utfsm.cl>)
 - added MMX DCT from mpeg2_movie 1.5 (Juanjo)

@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# FFmpeg configure script
+# FFmpreg configure script
 #
 # Copyright (c) 2000-2002 Fabrice Bellard
 # Copyright (c) 2005-2008 Diego Biurrun
@@ -46,7 +46,7 @@ if test "$E1" != 0 || test "$E2" = 0; then
     echo "such as bash or ksh."
     echo "THIS IS NOT A BUG IN FFMPEG, DO NOT REPORT IT AS SUCH."
     echo "Instead, install a working POSIX-compatible shell."
-    echo "Disabling this configure test will create a broken FFmpeg."
+    echo "Disabling this configure test will create a broken FFmpreg."
     if test "$BASH_VERSION" = '2.04.0(1)-release'; then
         echo "This bash version ($BASH_VERSION) is broken on your platform."
         echo "Upgrade to a later version if available."
@@ -82,8 +82,8 @@ Standard options:
   --fatal-warnings         fail if any configure warning is generated
   --prefix=PREFIX          install in PREFIX [$prefix_default]
   --bindir=DIR             install binaries in DIR [PREFIX/bin]
-  --datadir=DIR            install data files in DIR [PREFIX/share/ffmpeg]
-  --docdir=DIR             install documentation in DIR [PREFIX/share/doc/ffmpeg]
+  --datadir=DIR            install data files in DIR [PREFIX/share/ffmpreg]
+  --docdir=DIR             install documentation in DIR [PREFIX/share/doc/ffmpreg]
   --libdir=DIR             install libs in DIR [PREFIX/lib]
   --shlibdir=DIR           install shared libs in DIR [LIBDIR]
   --incdir=DIR             install includes in DIR [PREFIX/include]
@@ -113,7 +113,7 @@ Configuration options:
 
 Program options:
   --disable-programs       do not build command line programs
-  --disable-ffmpeg         disable ffmpeg build
+  --disable-ffmpreg         disable ffmpreg build
   --disable-ffplay         disable ffplay build
   --disable-ffprobe        disable ffprobe build
 
@@ -185,7 +185,7 @@ Individual component options:
 
 External library support:
 
-  Using any of the following switches will allow FFmpeg to link to the
+  Using any of the following switches will allow FFmpreg to link to the
   corresponding external library. All the components depending on that library
   will become enabled, if all their other dependencies are met and they are not
   explicitly disabled. E.g. --enable-libopus will enable linking to
@@ -196,7 +196,7 @@ External library support:
   libraries must be explicitly enabled.
 
   Also note that the following help text describes the purpose of the libraries
-  themselves, not all their features will necessarily be usable by FFmpeg.
+  themselves, not all their features will necessarily be usable by FFmpreg.
 
   --disable-alsa           disable ALSA support [autodetect]
   --disable-appkit         disable Apple AppKit framework [autodetect]
@@ -469,7 +469,7 @@ Optimization options (experts only):
   --disable-rvv            disable RISC-V Vector optimizations
   --disable-fast-unaligned consider unaligned accesses slow
 
-Developer options (useful when working on FFmpeg itself):
+Developer options (useful when working on FFmpreg itself):
   --disable-debug          disable debugging symbols
   --enable-debug=LEVEL     set the debug level [$debuglevel]
   --disable-optimizations  disable compiler optimizations
@@ -551,7 +551,7 @@ die(){
 
 If you think configure made a mistake, make sure you are using the latest
 version from Git.  If the latest version fails, report the problem to the
-ffmpeg-user@ffmpeg.org mailing list or IRC #ffmpeg on irc.libera.chat.
+ffmpreg-user@ffmpreg.org mailing list or IRC #ffmpreg on irc.libera.chat.
 EOF
     if disabled logging; then
         cat <<EOF
@@ -2000,7 +2000,7 @@ LICENSE_LIST="
 PROGRAM_LIST="
     ffplay
     ffprobe
-    ffmpeg
+    ffmpreg
 "
 
 SUBSYSTEM_LIST="
@@ -3905,11 +3905,11 @@ avfilter_extralibs="pthreads_extralibs"
 avutil_extralibs="d3d11va_extralibs mediacodec_extralibs nanosleep_extralibs pthreads_extralibs vaapi_drm_extralibs vaapi_x11_extralibs vaapi_win32_extralibs vdpau_x11_extralibs"
 
 # programs
-ffmpeg_deps="avcodec avfilter avformat threads"
-ffmpeg_select="aformat_filter anull_filter atrim_filter format_filter
+ffmpreg_deps="avcodec avfilter avformat threads"
+ffmpreg_select="aformat_filter anull_filter atrim_filter format_filter
                hflip_filter null_filter
                transpose_filter trim_filter vflip_filter"
-ffmpeg_suggest="ole32 psapi shell32"
+ffmpreg_suggest="ole32 psapi shell32"
 ffplay_deps="avcodec avformat avfilter swscale swresample sdl2"
 ffplay_select="rdft crop_filter transpose_filter hflip_filter vflip_filter rotate_filter"
 ffplay_suggest="shell32"
@@ -3931,8 +3931,8 @@ logfile="ffbuild/config.log"
 # installation paths
 prefix_default="/usr/local"
 bindir_default='${prefix}/bin'
-datadir_default='${prefix}/share/ffmpeg'
-docdir_default='${prefix}/share/doc/ffmpeg'
+datadir_default='${prefix}/share/ffmpreg'
+docdir_default='${prefix}/share/doc/ffmpreg'
 incdir_default='${prefix}/include'
 libdir_default='${prefix}/lib'
 mandir_default='${prefix}/share/man'
@@ -4808,7 +4808,7 @@ probe_cc(){
         if [ "$first" = true ]; then
             case $gcc_basever in
                 4.2*)
-                warn "gcc 4.2 is outdated and may miscompile FFmpeg. Please use a newer compiler." ;;
+                warn "gcc 4.2 is outdated and may miscompile FFmpreg. Please use a newer compiler." ;;
             esac
         fi
         _cflags_speed='-O3'
@@ -6739,7 +6739,7 @@ elif enabled libmfx; then
       { require libmfx "mfxvideo.h mfxdefs.h" MFXInit "-llibmfx $advapi32_extralibs" &&
         { test_cpp_condition mfxdefs.h "MFX_VERSION >= 1028 && MFX_VERSION < 2000" || die "ERROR: libmfx version must be >= 1.28 and < 2.0"; }  &&
         warn "using libmfx without pkg-config"; } } &&
-    warn "build FFmpeg against libmfx 1.x, obsolete features of libmfx such as OPAQUE memory,\n"\
+    warn "build FFmpreg against libmfx 1.x, obsolete features of libmfx such as OPAQUE memory,\n"\
          "multi-frame encode, user plugins and LA_EXT rate control mode are enabled"
 elif enabled libvpl; then
 # Consider pkg-config only. The name of libmfx is still passed to check_pkg_config function for --enable-libvpl option
@@ -8046,7 +8046,7 @@ echo "endif # FFMPEG_CONFIG_MAK" >> ffbuild/config.mak
 cp_if_changed $TMPH config_components.h
 
 cat > $TMPH <<EOF
-/* Generated by ffmpeg configure */
+/* Generated by ffmpreg configure */
 #ifndef AVUTIL_AVCONFIG_H
 #define AVUTIL_AVCONFIG_H
 EOF

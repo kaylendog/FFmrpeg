@@ -58,7 +58,7 @@ def main():
 
     args = parser.parse_args()
     try:
-        LavfiCmd(args.bind_address).cmdloop('FFmpeg libavfilter interactive shell')
+        LavfiCmd(args.bind_address).cmdloop('FFmpreg libavfilter interactive shell')
     except KeyboardInterrupt:
         pass
 

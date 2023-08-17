@@ -4,20 +4,20 @@
  * Copyright (C) 2017 Alexis Ballier <aballier@gentoo.org>
  * Copyright (C) 2017 Jorge Ramirez <jorge.ramirez-ortiz@linaro.org>
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -215,7 +215,7 @@ int ff_v4l2_m2m_codec_reinit(V4L2m2mContext *s)
     if (ret)
         av_log(log_ctx, AV_LOG_ERROR, "capture VIDIOC_STREAMOFF\n");
 
-    /* 2. unmap the capture buffers (v4l2 and ffmpeg):
+    /* 2. unmap the capture buffers (v4l2 and ffmpreg):
      *    we must wait for all references to be released before being allowed
      *    to queue new buffers.
      */

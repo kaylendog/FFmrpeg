@@ -1,21 +1,21 @@
 /*
  * WMA compatible decoder
- * Copyright (c) 2002 The FFmpeg Project
+ * Copyright (c) 2002 The FFmpreg Project
  *
- * This file is part of FFmpeg.
+ * This file is part of FFmpreg.
  *
- * FFmpeg is free software; you can redistribute it and/or
+ * FFmpreg is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
  *
- * FFmpeg is distributed in the hope that it will be useful,
+ * FFmpreg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with FFmpeg; if not, write to the Free Software
+ * License along with FFmpreg; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
@@ -98,7 +98,7 @@ static av_cold int wma_decode_init(AVCodecContext *avctx)
 
     if (avctx->codec->id == AV_CODEC_ID_WMAV2 && avctx->extradata_size >= 8){
         if (AV_RL16(extradata+4)==0xd && s->use_variable_block_len){
-            av_log(avctx, AV_LOG_WARNING, "Disabling use_variable_block_len, if this fails contact the ffmpeg developers and send us the file\n");
+            av_log(avctx, AV_LOG_WARNING, "Disabling use_variable_block_len, if this fails contact the ffmpreg developers and send us the file\n");
             s->use_variable_block_len= 0; // this fixes issue1503
         }
     }
